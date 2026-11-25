@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#262d27">
+<title>Luyện nói HSKK cao cấp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700;800&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* Night palette: warm dark sage ground, cream text (no pure white), amber + sage accents, low blue light, no red.
+   VOICE: a focused exam-room coach — calm, exact, encouraging; Vietnamese UI, Chinese content.
+   IDEA: an HSKK answer sheet + seal-stamped exam card: one task at a time, a clock, your transcript.
+   PICTURE: the practice card itself — the prompt in large Song-style characters, timer bar, answer box.
+   COLOUR and TYPE: white paper, ink, vermilion seal red as accent, jade teal for feedback; Noto Serif SC for Chinese, Be Vietnam Pro for UI.
+   LAYOUT: red header band, then list | card on wide screens, stacked on phones; phrase bank band below. */
+:root{color-scheme:dark;
+--bg:#1b1f1c;--paper:#242a25;--ink:#e6dfcf;--mute:#a59f90;--line:#353c36;--head:#262d27;
+--red:#c99a55;--redink:#e0b46e;--redbg:#3a3224;
+--teal:#93c3a0;--tealbg:#223029;--gold:#d8b26a}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Be Vietnam Pro","Noto Sans SC",system-ui,sans-serif;overflow-x:clip}
+.zh{font-family:"Noto Serif SC","Songti SC",serif}
+.band{padding:clamp(24px,4vw,56px) max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--teal);outline-offset:2px}
+.top{background:var(--head);color:var(--ink);border-bottom:1px solid var(--line);padding-bottom:28px}
+.top .wrap{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:20px 28px;align-items:center}
+.seal{width:84px;height:84px;border:3px solid var(--redink);color:var(--redink);border-radius:10px;display:grid;place-items:center;font:700 52px/1 "Noto Serif SC",serif}
+h1{font-size:clamp(28px,4vw,44px);line-height:1.08;margin:0;text-wrap:balance;font-weight:800}
+.top p{margin:6px 0 0;max-width:62ch;opacity:.93}
+.stat{text-align:right;white-space:nowrap}.stat b{display:block;font-size:34px;line-height:1}.stat span{font-size:13px;opacity:.9}
+.fmt{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;grid-column:1/-1}
+.fmt span{background:var(--paper);color:var(--mute);border-radius:999px;padding:4px 12px;font-size:13px}
+.work .wrap{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start}
+aside{position:sticky;top:12px}
+.filters{display:grid;gap:8px;margin-bottom:12px}
+select,input[type=search]{font:inherit;font-size:16px;width:100%;min-height:44px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)}
+.list{list-style:none;margin:0;padding:0;max-height:62vh;overflow:auto;border:1px solid var(--line);border-radius:10px}
+.list li{border-bottom:1px solid var(--line)}.list li:last-child{border:0}
+.list button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 8px;width:100%;padding:10px 12px;cursor:pointer;min-height:44px}
+.list button:hover{background:var(--paper)}.list button[aria-current=true]{background:var(--redbg)}
+.list .t{font-weight:500}.list .s{grid-column:1;font-size:13px;color:var(--mute)}.list .sc{grid-row:1/3;grid-column:2;align-self:center;font-size:13px;color:var(--teal);font-weight:700}
+.gen{margin-top:12px;width:100%}
+.btn{min-height:44px;padding:8px 16px;border-radius:8px;border:1px solid var(--line);background:var(--bg);font-weight:500}
+.btn:hover{border-color:var(--ink)}.btn:disabled{opacity:.45;cursor:not-allowed}
+.primary{background:var(--teal);color:#1b1f1c;border-color:var(--teal);font-weight:700}
+.red{background:var(--red);color:#1b1f1c;border-color:var(--red);font-weight:700}
+.ghost{background:transparent}
+.panel{border:1px solid var(--line);border-radius:14px;padding:clamp(18px,3vw,32px);background:var(--bg)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;font-size:13px}
+.meta span{padding:2px 10px;border-radius:999px;background:var(--paper)}.meta .k{background:var(--redbg);color:var(--redink);font-weight:700}
+h2{font-size:clamp(22px,2.6vw,30px);line-height:1.15;margin:10px 0 4px}
+.task{color:var(--mute);margin:0 0 14px}
+.prompt{font-size:clamp(19px,2.1vw,23px);line-height:1.9;padding:18px 20px;background:var(--paper);border-radius:10px;border-left:4px solid var(--red)}
+.prompt.hid{font-family:inherit;font-size:16px;color:var(--mute);border-left-color:var(--line)}
+.prompt .miss{color:var(--redink);text-decoration:underline wavy;text-underline-offset:5px}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;min-height:44px;min-width:52px;font-size:14px}.seg .on{background:var(--teal);color:#1b1f1c}
+.timer{border:1px solid var(--line);border-radius:10px;padding:12px 16px;margin:6px 0 16px}
+.timer .hd{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+#clock{font-size:36px;font-variant-numeric:tabular-nums;line-height:1}
+#phase{font-weight:700}
+.bar{height:8px;background:var(--paper);border-radius:4px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;width:0;background:var(--teal);transition:width .9s linear}
+.timer.prep .bar i{background:var(--gold)}.timer.speak .bar i{background:var(--redink)}
+.timer .row{margin:10px 0 0}
+label{font-weight:700;display:block;margin-bottom:6px}
+textarea{width:100%;min-height:150px;font:18px/1.8 "Noto Sans SC",sans-serif;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);resize:vertical}
+.partial{color:var(--mute);min-height:1.5em;margin:4px 0 0;font-family:"Noto Sans SC",sans-serif}
+.note{font-size:14px;color:var(--mute);margin:6px 0 0}
+#result{margin-top:8px}
+.card{border-radius:10px;padding:16px 18px;background:var(--tealbg);margin-top:12px}
+.card h3{margin:0 0 8px;font-size:17px}
+.score{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.score b{font-size:48px;line-height:1;color:var(--teal)}
+.dim{display:grid;grid-template-columns:9em minmax(0,1fr) 3.5em;gap:4px 10px;align-items:center;margin:8px 0}
+.dim .m{height:8px;background:var(--bg);border-radius:4px;overflow:hidden}.dim .m i{display:block;height:100%;background:var(--teal)}
+.dim .c{grid-column:1/-1;font-size:14px;color:var(--mute)}.dim .v{text-align:right;font-variant-numeric:tabular-nums}
+.fix{padding:8px 0;border-top:1px solid var(--line)}.fix:first-of-type{border:0}
+.fix .o{text-decoration:line-through;color:var(--mute)}.fix .b{font-weight:500;color:var(--teal)}.fix .w{font-size:14px}
+.cn{font-family:"Noto Sans SC",sans-serif}
+.rw{font-size:18px;line-height:1.85}
+details{margin-top:18px;border-top:1px solid var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+#model{font-size:19px;line-height:1.9;white-space:pre-wrap}
+h3{font-size:17px;margin:20px 0 8px}
+table{border-collapse:collapse;width:100%}
+td,th{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:13px;color:var(--mute);font-weight:500}
+td.h{font:500 19px "Noto Sans SC",sans-serif;white-space:nowrap}td.p{color:var(--teal);white-space:nowrap}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:12px 0 16px;overflow-x:auto}
+.tabs button{border:0;border-bottom:3px solid transparent;background:transparent;min-height:44px;padding:8px 14px;color:var(--mute);font-weight:700;white-space:nowrap}
+.tabs .on{color:var(--ink);border-bottom-color:var(--redink)}
+.seg{flex-wrap:wrap}
+.sents{list-style:none;padding:0;margin:8px 0 16px}
+.sents li{display:grid;grid-template-columns:1.8em minmax(0,1fr) auto;gap:6px 10px;padding:10px 0;border-bottom:1px solid var(--line);align-items:start}
+.sents .n{color:var(--mute);font-size:13px;padding-top:8px;font-variant-numeric:tabular-nums}
+.sents .z{font:500 21px/2 "Noto Serif SC","Songti SC",serif;cursor:pointer;border-radius:6px}
+.sents .z.py{line-height:2.7}
+.sents rt{font:13px/1 "Be Vietnam Pro",sans-serif;color:var(--teal)}
+.sents .vi{color:var(--mute);font-size:15px;margin-top:2px}
+.gap{color:transparent;border-bottom:2px solid var(--mute);margin:0 1px}
+.rev .gap{color:var(--redink);border-bottom-color:transparent}
+.z.all .full{display:none}.z.all .hold{font:15px "Be Vietnam Pro",sans-serif;color:var(--mute)}
+.z.all.rev .full{display:inline}.z.all.rev .hold{display:none}
+mark.v{background:transparent;color:var(--redink);border-bottom:1px dotted var(--redink)}
+.mini{min-height:44px;min-width:56px;border:1px solid var(--line);border-radius:8px;background:transparent;font-size:14px}
+.argb{border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:8px 0 18px}
+.argb h3{margin:0 0 4px}.argb .mt{color:var(--teal);font:500 15px "Noto Sans SC",sans-serif;margin:0 0 8px}
+.argb dl{margin:0}.argb dt{font-weight:700;color:var(--redink);margin-top:10px;font-family:"Noto Sans SC","Be Vietnam Pro",sans-serif}.argb dd{margin:2px 0 0}
+.qz{border-top:1px solid var(--line);padding:12px 0}.qz>p{font:500 18px/1.7 "Noto Sans SC",sans-serif;margin:0 0 6px}
+.opt{display:block;width:100%;text-align:left;min-height:44px;margin:6px 0;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:transparent;font:17px "Noto Sans SC",sans-serif}
+.opt.ok{border-color:var(--teal);background:var(--tealbg)}.opt.no{border-color:var(--redink);background:var(--redbg)}
+.why{font-size:15px;color:var(--mute);margin:4px 0 0}
+.methods{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px;margin-bottom:28px}
+.mcard{background:var(--bg);border-radius:10px;padding:14px 16px}
+.mcard h3{margin:0;font:700 19px "Noto Sans SC",sans-serif;color:var(--redink)}.mcard .py{color:var(--teal);font-size:14px}
+.mcard p{margin:6px 0 0;font-size:15px}.mcard .sig{font-family:"Noto Sans SC",sans-serif;color:var(--mute)}.mcard .ex{font:17px/1.7 "Noto Serif SC",serif;color:var(--ink)}
+.frames{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;margin-bottom:28px}
+.chk{display:flex;gap:10px;align-items:center;min-height:44px;font-weight:500}.chk input{width:22px;height:22px;accent-color:var(--teal)}
+.hint{background:var(--paper);border-radius:8px;padding:10px 14px;font-size:15px}
+.bank{background:var(--paper)}
+.bank h2{margin-top:0}
+.groups{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.group h3{margin:0 0 6px;font-size:15px;color:var(--redink)}
+.ph{display:grid;grid-template-columns:minmax(0,1fr);width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:8px 2px;min-height:44px}
+.ph:hover b{color:var(--redink)}.ph b{font:500 18px "Noto Sans SC",sans-serif}.ph span{font-size:14px;color:var(--mute)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:0 0 28px;padding:0;list-style:none}
+.steps li{background:var(--bg);border-radius:10px;padding:12px 14px;font-size:15px}.steps b{display:block}
+footer{padding:20px max(5vw,16px);font-size:13px;color:var(--mute)}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--teal);color:#1b1f1c;padding:10px 16px;border-radius:8px;font-size:14px;max-width:92vw;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+@media(max-width:900px){.work .wrap{grid-template-columns:minmax(0,1fr)}aside{position:static}.list{max-height:300px}}
+@media(max-width:600px){.top .wrap{grid-template-columns:auto minmax(0,1fr)}.stat{grid-column:1/-1;text-align:left}.seal{width:60px;height:60px;font-size:36px}.dim{grid-template-columns:7em minmax(0,1fr) 3em}td.h{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.bar i{transition:none}.toast{transition:none}}
+</style>
+</head>
+<body>
+<header class="band top">
+  <div class="wrap">
+    <div class="seal" aria-hidden="true">说</div>
+    <div>
+      <h1>Luyện nói <span style="white-space:nowrap">HSK 5–9</span> và <span style="white-space:nowrap">HSKK cao cấp</span></h1>
+      <p>Tình huống thật ở phòng nhân sự, kế toán, thu mua và nghiệp vụ, dành cho người làm nhân sự muốn chuyển sang thu mua hoặc nghiệp vụ.</p>
+    </div>
+    <div class="stat"><b id="statN">0</b><span id="statT">bài đã luyện</span></div>
+    <div class="fmt">
+      <span>听后复述 · Nghe rồi thuật lại</span><span>朗读 · Đọc thành tiếng</span><span>回答问题 · Trả lời câu hỏi</span><span>情景应对 · Ứng xử tình huống</span>
+    </div>
+  </div>
+</header>
+
+<main class="band work">
+  <div class="wrap">
+    <aside>
+      <div class="filters">
+        <input id="fQ" type="search" placeholder="Tìm bài: 采购, phỏng vấn, hoá đơn…" aria-label="Tìm bài">
+        <select id="fTopic" aria-label="Chủ đề"></select>
+        <select id="fLv" aria-label="Trình độ">
+          <option value="all">Mọi trình độ</option><option value="5">HSK 5</option><option value="6">HSK 6</option><option value="7-9">HSK 7–9</option>
+        </select>
+        <select id="fType" aria-label="Dạng bài"></select>
+      </div>
+      <p class="note" id="count" style="margin:0 0 8px"></p>
+      <ul class="list" id="list"></ul>
+      <div class="row" style="margin:10px 0 0">
+        <button class="btn" id="bRand">Bài ngẫu nhiên</button>
+        <button class="btn ghost" id="bNext">Bài tiếp theo</button>
+      </div>
+      <button class="btn red gen" id="bGen" hidden>Claude ra đề mới theo bộ lọc</button>
+    </aside>
+
+    <section class="panel" id="panel" aria-live="polite">
+      <div class="meta" id="meta"></div>
+      <h2 id="ttl"></h2>
+      <div class="tabs" role="tablist">
+        <button id="tPrac" class="on" role="tab" aria-selected="true">Luyện nói</button>
+        <button id="tStudy" role="tab" aria-selected="false">Học bài mẫu · 阅读</button>
+      </div>
+      <div id="vPrac">
+      <p class="task" id="task"></p>
+      <div class="prompt zh" id="prompt"></div>
+      <div class="row">
+        <button class="btn primary" id="bListen">Nghe đề</button>
+        <div class="seg" id="rate" role="group" aria-label="Tốc độ đọc">
+          <button data-r="0.8">0.8×</button><button data-r="1" class="on">1×</button><button data-r="1.2">1.2×</button>
+        </div>
+        <button class="btn ghost" id="bReveal">Hiện văn bản</button>
+      </div>
+
+      <div class="timer" id="timer">
+        <div class="hd"><span id="phase">Sẵn sàng</span><b id="clock">0:00</b></div>
+        <div class="bar"><i id="barI"></i></div>
+        <div class="row">
+          <button class="btn" id="bPrep">Bắt đầu chuẩn bị</button>
+          <button class="btn" id="bSpeak">Bắt đầu nói</button>
+          <button class="btn ghost" id="bStop">Dừng giờ</button>
+        </div>
+      </div>
+
+      <label for="ans">Bài nói của bạn</label>
+      <textarea id="ans" placeholder="Bấm “Nói” để nhận giọng nói, hoặc gõ / dán lời bạn vừa nói (có thể dùng bàn phím giọng nói tiếng Trung trên điện thoại)."></textarea>
+      <p class="partial cn" id="partial"></p>
+      <div class="row">
+        <button class="btn red" id="bMic" hidden>Nói</button>
+        <button class="btn primary" id="bGrade" hidden>Claude chấm điểm</button>
+        <button class="btn" id="bMatch">So khớp với bài gốc</button>
+        <button class="btn ghost" id="bClear">Xoá bài</button>
+      </div>
+      <p class="note" id="capNote">Đang kết nối tính năng giọng nói và chấm điểm…</p>
+      <div id="result"></div>
+
+      <details id="mdl">
+        <summary>Bài mẫu 范文</summary>
+        <div id="model" class="zh"></div>
+        <div class="row"><button class="btn" id="bModel">Nghe bài mẫu</button></div>
+      </details>
+      </div>
+
+      <div id="vStudy" hidden>
+        <p class="task" id="sHint"></p>
+        <div class="prompt zh" id="sQ"></div>
+        <div class="row">
+          <button class="btn primary" id="sAll">Nghe cả bài</button>
+          <button class="btn" id="sPy" aria-pressed="false">Hiện pinyin</button>
+          <button class="btn" id="sVi" hidden>Xem nghĩa tiếng Việt</button>
+        </div>
+        <div class="row"><span class="note" style="margin:0">Học thuộc:</span>
+          <div class="seg" id="cloze" role="group" aria-label="Mức che chữ">
+            <button data-c="0" class="on">Đủ chữ</button><button data-c="1">Che một nửa</button><button data-c="2">Gợi ý đầu câu</button><button data-c="3">Che hết</button>
+          </div>
+        </div>
+        <p class="note" id="sTip"></p>
+        <ol class="sents" id="sents"></ol>
+        <div id="sArg"></div>
+        <div id="sQuiz"></div>
+        <label class="chk"><input type="checkbox" id="sMem"> Mình đã thuộc bài này</label>
+        <div class="row"><button class="btn" id="sGo">Chuyển sang luyện nói bài này</button></div>
+      </div>
+
+      <h3>Từ vựng trọng tâm</h3>
+      <table class="voc"><thead><tr><th>Từ</th><th>Pinyin</th><th>Nghĩa</th></tr></thead><tbody id="voc"></tbody></table>
+      <h3>Gợi ý triển khai</h3>
+      <p class="hint" id="hint"></p>
+    </section>
+  </div>
+</main>
+
+<section class="band bank">
+  <div class="wrap">
+    <h2>Cách luyện một bài</h2>
+    <ol class="steps">
+      <li><b>1. Nghe hoặc đọc đề</b>Bài nghe-thuật lại: văn bản ẩn, chỉ nghe một lần như thi thật.</li>
+      <li><b>2. Bấm giờ</b>Chuẩn bị rồi nói liền mạch đến hết giờ, không dừng giữa chừng.</li>
+      <li><b>3. Ghi lại lời nói</b>Nhận giọng nói hoặc gõ lại. Claude chấm nội dung, từ vựng, ngữ pháp, mạch lạc.</li>
+      <li><b>4. Nói lại bản nâng cấp</b>Đọc theo bản sửa và bài mẫu, rồi làm lại bài đó lần hai.</li>
+    </ol>
+    <h2>Các phương pháp lập luận 论证方法</h2>
+    <p class="note" style="margin:-6px 0 16px">Nhận ra phương pháp khi đọc bài dài, và dùng lại khi nói hoặc viết bài nghị luận. Bấm câu ví dụ để nghe.</p>
+    <div class="methods" id="methods"></div>
+    <h2>Khung bài nghị luận 议论文结构</h2>
+    <div class="frames" id="frames"></div>
+    <h2>Ngân hàng mẫu câu</h2>
+    <p class="note" style="margin:-6px 0 16px">Bấm vào câu để nghe đọc.</p>
+    <div class="groups" id="groups"></div>
+  </div>
+</section>
+
+<footer>Định dạng bài và thời gian là mô phỏng để luyện tập, không phải đề thi chính thức. Claude chỉ chấm được phần chữ ghi lại nên không đánh giá phát âm, thanh điệu.</footer>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.29.5/dist/index.js"></script>
+<script>
+{
+const TOPICS={all:'Mọi chủ đề',life:'Đời sống công sở',hr:'Nhân sự 人事',acc:'Kế toán 财务',buy:'Thu mua 采购',biz:'Nghiệp vụ 业务',trade:'Xuất nhập khẩu & logistics 外贸',prod:'Sản xuất & chất lượng 生产',admin:'Hành chính 行政',meet:'Họp & báo cáo 会议汇报',career:'Chuyển vị trí 转岗'};
+const TYPES={
+ retell:{n:'Nghe rồi thuật lại',zh:'听后复述',prep:0,speak:90,task:'Nghe đoạn văn một lần (văn bản đang ẩn), rồi thuật lại bằng lời của bạn, đủ ý nhất có thể. Khoảng 1–1,5 phút.'},
+ read:{n:'Đọc thành tiếng',zh:'朗读',prep:60,speak:120,task:'Chuẩn bị 1 phút, rồi đọc to, rõ, đúng ngắt nghỉ và ngữ điệu. Khoảng 2 phút.'},
+ answer:{n:'Trả lời câu hỏi',zh:'回答问题',prep:150,speak:120,task:'Chuẩn bị 2,5 phút, rồi nói liên tục khoảng 2 phút: quan điểm → lý do → ví dụ → kết luận.'},
+ role:{n:'Ứng xử tình huống',zh:'情景应对',prep:60,speak:90,task:'Chuẩn bị 1 phút, rồi nói trực tiếp như đang ở tình huống thật. Khoảng 1,5 phút.'},
+ long:{n:'Đọc dài & lập luận',zh:'阅读论证',prep:180,speak:150,task:'Đọc bài ở tab “Học bài mẫu · 阅读” và làm câu hỏi đọc hiểu. Sau đó chuẩn bị 3 phút, rồi nói khoảng 2,5 phút: tóm tắt luận điểm của tác giả và nêu quan điểm của bạn.'}};
+const LV={'5':'HSK 5','6':'HSK 6','7-9':'HSK 7–9'};
+const ITEMS=[
+{id:'life1',topic:'life',lv:'5',type:'retell',title:'Xe đưa đón nhân viên',zh:'我们公司位于工业园区，离市区比较远。为了方便员工上下班，公司安排了两辆班车，每天早上六点半从市中心出发。不过最近新员工越来越多，班车座位明显不够，有些员工只好自己骑摩托车上班。人事部正在考虑两个方案：一是再增加一辆班车，二是给自己上下班的员工发放交通补贴。具体方案下周一公布。',hint:'Nắm 4 ý theo thứ tự: công ty ở xa → có 2 xe đưa đón lúc 6h30 → nhân viên mới tăng nên thiếu chỗ → 2 phương án, thứ Hai tuần sau công bố.',vocab:[['工业园区','gōngyè yuánqū','khu công nghiệp'],['班车','bānchē','xe đưa đón'],['明显','míngxiǎn','rõ rệt'],['方案','fāng’àn','phương án'],['交通补贴','jiāotōng bǔtiē','phụ cấp đi lại'],['公布','gōngbù','công bố']]},
+{id:'life2',topic:'life',lv:'6',type:'answer',title:'Hết giờ làm có nên trả lời tin nhắn công việc?',zh:'有人说，下班以后就不应该再回复工作消息。你怎么看？请结合自己的经历谈一谈。',hint:'Nêu quan điểm rõ (đồng ý có điều kiện) → 2 lý do hai phía → ví dụ bản thân → kết luận: phân biệt việc gấp và không gấp.',model:'对于这个问题，我的看法是：原则上下班后应该有自己的时间，但也不能一刀切。一方面，长期在下班后处理工作，人很容易疲劳，效率反而会下降；另一方面，有些岗位的工作本身就有突发性，比如工厂里设备出了问题、客户临时要改出货计划，如果大家都不回消息，损失可能更大。以我自己为例，我做人事工作，晚上偶尔会收到员工请假或者受伤的消息，这种事情我一定会马上处理。但一般性的问题，我会第二天上班再回复。所以我认为，关键是公司要分清“紧急”和“不紧急”，建立合理的沟通规则，这样既能保证工作顺利进行，又能尊重员工的私人时间。',vocab:[['一刀切','yīdāoqiē','cào bằng'],['突发性','tūfāxìng','tính đột xuất'],['反而','fǎn’ér','ngược lại'],['以…为例','yǐ…wéi lì','lấy … làm ví dụ'],['尊重','zūnzhòng','tôn trọng'],['私人时间','sīrén shíjiān','thời gian riêng']]},
+{id:'life3',topic:'life',lv:'6',type:'read',title:'Văn hoá tăng ca',zh:'在很多制造企业，加班几乎成了一种常态。订单多的时候，员工连续几周每天工作十个小时以上，虽然收入增加了，但身体和情绪都受到很大影响。其实，加班并不等于效率高。如果生产计划安排得更合理，设备维护做得更到位，很多加班完全可以避免。对管理者来说，与其依靠延长工作时间来完成任务，不如想办法提高单位时间的产出。员工休息好了，出错率降低，产品质量自然也会更加稳定。',hint:'Ngắt hơi sau mỗi dấu phẩy, nhấn vào “并不等于”, đọc cấu trúc “与其……不如……” thành một hơi liền.',vocab:[['制造企业','zhìzào qǐyè','doanh nghiệp sản xuất'],['常态','chángtài','chuyện thường ngày'],['到位','dàowèi','đến nơi đến chốn'],['与其…不如','yǔqí…bùrú','thà … còn hơn'],['产出','chǎnchū','sản lượng đầu ra'],['出错率','chūcuòlǜ','tỉ lệ sai sót']]},
+{id:'life4',topic:'life',lv:'7-9',type:'answer',title:'Quan hệ hay năng lực chuyên môn?',zh:'有人认为，在职场中，人际关系比专业能力更重要。你同意这种说法吗？请说明理由。',hint:'Không đồng ý hoàn toàn → thừa nhận vai trò quan hệ → chuyên môn mới quyết định → ví dụ nhân viên thu mua → hai bên không mâu thuẫn.',model:'我不完全同意这种说法。不可否认，良好的人际关系能让工作推进得更顺利，尤其是在需要跨部门配合的时候，一个人如果人缘好，沟通成本就会低很多。但是我认为，人际关系只能起到“加分”的作用，真正决定一个人能走多远的，还是专业能力。举个例子，一个采购员即使和供应商关系再好，如果看不懂成本结构、不会评估质量风险，最终也会给公司带来损失。反过来说，专业能力强的人更容易赢得别人的信任，好的人际关系往往是建立在专业基础之上的。归根结底，二者并不矛盾：专业能力是根本，人际关系是放大器。职场人应该先把本职工作做扎实，再用真诚的态度去经营关系。',vocab:[['不可否认','bùkě fǒurèn','không thể phủ nhận'],['人缘','rényuán','được lòng người'],['沟通成本','gōutōng chéngběn','chi phí giao tiếp'],['归根结底','guīgēn jiédǐ','suy cho cùng'],['放大器','fàngdàqì','bộ khuếch đại'],['扎实','zhāshi','vững chắc']]},
+{id:'hr1',topic:'hr',lv:'5',type:'retell',title:'Thông báo đào tạo nhân viên mới',zh:'各位新同事，欢迎加入公司。根据安排，本周三上午八点在二楼会议室进行入职培训，内容包括公司规章制度、安全生产知识和考勤办法。培训结束后有一个小测试，成绩合格才能正式上岗。请大家带好身份证复印件和两张一寸照片，用于办理工牌和社会保险。如有问题，请联系人事部。',hint:'Thời gian – địa điểm → 3 nội dung đào tạo → kiểm tra đạt mới vào làm → mang giấy tờ gì, để làm gì.',vocab:[['入职培训','rùzhí péixùn','đào tạo hội nhập'],['规章制度','guīzhāng zhìdù','nội quy, quy chế'],['考勤','kǎoqín','chấm công'],['上岗','shànggǎng','nhận vị trí làm việc'],['工牌','gōngpái','thẻ nhân viên'],['社会保险','shèhuì bǎoxiǎn','bảo hiểm xã hội']]},
+{id:'hr2',topic:'hr',lv:'6',type:'role',title:'Nói chuyện với nhân viên hay đi trễ',zh:'一名生产部员工这个月已经迟到了五次，部门经理希望人事部出面谈话。你作为人事专员，会怎样和他沟通？请直接说出你会对他说的话。',hint:'Mở đầu nhẹ nhàng → nêu sự thật và quy định → hỏi nguyên nhân → cùng tìm giải pháp → nói rõ hệ quả nếu tái diễn.',model:'小阮，你好，今天请你来，主要是想了解一下你最近的情况，不是来批评你的。根据考勤记录，你这个月已经迟到了五次。按照公司的规定，一个月迟到超过三次，会影响全勤奖，严重的话还要书面警告。我想先听听你的原因，是家里有什么困难，还是上班路上有问题？……我明白了，如果是因为送孩子上学时间冲突，我们可以和你们经理商量，看看能不能调整一下班次。不过我也希望你理解，生产线是按时开机的，一个人迟到会影响整条线的进度。我们一起想办法，下个月争取不再迟到，好吗？如果还有困难，随时来找我。',vocab:[['出面','chūmiàn','đứng ra'],['考勤记录','kǎoqín jìlù','dữ liệu chấm công'],['全勤奖','quánqínjiǎng','thưởng chuyên cần'],['书面警告','shūmiàn jǐnggào','cảnh cáo bằng văn bản'],['班次','bāncì','ca làm'],['冲突','chōngtū','trùng, xung đột']]},
+{id:'hr3',topic:'hr',lv:'6',type:'answer',title:'Tuyển công nhân sản xuất: coi trọng điều gì?',zh:'招聘一线生产工人时，你最看重求职者的哪些方面？为什么？',hint:'Liệt kê 3 tiêu chí có thứ tự (第一/第二/第三), mỗi tiêu chí kèm lý do gắn với nhà máy → kết luận “phù hợp” hơn “xuất sắc”.',model:'招聘一线工人，我最看重三个方面。第一是稳定性。生产岗位培训需要时间和成本，如果员工干了一两个月就离职，公司的损失很大，所以面试时我会了解他的家庭情况、住的地方离公司远不远。第二是责任心和细心程度。我们做的是精密零件，一个小小的疏忽就可能导致整批产品报废。第三是学习能力和配合度，因为新设备、新工艺不断引进，员工要愿意学、听得进意见。至于学历和经验，我觉得反而没那么重要，只要态度端正，大部分技能都可以通过培训掌握。总之，招到“合适”的人比招到“优秀”的人更重要。',vocab:[['一线','yīxiàn','tuyến đầu, trực tiếp sản xuất'],['看重','kànzhòng','coi trọng'],['稳定性','wěndìngxìng','tính ổn định'],['疏忽','shūhu','sơ suất'],['报废','bàofèi','phế phẩm, loại bỏ'],['端正','duānzhèng','đúng đắn']]},
+{id:'hr4',topic:'hr',lv:'7-9',type:'read',title:'Tỉ lệ nhân viên nghỉ việc',zh:'员工流失率居高不下，是许多劳动密集型企业面临的共同难题。表面上看，员工离职多是因为工资不够高，但深入调查后往往会发现，缺乏晋升通道、管理方式简单粗暴、工作缺乏成就感等因素同样不容忽视。因此，留住人才不能只靠涨薪，还需要建立公平透明的绩效考核制度，为员工规划清晰的职业发展路径，并在日常管理中给予足够的尊重与认可。唯有如此，企业才能真正形成凝聚力，在激烈的市场竞争中站稳脚跟。',hint:'Câu dài: ngắt theo cụm “缺乏晋升通道 / 管理方式简单粗暴 / 工作缺乏成就感”. Lên giọng nhẹ ở “唯有如此”.',vocab:[['流失率','liúshīlǜ','tỉ lệ nghỉ việc'],['居高不下','jūgāo bùxià','cao mãi không giảm'],['劳动密集型','láodòng mìjíxíng','thâm dụng lao động'],['晋升通道','jìnshēng tōngdào','lộ trình thăng tiến'],['绩效考核','jìxiào kǎohé','đánh giá hiệu suất'],['凝聚力','níngjùlì','sự gắn kết']]},
+{id:'hr5',topic:'hr',lv:'7-9',type:'answer',title:'Tăng động lực mà không tăng quỹ lương',zh:'如果公司要求人事部在不增加工资总额的前提下，提高员工的工作积极性，你会提出哪些方案？',hint:'Chia 2 hướng: cách phân phối và khích lệ phi vật chất → 4 biện pháp (首先/其次/再次/最后) → lưu ý rủi ro “giảm lương trá hình”.',model:'在工资总额不变的前提下，我认为可以从“分配方式”和“非物质激励”两方面入手。首先，调整薪酬结构。把一部分固定工资改为与产量、良品率挂钩的绩效工资，让多劳者多得，这样总额不变，但激励效果会明显提高。其次，打通晋升通道。比如设立“技术员—骨干—主管”的晋升阶梯，让员工看到发展空间。再次，重视认可与沟通。每月评选优秀员工，在公司群里公开表扬，成本很低，效果却不错。最后，改善工作环境和福利细节，例如提供免费午餐、生日福利、灵活调班等。当然，任何方案都要先和员工充分沟通，否则容易被误解为变相降薪。',vocab:[['前提','qiántí','tiền đề, điều kiện'],['入手','rùshǒu','bắt tay từ'],['挂钩','guàgōu','gắn với'],['良品率','liángpǐnlǜ','tỉ lệ hàng đạt'],['激励','jīlì','khích lệ'],['变相降薪','biànxiàng jiàngxīn','giảm lương trá hình']]},
+{id:'acc1',topic:'acc',lv:'6',type:'retell',title:'Quy định hoàn ứng chi phí',zh:'关于费用报销，财务部再次提醒大家：员工个人垫付的费用，必须在发生后一个月内提交报销申请，并附上合法有效的发票。发票抬头必须是公司全称，税号不能有错。金额在五百万越南盾以上的，需要部门经理和总经理双重签字。超过期限或者票据不全的申请，财务部将不予受理。报销款项统一在每月十五号和三十号支付。',hint:'5 ý: hạn 1 tháng → hoá đơn hợp lệ → tên công ty đầy đủ và MST đúng → từ 5 triệu cần 2 chữ ký → trả ngày 15 và 30.',vocab:[['报销','bàoxiāo','thanh toán hoàn ứng'],['垫付','diànfù','ứng trước, chi hộ'],['发票抬头','fāpiào táitóu','tên người mua trên hoá đơn'],['税号','shuìhào','mã số thuế'],['不予受理','bùyǔ shòulǐ','không tiếp nhận'],['款项','kuǎnxiàng','khoản tiền']]},
+{id:'acc2',topic:'acc',lv:'6',type:'role',title:'Hoá đơn lệch số tiền với hợp đồng',zh:'你在核对账目时发现，一家供应商开来的发票金额比合同金额多了两百万越南盾。请你给供应商打电话，说明情况并提出处理要求。',hint:'Chào, xưng danh → nêu chênh lệch cụ thể → hỏi có phát sinh phí gì không → yêu cầu huỷ và xuất lại → nói rõ tạm chưa thanh toán.',model:'您好，我是华越公司财务部的小林。打扰您一下，我们在核对上个月的账目时发现一个问题：贵公司本月十号开给我们的那张发票，金额是两千两百万越南盾，可是我们双方合同上约定的金额是两千万，中间差了两百万。我想先确认一下，是不是有什么额外的费用我们这边不清楚，比如运费或者加急费？……如果没有的话，麻烦您尽快作废这张发票，按合同金额重新开具，并把新的发票电子版发到我的邮箱。在收到正确的发票之前，这笔款我们暂时没办法安排支付，希望您理解。谢谢配合！',vocab:[['核对','héduì','đối chiếu'],['账目','zhàngmù','sổ sách'],['约定','yuēdìng','thoả thuận'],['作废','zuòfèi','huỷ (hoá đơn)'],['重新开具','chóngxīn kāijù','xuất lại'],['配合','pèihé','phối hợp']]},
+{id:'acc3',topic:'acc',lv:'7-9',type:'read',title:'Định mức tiêu hao và giá thành',zh:'准确的成本核算离不开科学的材料消耗定额。所谓定额，是指在一定的生产技术条件下，生产单位合格产品所需消耗的原材料数量。定额定得过高，会掩盖生产过程中的浪费；定得过低，又会导致账实不符，影响成本数据的真实性。因此，财务人员应当与生产部门密切配合，结合实际损耗率定期修订定额，并对异常差异及时分析原因。只有这样，成本报表才能真正为经营决策提供可靠依据。',hint:'Chú ý cặp đối “定得过高……；定得过低……”, đọc dấu chấm phẩy dừng lâu hơn dấu phẩy.',vocab:[['成本核算','chéngběn hésuàn','hạch toán giá thành'],['消耗定额','xiāohào dìng’é','định mức tiêu hao'],['掩盖','yǎngài','che giấu'],['账实不符','zhàngshí bùfú','sổ sách và thực tế không khớp'],['损耗率','sǔnhàolǜ','tỉ lệ hao hụt'],['依据','yījù','căn cứ']]},
+{id:'acc4',topic:'acc',lv:'6',type:'answer',title:'Tố chất quan trọng nhất của kế toán',zh:'你认为做财务工作最重要的职业素养是什么？请举例说明。',hint:'Chọn 2 tố chất (nghiêm cẩn, chính trực) → ví dụ theo dõi thanh toán → bổ sung kỹ năng giao tiếp → kết luận “giới hạn cuối cùng”.',model:'我认为财务工作最重要的职业素养是“严谨”和“诚信”。先说严谨。财务数据环环相扣，一个数字录错，后面的报表、税务申报都会跟着出错。比如我们每个月做付款跟踪，如果把已付和未付搞混了，就可能重复付款，或者拖欠供应商的货款，影响公司信誉。再说诚信。财务人员掌握着公司的资金和敏感信息，必须坚持原则，不能因为领导或同事的压力就做假账。除此之外，沟通能力也很重要，因为财务经常需要向其他部门解释制度，争取他们的配合。总的来说，技术可以慢慢学，但严谨和诚信是这个岗位的底线。',vocab:[['素养','sùyǎng','tố chất'],['严谨','yánjǐn','chặt chẽ, nghiêm cẩn'],['环环相扣','huánhuán xiāngkòu','khâu nọ nối khâu kia'],['拖欠','tuōqiàn','nợ đọng'],['做假账','zuò jiǎzhàng','làm sổ sách giả'],['底线','dǐxiàn','giới hạn cuối cùng']]},
+{id:'buy1',topic:'buy',lv:'6',type:'retell',title:'Quy định hỏi giá và so sánh giá',zh:'为了规范采购流程，从下个月起，公司所有单次金额超过两千万越南盾的采购，必须至少向三家供应商询价，并填写比价表。如果选择的不是最低价的供应商，采购员需要书面说明理由，比如质量更稳定或者交货期更短。比价表经采购经理审核后，交财务部存档。紧急采购可以先下单后补手续，但必须在三天内补齐。',hint:'Trên 20 triệu → hỏi ít nhất 3 nhà → không chọn giá thấp nhất phải giải trình → quản lý duyệt, kế toán lưu → mua gấp bổ sung trong 3 ngày.',vocab:[['规范','guīfàn','chuẩn hoá'],['询价','xúnjià','hỏi giá'],['比价表','bǐjiàbiǎo','bảng so sánh giá'],['交货期','jiāohuòqī','thời hạn giao hàng'],['存档','cúndàng','lưu hồ sơ'],['补手续','bǔ shǒuxù','bổ sung thủ tục']]},
+{id:'buy2',topic:'buy',lv:'6',type:'role',title:'Nhà cung cấp báo tăng giá 10%',zh:'一家长期合作的金属粉末供应商通知你，下个月起价格上涨百分之十。你作为采购员，请和对方进行谈判。',hint:'Thể hiện thông cảm → nói rõ khó khăn → đề nghị cung cấp căn cứ chi phí → dùng sản lượng làm đòn bẩy → đưa 2 phương án thay thế.',model:'王经理，您好！收到贵公司的调价通知，我们非常理解原材料上涨带来的压力。不过百分之十的涨幅对我们来说确实太大了，我们的产品价格是年初和客户谈好的，短期内没办法转嫁。我想先请您提供一下成本变化的依据，比如主要原料的价格走势。另外，我们双方合作已经三年了，我们的采购量一直很稳定，明年预计还会增加百分之二十。基于这一点，能不能考虑分两步调价，先涨百分之五，三个月后再根据市场情况重新评估？或者，如果我们把账期从六十天缩短到三十天，贵公司能不能在价格上给予一些支持？我相信我们能找到一个双方都能接受的方案。',vocab:[['调价','tiáojià','điều chỉnh giá'],['涨幅','zhǎngfú','mức tăng'],['转嫁','zhuǎnjià','chuyển gánh nặng sang'],['走势','zǒushì','xu hướng'],['账期','zhàngqī','kỳ hạn thanh toán'],['给予','jǐyǔ','dành cho']]},
+{id:'buy3',topic:'buy',lv:'7-9',type:'answer',title:'Cân bằng giá – chất lượng – giao hàng',zh:'采购工作中，价格、质量和交期常常难以兼顾。你认为应该如何取得平衡？',hint:'Nêu nguyên tắc “phân loại vật tư” → vật tư then chốt ưu tiên chất lượng → vật tư phụ ưu tiên giá → giao hàng giải bằng quản lý → kết luận tổng chi phí.',model:'价格、质量和交期是采购的“三角关系”，很难同时做到最优，关键是根据物料的重要程度区别对待。对于直接影响产品性能的关键物料，比如打印用的金属粉末，质量必须放在第一位，宁可价格高一点，也要选择品质稳定、有检测报告的供应商，否则一批不良品的损失远远超过省下来的钱。对于通用的辅助材料，比如包装箱、手套，就可以把价格作为主要考量，通过集中采购来降低成本。至于交期，我认为可以通过管理手段来改善，比如提前做好需求预测、设置安全库存、和核心供应商签订年度框架协议。总而言之，采购不是单纯的“砍价”，而是要从总成本和风险的角度做出最合理的选择。',vocab:[['兼顾','jiāngù','lo được cả hai'],['区别对待','qūbié duìdài','đối xử phân biệt theo loại'],['宁可','nìngkě','thà rằng'],['辅助材料','fǔzhù cáiliào','vật tư phụ'],['安全库存','ānquán kùcún','tồn kho an toàn'],['框架协议','kuàngjià xiéyì','hợp đồng khung']]},
+{id:'buy4',topic:'buy',lv:'6',type:'read',title:'Đánh giá nhà cung cấp',zh:'供应商评估是采购管理的重要环节。一般来说，企业会从质量、价格、交货准时率和服务四个方面进行打分。对于新供应商，除了审核营业执照和相关资质外，最好安排实地考察，了解对方的生产能力和质量控制体系。对于现有供应商，则应每季度进行一次绩效评估，表现优秀的可以增加订单份额，连续不达标的要及时淘汰。通过动态管理，企业才能建立起一个稳定、可靠的供应链。',hint:'Phân biệt rõ hai vế “对于新供应商……/对于现有供应商……”, dừng nhẹ trước “则”.',vocab:[['环节','huánjié','khâu'],['准时率','zhǔnshílǜ','tỉ lệ đúng hạn'],['资质','zīzhì','năng lực pháp lý'],['实地考察','shídì kǎochá','khảo sát thực tế'],['份额','fèn’é','tỉ phần'],['淘汰','táotài','loại bỏ']]},
+{id:'biz1',topic:'biz',lv:'6',type:'retell',title:'Đơn hàng chính thức về trễ',zh:'各位同事，客户的正式订单经常比实际出货晚到。为了不影响生产和出货，从本周开始，业务部将按照“客户简称加出货日期”的方式给每一批货编号，先按客户的出货计划安排生产。等正式订单到了以后，再由业务员把订单号和批次号对应起来。请仓库和质检部门在所有单据上都写清楚批次号，以免对账时出现混乱。',hint:'Vấn đề (PO về trễ) → cách đánh số lô → PO về thì đối chiếu → kho và QC ghi số lô trên mọi chứng từ.',vocab:[['正式订单','zhèngshì dìngdān','đơn hàng chính thức (PO)'],['出货','chūhuò','xuất hàng'],['简称','jiǎnchēng','tên viết tắt'],['批次','pīcì','lô'],['单据','dānjù','chứng từ'],['对账','duìzhàng','đối chiếu công nợ']]},
+{id:'biz2',topic:'biz',lv:'7-9',type:'role',title:'Khách khiếu nại hàng trầy xước',zh:'客户收到货后投诉部分产品表面有划痕，要求整批退货。你作为业务员，请给客户打电话处理这件事。',hint:'Xin lỗi → cho thấy đã xử lý ngay → xin ảnh, số lượng → đề xuất phương án thay thế trả cả lô → cam kết báo cáo bằng văn bản có hạn.',model:'李总，您好！首先非常抱歉，这批货给您添麻烦了。您反映的情况我们已经高度重视，质检部门正在调取这批货的出货检验记录。为了尽快弄清问题，能不能麻烦您把有划痕的产品拍几张照片，并告诉我们大概的数量？根据我们的初步判断，划痕可能是运输过程中包装不够牢固造成的。整批退货的话，来回运输时间比较长，会耽误您的生产。我们有一个建议：我们今天就派两名质检人员到贵公司现场挑选，不良品我们全部更换，并且承担所有费用；同时我们会改进包装方式，在每个产品之间增加隔层。您看这样处理是否可以？我们会在明天下班前给您一份书面的原因分析和改善报告。',vocab:[['投诉','tóusù','khiếu nại'],['划痕','huáhén','vết xước'],['高度重视','gāodù zhòngshì','hết sức coi trọng'],['调取','diàoqǔ','trích xuất'],['耽误','dānwu','làm lỡ'],['隔层','gécéng','lớp ngăn']]},
+{id:'biz3',topic:'biz',lv:'6',type:'answer',title:'Làm nghiệp vụ cần những năng lực gì?',zh:'你认为做好业务工作需要具备哪些能力？',hint:'4 năng lực (第一…第四), mỗi cái kèm ví dụ chứng từ, giao hàng, khiếu nại → câu cuối nối với kinh nghiệm nhân sự của bạn.',model:'我认为做好业务工作至少需要四种能力。第一是沟通能力，业务员是客户和公司之间的桥梁，既要准确理解客户的需求，又要把需求清楚地传达给生产、质检和仓库。第二是对产品和流程的熟悉程度，客户问到交期、工艺或者单据的问题时，要能马上回答，这样才能赢得信任。第三是细心，合同、发票、装箱单上的品名、数量、金额必须完全一致，一个小错误就可能导致清关延误。第四是抗压能力，遇到客户催货、投诉的时候，要保持冷静，先解决问题再分析责任。我做人事的时候已经锻炼了沟通和细心，我相信这些经验对做业务很有帮助。',vocab:[['具备','jùbèi','có đủ'],['桥梁','qiáoliáng','cầu nối'],['传达','chuándá','truyền đạt'],['装箱单','zhuāngxiāngdān','phiếu đóng gói'],['清关','qīngguān','thông quan'],['抗压能力','kàngyā nénglì','khả năng chịu áp lực']]},
+{id:'biz4',topic:'biz',lv:'7-9',type:'read',title:'Chứng từ xuất nhập khẩu tại chỗ',zh:'在越南，出口加工企业与国内企业之间的就地进出口业务十分常见。这类交易的货物并不真正离开越南，但在海关管理上仍被视为进出口。因此，买卖双方必须准备完整的单据，包括销售合同、商业发票、装箱单以及交货指示等，并确保各单据上的品名、数量、单价和总金额完全一致。任何一处细微的差错，都可能导致报关受阻，甚至面临行政处罚。业务人员唯有熟悉法规、细致核对，才能确保货物顺利交付。',hint:'Liệt kê chứng từ đọc đều nhịp “销售合同、商业发票、装箱单以及交货指示”. Nhấn vào “完全一致”.',vocab:[['出口加工企业','chūkǒu jiāgōng qǐyè','doanh nghiệp chế xuất'],['就地进出口','jiùdì jìnchūkǒu','xuất nhập khẩu tại chỗ'],['视为','shìwéi','coi là'],['商业发票','shāngyè fāpiào','hoá đơn thương mại'],['报关','bàoguān','khai hải quan'],['行政处罚','xíngzhèng chǔfá','xử phạt hành chính']]},
+{id:'car1',topic:'career',lv:'6',type:'answer',title:'Tự giới thiệu: vì sao chuyển sang thu mua',zh:'请做一个两分钟左右的自我介绍，并说明你为什么想从人事岗位转到采购岗位。',hint:'Kinh nghiệm hiện tại → điểm chạm với thu mua → kỹ năng chuyển đổi được → thừa nhận thiếu sót và đang học → mục tiêu 2–3 năm. Thay tên, số năm bằng thông tin thật của bạn.',model:'各位面试官好，我叫阮氏兰，在一家金属3D打印企业做了三年的人事行政工作，负责招聘、考勤、工资和社保，同时也协助处理公司的付款申请和部分采购合同。正是在协助采购的过程中，我对这项工作产生了浓厚的兴趣。我发现采购不只是买东西，而是要分析成本、管理供应商、控制风险，这和我做人事时需要的数据分析、谈判和沟通能力其实是相通的。另外，我可以用中文和中国总部直接沟通，也熟悉越南的合同和发票要求。我知道自己在采购专业知识上还有不足，所以最近在系统学习供应链管理的课程。我希望能从采购助理做起，用两到三年时间成长为一名能独当一面的采购员。谢谢！',vocab:[['面试官','miànshìguān','người phỏng vấn'],['协助','xiézhù','hỗ trợ'],['浓厚','nónghòu','sâu đậm'],['相通','xiāngtōng','thông nhau, tương đồng'],['不足','bùzú','thiếu sót'],['独当一面','dúdāng yímiàn','tự đảm đương một mảng']]},
+{id:'car2',topic:'career',lv:'7-9',type:'answer',title:'“Bạn chưa từng làm thu mua, sao chọn bạn?”',zh:'面试官问：“你没有正式做过采购，我们为什么要选择你，而不是一个有经验的候选人？”请你回答。',hint:'Thừa nhận thẳng → 3 lợi thế cụ thể có ví dụ → đảo lại góc nhìn (gắn bó lâu dài) → cam kết bằng kết quả.',model:'这是一个很好的问题。我承认，在采购经验上，我不如有经验的候选人。但我认为我有三点优势。第一，我对公司内部的运作非常熟悉。做人事和付款的时候，我每天都要和生产、财务、仓库打交道，知道一个物料从申请到入库要经过哪些环节、哪里容易卡住。第二，我有实际的谈判和合规经验，比如和员工谈薪资，和社保机构、环保部门沟通，这些都锻炼了我在压力下坚持原则的能力。第三，我的可塑性强，没有固定的思维模式，愿意按照贵公司的标准从头学起。更重要的是，有经验的人可能更快上手，但一个真心热爱这份工作、愿意长期发展的人，能为公司创造更持久的价值。如果给我三个月的时间，我会用结果证明自己。',vocab:[['候选人','hòuxuǎnrén','ứng viên'],['打交道','dǎ jiāodao','làm việc với'],['卡住','qiǎzhù','bị tắc'],['合规','héguī','tuân thủ'],['可塑性','kěsùxìng','khả năng uốn nắn'],['上手','shàngshǒu','bắt nhịp công việc']]},
+{id:'car3',topic:'career',lv:'6',type:'role',title:'Xin Tổng giám đốc cho chuyển sang phòng nghiệp vụ',zh:'你想从人事部调到业务部，请向总经理当面提出申请，说明你的理由和打算。',hint:'Xin phép thời gian → lý do (đã quen việc, đã thử và thích) → kế hoạch bàn giao → kế hoạch học việc mới → phương án dự phòng.',model:'王总，您现在方便吗？我想占用您几分钟时间，谈一下我个人的职业发展。我在人事部已经工作两年多了，招聘、工资、社保这些工作现在已经比较顺手。最近我协助业务部做出货单据，和客户对接了几次，发现自己很喜欢这类工作，也比较擅长。所以我想申请调到业务部。我考虑过人事工作的交接问题：我会先把所有流程整理成文件，再花一个月时间带新人，保证人事工作不受影响。到业务部以后，我希望先从单据和跟单做起，慢慢学习报价和客户开发。当然，如果公司目前人手紧张，我也可以先兼顾两边的工作。您看这样安排是否可行？',vocab:[['占用','zhànyòng','chiếm (thời gian)'],['顺手','shùnshǒu','thuận tay, thành thạo'],['对接','duìjiē','làm việc trực tiếp với'],['擅长','shàncháng','giỏi về'],['交接','jiāojiē','bàn giao'],['跟单','gēndān','theo dõi đơn hàng']]},
+{id:'car4',topic:'career',lv:'7-9',type:'answer',title:'Hiểu thế nào về “nhân lực đa năng”?',zh:'谈谈你对“复合型人才”的理解。在制造企业中，这类人才为什么越来越受欢迎？',hint:'Định nghĩa → 3 nguyên nhân (其一/其二/其三) gắn với nhà máy FDI → cảnh báo “biết mỗi thứ một chút” → kết luận.',model:'所谓复合型人才，是指既掌握一门核心专业，又具备跨领域知识和能力的人。在制造企业中，这类人才越来越受欢迎，原因主要有三个。其一，企业分工越来越细，但问题往往是跨部门的。比如一张出货单出错，可能涉及业务、仓库和财务，懂多个环节的人更能从全局找到问题的根源。其二，中小企业，尤其是刚投产的外资工厂，人员编制有限，一个人往往要身兼数职，复合型人才能有效降低管理成本。其三，在中越两国企业的合作中，既懂语言又懂业务的人，可以减少沟通中的误解，提高决策效率。当然，复合不等于“什么都会一点、什么都不精”，前提是先有一项过硬的本领，在此基础上不断拓展边界。',vocab:[['复合型人才','fùhéxíng réncái','nhân lực đa năng'],['跨领域','kuà lǐngyù','liên lĩnh vực'],['根源','gēnyuán','gốc rễ'],['编制','biānzhì','định biên nhân sự'],['身兼数职','shēn jiān shù zhí','kiêm nhiều việc'],['过硬','guòyìng','vững vàng']]},
+{id:'life5',topic:'life',lv:'5',type:'retell',title:'Thông báo nghỉ Tết',zh:'根据公司的生产安排，今年春节放假时间为一月二十五日至二月二日，共九天。放假前一天下午，各部门要做好设备断电、门窗关闭和安全检查。生产部需要提前完成年前的出货任务。年终奖将在放假前随一月工资一起发放。节后第一天上午八点准时上班，请大家注意安全，按时返岗。',hint:'Ngày nghỉ (9 ngày) → việc trước khi nghỉ → sản xuất xong hàng trước Tết → thưởng cuối năm trả cùng lương → ngày đầu đi làm lại.',vocab:[['放假','fàngjià','nghỉ lễ'],['断电','duàndiàn','ngắt điện'],['年终奖','niánzhōngjiǎng','thưởng cuối năm'],['发放','fāfàng','chi trả'],['返岗','fǎngǎng','quay lại làm việc']]},
+{id:'life6',topic:'life',lv:'6',type:'answer',title:'Giảm hiểu lầm giữa nhân viên Trung – Việt',zh:'在中资企业工作，中越员工之间难免会因为语言和习惯不同产生误会。你认为应该如何减少这类误会？',hint:'3 hướng: ngôn ngữ (xác nhận bằng chữ) → hiểu thói quen của nhau → hoạt động giao lưu → kết luận: tôn trọng và kiên nhẫn.',model:'我认为减少误会要从三个方面入手。首先是语言。很多误会其实来自翻译不准确，比如中方说“尽快”，越方员工理解成“有空再做”。所以重要的事情最好用文字确认，必要时写清楚具体的时间和数量。其次是了解彼此的习惯。比如越南员工比较重视面子，当众批评很容易引起反感，中方管理人员可以多采用私下沟通的方式。反过来，越南员工也要理解中方追求效率、说话比较直接的风格。最后，公司可以组织一些交流活动，比如一起吃饭、过节，让大家在工作之外多一些了解。只要彼此尊重、多一点耐心，误会自然就会越来越少。',vocab:[['中资企业','zhōngzī qǐyè','doanh nghiệp vốn Trung Quốc'],['难免','nánmiǎn','khó tránh'],['面子','miànzi','thể diện'],['当众','dāngzhòng','trước mặt mọi người'],['反感','fǎngǎn','ác cảm']]},
+{id:'life7',topic:'life',lv:'6',type:'role',title:'Từ chối khéo đồng nghiệp nhờ việc',zh:'同事经常请你帮他做一些不属于你工作范围的事情，而你自己的工作已经很多了。请委婉地拒绝他。',hint:'Ghi nhận thiện chí → lý do cụ thể (việc đang gấp) → đưa giải pháp thay thế (mẫu, giờ nghỉ trưa) → đề xuất bàn lại phân công.',model:'小陈，我知道你最近也挺忙的，能帮的我一直都很愿意帮。不过这个星期我手上有三份合同要赶，周五前还要交工资表，实在抽不出时间，怕接下来做不好反而耽误你的事。你看这样行不行：这个报表的格式我之前做过一个模板，我先发给你，你照着填应该会快很多；如果中间有不明白的地方，午休的时候你可以来问我。另外，我觉得这类工作以后可以跟经理商量一下，看看怎么分工更合理，这样对我们两个人都好。',vocab:[['委婉','wěiwǎn','khéo léo, tế nhị'],['抽不出时间','chōu bu chū shíjiān','không thu xếp được thời gian'],['模板','múbǎn','mẫu'],['照着','zhàozhe','làm theo'],['分工','fēngōng','phân công']]},
+{id:'life8',topic:'life',lv:'7-9',type:'read',title:'Học tập suốt đời',zh:'在技术迭代日益加速的今天，“一技之长吃一辈子”的时代已经一去不复返了。无论身处哪个岗位，职场人都必须保持持续学习的能力。对于从事人事、行政等支持性工作的员工而言，主动了解业务流程、掌握数据分析工具，不仅能提升自身的不可替代性，也为日后转岗创造了条件。学习未必要脱产进修，利用碎片时间阅读专业资料、向资深同事请教，同样能够积少成多。',hint:'Đọc thành ngữ “一技之长吃一辈子” liền một hơi; dừng rõ sau “不仅……”, nhấn “也为日后转岗创造了条件”.',vocab:[['迭代','diédài','đổi mới liên tục'],['一去不复返','yí qù bú fù fǎn','qua rồi không trở lại'],['不可替代性','bùkě tìdàixìng','tính không thể thay thế'],['脱产进修','tuōchǎn jìnxiū','nghỉ làm để đi học'],['积少成多','jī shǎo chéng duō','tích tiểu thành đại']]},
+{id:'life9',topic:'life',lv:'6',type:'retell',title:'Quy định mới ở nhà ăn',zh:'从下周一起，公司食堂实行新的就餐制度。员工需要刷工牌就餐，每人每餐限一份，不得替他人代刷。午餐时间分为两个批次：生产部十一点半开始，办公室人员十二点开始，以免排队太久。如果因加班需要晚餐，请在当天下午三点前向行政部报餐。对饭菜有意见的，可以填写食堂意见表。',hint:'Quẹt thẻ, mỗi người 1 suất → chia 2 đợt ăn trưa → tăng ca báo cơm trước 3 giờ → góp ý bằng phiếu.',vocab:[['食堂','shítáng','nhà ăn'],['就餐','jiùcān','dùng bữa'],['刷工牌','shuā gōngpái','quẹt thẻ nhân viên'],['报餐','bàocān','báo cơm'],['意见表','yìjiànbiǎo','phiếu góp ý']]},
+{id:'hr6',topic:'hr',lv:'6',type:'retell',title:'Điều chỉnh mức đóng BHXH',zh:'人事部通知：由于员工工资调整，从下个月起，社会保险的缴费基数将相应提高。员工个人缴纳部分仍为工资的百分之十点五，其中社会保险百分之八，医疗保险百分之一点五，失业保险百分之一。新的缴费基数会体现在下个月的工资单上，有疑问的同事可以到人事部查询。',hint:'Lý do điều chỉnh → tỉ lệ người lao động đóng 10,5% (8 + 1,5 + 1) → thể hiện trên phiếu lương tháng sau → thắc mắc hỏi phòng nhân sự.',vocab:[['缴费基数','jiǎofèi jīshù','mức lương đóng bảo hiểm'],['缴纳','jiǎonà','đóng (phí)'],['医疗保险','yīliáo bǎoxiǎn','bảo hiểm y tế'],['失业保险','shīyè bǎoxiǎn','bảo hiểm thất nghiệp'],['工资单','gōngzīdān','phiếu lương']]},
+{id:'hr7',topic:'hr',lv:'6',type:'role',title:'Phỏng vấn ứng viên QC',zh:'你是人事专员，正在面试一位应聘质检员的求职者。请你向他介绍岗位情况，并提出两三个问题。',hint:'Giới thiệu công việc, ca làm, thử việc, phúc lợi → 3 câu hỏi: dụng cụ đo, khả năng tập trung, tình huống bị giục xuất hàng → hẹn báo kết quả.',model:'你好，请坐。我先简单介绍一下这个岗位。质检员主要负责产品的外观检查和尺寸测量，每批产品出货前都要做检验并填写记录表。我们实行两班倒，每周工作六天，周日休息。试用期两个月，转正后有全勤奖和绩效奖金。下面我想问你几个问题。第一，你以前有没有用过卡尺、千分尺这类量具？第二，检验工作比较枯燥，有时候一个班要看几千个零件，你觉得自己能保持专注吗？第三，如果你发现一批产品有问题，但是生产部催着出货，你会怎么处理？……好的，谢谢你的回答，我们会在三天之内通知你结果。',vocab:[['质检员','zhìjiǎnyuán','nhân viên QC'],['两班倒','liǎng bān dǎo','làm 2 ca luân phiên'],['试用期','shìyòngqī','thời gian thử việc'],['转正','zhuǎnzhèng','lên chính thức'],['量具','liángjù','dụng cụ đo'],['枯燥','kūzào','khô khan']]},
+{id:'hr8',topic:'hr',lv:'7-9',type:'answer',title:'Quản lý theo quy chế hay theo tình?',zh:'有人认为，管理一线员工应该“制度第一”，严格执行奖惩；也有人认为应该“人情第一”，多理解员工的难处。你怎么看？',hint:'Nêu quan điểm dung hoà “制度为本、人情为辅” → vì sao cần quy chế → vì sao cần linh hoạt → cách làm cụ thể → câu chốt.',model:'我认为这两种观点各有道理，但都不够全面，比较理想的做法是“制度为本、人情为辅”。制度是底线，它保证了公平。如果迟到、违规不受处罚，守规矩的员工反而会觉得吃亏，长此以往，整个团队的纪律就会松散。可是，制度是死的，人是活的。员工家里遇到急事、身体不舒服，管理者如果一味照章办事，不仅会伤害员工的感情，也会降低他们的归属感。所以我的做法是：规则提前讲清楚，执行的时候一视同仁；但在规则允许的范围内，尽量灵活处理，比如允许调班、事后补假。说到底，严格和温度并不矛盾，好的管理应该让员工既尊重规则，又信任管理者。',vocab:[['奖惩','jiǎngchéng','thưởng phạt'],['吃亏','chīkuī','chịu thiệt'],['一味','yíwèi','một mực'],['照章办事','zhàozhāng bànshì','làm đúng theo quy định'],['一视同仁','yí shì tóng rén','đối xử như nhau'],['归属感','guīshǔgǎn','cảm giác gắn bó']]},
+{id:'hr9',topic:'hr',lv:'6',type:'read',title:'Văn hoá doanh nghiệp',zh:'企业文化并不是挂在墙上的几句口号，而是体现在每天的工作细节中。比如，领导是否愿意倾听一线员工的意见，部门之间出了问题是互相推卸责任还是共同解决，新员工入职时有没有人耐心地带他熟悉环境。这些看似微小的事情，往往比高薪更能决定员工的去留。对人事部门来说，建设企业文化的关键，不在于组织多少活动，而在于让公司的价值观真正落到实处。',hint:'Cặp “并不是……而是……” và “不在于……而在于……”: nhấn vế sau. Ba ví dụ đọc đều nhịp.',vocab:[['口号','kǒuhào','khẩu hiệu'],['倾听','qīngtīng','lắng nghe'],['推卸责任','tuīxiè zérèn','đùn đẩy trách nhiệm'],['去留','qùliú','đi hay ở'],['落到实处','luò dào shíchù','thực hiện thực chất']]},
+{id:'hr10',topic:'hr',lv:'5',type:'answer',title:'Nhân viên báo thiếu tiền tăng ca',zh:'如果员工拿到工资后发现少算了加班费，跑来找你，你会怎么处理？',hint:'Trấn an → cùng đối chiếu chấm công và phiếu tăng ca → sai thì xin lỗi, nói rõ khi nào trả bù → thiếu chữ ký thì hướng dẫn bổ sung → kiểm tra người khác.',model:'如果员工发现加班费少算了，我会先请他坐下来，别着急。然后我会和他一起核对这个月的考勤记录和加班单，看看问题出在哪里。如果确实是我们算错了，我会马上向他道歉，并且告诉他差额什么时候补发，比如跟下个月的工资一起发，或者特别急的话申请单独发放。如果是因为加班单没有经理签字，我会跟他说明公司的规定，并帮他去找经理补签。处理完以后，我还会检查一下其他员工有没有同样的问题，避免再次发生。',vocab:[['加班费','jiābānfèi','tiền tăng ca'],['加班单','jiābāndān','phiếu tăng ca'],['差额','chā’é','khoản chênh lệch'],['补发','bǔfā','trả bù'],['补签','bǔqiān','ký bổ sung']]},
+{id:'acc5',topic:'acc',lv:'6',type:'retell',title:'Hạn chót chứng từ cuối tháng',zh:'财务部提醒各部门：每月二十五号是费用单据的截止日期，二十五号以后提交的单据一律计入下个月。月底前，仓库要把本月的出入库单全部交给财务，采购部要和供应商完成对账，确认应付金额。如有发票尚未收到的，请在对账单上注明原因。这样财务部才能在下月五号前完成结账和报税。',hint:'Ngày 25 chốt chứng từ → kho nộp phiếu nhập xuất → thu mua đối chiếu công nợ → ghi chú hoá đơn chưa về → kế toán khoá sổ, khai thuế trước ngày 5.',vocab:[['截止日期','jiézhǐ rìqī','hạn chót'],['计入','jìrù','hạch toán vào'],['出入库单','chūrùkùdān','phiếu nhập xuất kho'],['应付','yìngfù','phải trả'],['结账','jiézhàng','khoá sổ'],['报税','bàoshuì','khai thuế']]},
+{id:'acc6',topic:'acc',lv:'6',type:'role',title:'Xin kế toán thanh toán gấp',zh:'你需要请会计支付一笔供应商的货款，但这笔款项比较急。请你打电话给会计说明情况。',hint:'Xưng danh → khoản gì, bao nhiêu, chứng từ đã gửi → vì sao gấp → hỏi xử lý đặc biệt → sẵn sàng bổ sung chữ ký, hồ sơ.',model:'陈会计，您好，我是人事部的小林。有一笔款想麻烦您帮忙安排一下：是付给一家包装公司的货款，金额是一千八百五十万越南盾，合同、发票和入库单我刚才已经发到您邮箱了。这笔款比较急，因为对方说如果这周五之前收不到款，下一批包装箱就不能按时送货，会影响我们下周的出货。我知道财务付款一般是每周二、周四统一安排，所以想问一下能不能特殊处理一次？如果需要经理签字，我现在就去找他补签。麻烦您了，有什么需要补充的资料随时告诉我。',vocab:[['货款','huòkuǎn','tiền hàng'],['安排支付','ānpái zhīfù','sắp xếp thanh toán'],['入库单','rùkùdān','phiếu nhập kho'],['特殊处理','tèshū chǔlǐ','xử lý đặc biệt'],['补充','bǔchōng','bổ sung']]},
+{id:'acc7',topic:'acc',lv:'7-9',type:'answer',title:'Vai trò của kế toán trong kiểm soát chi phí',zh:'公司刚投产不久，老板要求各部门控制成本。你认为财务部门在成本控制中应该扮演什么角色？',hint:'Hai vai: “người gác cổng” (phê duyệt) và “tham mưu” (phân tích số liệu) → đặc thù nhà máy mới → cảnh báo cắt giảm sai chỗ.',model:'我认为财务部门在成本控制中不应该只是“记账员”，而应该扮演“守门人”和“参谋”两种角色。所谓守门人，就是把好审批关。每一笔支出都要有预算、有依据、有发票，超出预算的支出必须说明理由，这样可以从源头上杜绝随意花钱。所谓参谋，就是用数据帮助管理层做决策。比如定期分析每种产品的单位成本，找出材料损耗、能耗或者人工成本异常的地方，再和生产部门一起寻找原因。对于刚投产的工厂来说，很多流程还不成熟，财务越早建立成本数据，越能及时发现问题。当然，控制成本不等于一味压缩开支，该投入的设备维护、员工培训不能省，否则会因小失大。',vocab:[['投产','tóuchǎn','đi vào sản xuất'],['守门人','shǒuménrén','người gác cổng'],['参谋','cānmóu','tham mưu'],['审批','shěnpī','phê duyệt'],['杜绝','dùjué','chặn đứng'],['因小失大','yīn xiǎo shī dà','tham bát bỏ mâm']]},
+{id:'acc8',topic:'acc',lv:'6',type:'read',title:'Hoá đơn điện tử ở Việt Nam',zh:'目前，越南企业普遍使用电子发票。与纸质发票相比，电子发票开具快捷、便于保存，也方便税务机关进行核查。企业收到电子发票后，应当在税务总局的网站上查询发票的真伪，并核对买方名称、税号、商品名称、数量和金额是否正确。一旦发现错误，应及时通知卖方作废或开具更正发票，以免影响增值税的抵扣。',hint:'Chuỗi liệt kê “买方名称、税号、商品名称、数量和金额” đọc đều, không dừng lâu ở dấu phẩy liệt kê (、).',vocab:[['电子发票','diànzǐ fāpiào','hoá đơn điện tử'],['便于','biànyú','tiện cho'],['真伪','zhēnwěi','thật giả'],['更正发票','gēngzhèng fāpiào','hoá đơn điều chỉnh'],['增值税','zēngzhíshuì','thuế GTGT'],['抵扣','dǐkòu','khấu trừ']]},
+{id:'acc9',topic:'acc',lv:'5',type:'answer',title:'Cách bạn sắp xếp chứng từ',zh:'你平时是怎么整理和保存工作中的单据和文件的？请介绍一下你的方法。',hint:'3 thói quen (第一/第二/第三): phân theo tháng và loại → quy tắc đặt tên → ghi bảng theo dõi → kết luận: đều đặn mỗi ngày.',model:'我整理单据主要有三个习惯。第一，按月份和类别分开放。比如付款申请、发票、合同，每个月一个文件夹，电脑里也用同样的方式建立文件夹，这样纸质版和电子版能对得上。第二，文件命名有统一的规则，比如“日期加供应商名称加金额”，找的时候一搜就出来了。第三，每完成一笔付款，我就在表格里登记一次，写清楚申请日期、付款日期和状态。这样老板问起某笔钱有没有付，我一分钟之内就能回答。我觉得整理文件最重要的是坚持，每天花十分钟，比月底一次性整理轻松多了。',vocab:[['类别','lèibié','loại'],['命名','mìngmíng','đặt tên'],['登记','dēngjì','ghi lại'],['状态','zhuàngtài','trạng thái'],['一次性','yícìxìng','một lần']]},
+{id:'buy5',topic:'buy',lv:'5',type:'retell',title:'Quy định mua văn phòng phẩm',zh:'采购部通知：每个月的办公用品统一在月初采购一次。各部门请在每月二十八号以前，把下个月需要的办公用品填写在申请表上，经部门经理签字后交到采购部。临时需要的少量物品，可以先向行政部领取。为了节约成本，打印纸请尽量双面使用，墨盒用完后请交回采购部统一处理。',hint:'Mua 1 lần đầu tháng → nộp đơn trước ngày 28 có chữ ký → cần gấp lấy ở hành chính → in 2 mặt, nộp lại hộp mực.',vocab:[['办公用品','bàngōng yòngpǐn','văn phòng phẩm'],['申请表','shēnqǐngbiǎo','đơn đề nghị'],['领取','lǐngqǔ','nhận, lĩnh'],['双面','shuāngmiàn','hai mặt'],['墨盒','mòhé','hộp mực']]},
+{id:'buy6',topic:'buy',lv:'7-9',type:'role',title:'Giục nhà cung cấp giao hàng trễ',zh:'一家供应商的硅油已经晚了一周还没送到，生产部说库存只够用三天了。请你给供应商打电话催货，并提出要求。',hint:'Nêu đơn và hạn hợp đồng → mức độ khẩn cấp → yêu cầu ngày giao chính xác trong hôm nay → đề nghị giao trước một phần → nhắc trách nhiệm hợp đồng một cách mềm.',model:'陈经理，您好，我是华越采购部的小林。今天打电话主要是想问一下我们上个月二十号下的那批硅油的情况。按照合同，货应该在上周三之前送到，现在已经晚了一个星期，我们还没收到任何发货通知。说实话，我们这边的情况已经比较紧急了，生产部告诉我库存只够用三天，如果断料的话，整条生产线都要停下来，损失会非常大。所以我想请您今天之内给我一个准确的发货时间。如果整批货一时凑不齐，能不能先发一部分，至少保证我们下周的用量？另外，按照合同上的约定，延期交货是要承担违约责任的，这一点我们都不希望走到那一步。也请您以后如果有延误，能提前通知我们，方便我们调整计划。',vocab:[['硅油','guīyóu','dầu silicone'],['催货','cuīhuò','giục hàng'],['断料','duànliào','đứt nguyên liệu'],['凑不齐','còu bu qí','gom không đủ'],['违约责任','wéiyuē zérèn','trách nhiệm vi phạm hợp đồng'],['延误','yánwù','chậm trễ']]},
+{id:'buy7',topic:'buy',lv:'6',type:'answer',title:'Giữ đạo đức nghề thu mua',zh:'采购岗位经常会接触到供应商的“好处”，比如回扣、礼品。你认为采购人员应该怎样坚持职业操守？',hint:'Lằn ranh đỏ của bản thân → dựa vào quy trình để tự bảo vệ → cách xử lý quà lễ tết → kết luận: uy tín là vốn lớn nhất.',model:'采购岗位确实是一个“诱惑”比较多的岗位，我认为坚持职业操守可以从几个方面做起。首先，自己心里要有一条红线：回扣、现金、贵重礼品绝对不能收。一旦收了，就等于被供应商“绑住”了，以后在质量和价格上就很难坚持原则。其次，要依靠制度保护自己。比如询价比价留下书面记录，重要的采购由两个人以上共同参与，这样既透明，也能避免被人怀疑。再次，对于节日里供应商送来的一般性礼品，可以按公司规定交给行政部统一处理，或者礼貌地退回。我觉得，诚信是采购人员最大的资本，一个人的信誉一旦失去，再有能力也很难在这个行业立足。',vocab:[['回扣','huíkòu','tiền lại quả'],['职业操守','zhíyè cāoshǒu','đạo đức nghề nghiệp'],['诱惑','yòuhuò','cám dỗ'],['红线','hóngxiàn','lằn ranh đỏ'],['立足','lìzú','đứng vững']]},
+{id:'buy8',topic:'buy',lv:'7-9',type:'read',title:'Nhập khẩu hay mua trong nước?',zh:'对于在越南设厂的中资企业而言，原材料是从中国进口还是在当地采购，是一个需要综合权衡的问题。进口材料品质稳定、规格齐全，但运输周期长，还要承担关税和清关的不确定性；本地采购交货快、沟通便利，却可能面临供应商规模小、质量参差不齐的问题。因此，不少企业采取“关键材料进口、通用材料本地化”的策略，并逐步培养本地供应商，以降低供应链风险。',hint:'Hai vế đối lập ngăn bởi dấu chấm phẩy: đọc vế “进口” và vế “本地” cùng nhịp; nhấn “但” và “却”.',vocab:[['综合权衡','zōnghé quánhéng','cân nhắc tổng thể'],['规格','guīgé','quy cách'],['关税','guānshuì','thuế nhập khẩu'],['参差不齐','cēncī bù qí','không đồng đều'],['本地化','běndìhuà','nội địa hoá'],['策略','cèlüè','chiến lược']]},
+{id:'buy9',topic:'buy',lv:'5',type:'answer',title:'Quy trình mua hàng thông thường',zh:'请你简单介绍一下一般公司的采购流程。',hint:'Kể 6 bước theo thứ tự (第一步……最后一步) → câu cuối: nhân viên mua hàng theo sát từng bước.',model:'一般公司的采购流程大概可以分为六步。第一步，使用部门提出采购申请，写清楚需要什么、要多少、什么时候要。第二步，部门经理审批。第三步，采购员向几家供应商询价、比价，选出合适的供应商。第四步，签订合同或者下采购订单，约定价格、交期和付款方式。第五步，货到了以后，仓库和质检部门验收入库。最后一步，采购员收集合同、发票和入库单，交给财务付款。整个过程中，采购员要一直跟进，确保每一步都按时完成。',vocab:[['使用部门','shǐyòng bùmén','bộ phận sử dụng'],['审批','shěnpī','phê duyệt'],['采购订单','cǎigòu dìngdān','đơn đặt hàng (PO)'],['验收','yànshōu','nghiệm thu'],['跟进','gēnjìn','theo sát']]},
+{id:'biz5',topic:'biz',lv:'6',type:'retell',title:'Kế hoạch xuất hàng trong tuần',zh:'业务部通知：本周客户一共有三批货需要出货。周二出第一批，数量八千件；周四出第二批，数量一万两千件；周六出第三批，数量五千件。请生产部按照这个顺序安排加工，质检部门至少提前一天完成出货检验。仓库在包装时要按客户要求，每箱装五十件，并在箱子外面贴好批次标签。',hint:'Ba lô: thứ Ba 8.000, thứ Năm 12.000, thứ Bảy 5.000 → sản xuất theo thứ tự → QC kiểm trước 1 ngày → mỗi thùng 50 cái, dán nhãn lô.',vocab:[['加工','jiāgōng','gia công'],['出货检验','chūhuò jiǎnyàn','kiểm hàng trước khi xuất'],['每箱','měi xiāng','mỗi thùng'],['标签','biāoqiān','nhãn'],['顺序','shùnxù','thứ tự']]},
+{id:'biz6',topic:'biz',lv:'6',type:'role',title:'Báo giá cho khách hàng mới',zh:'一位新客户打电话来询问你们公司3D打印高尔夫球头的价格和交期。请你回答客户，并进一步了解他的需求。',hint:'Cảm ơn → giá phụ thuộc 3 yếu tố → hỏi lại 4 điểm (loại đầu gậy, bản vẽ, số lượng, bề mặt) → thời gian mẫu và hàng loạt → hẹn báo giá chính thức.',model:'王先生，您好，非常感谢您对我们产品的关注。我们公司专门做金属3D打印的高尔夫球头和零部件，价格主要取决于三个因素：产品的尺寸和重量、使用的材料，以及订单数量。所以为了给您一个准确的报价，想先了解几个问题：您这边需要的是铁杆头还是推杆头？有没有图纸或者样品？大概的订单数量是多少？对表面处理有没有特别要求？交期方面，一般样品七到十天，批量生产根据数量大约三到四周。您方便的话，可以把图纸发到我的邮箱，我们收到后两个工作日内给您正式报价。',vocab:[['关注','guānzhù','quan tâm'],['取决于','qǔjué yú','phụ thuộc vào'],['报价','bàojià','báo giá'],['图纸','túzhǐ','bản vẽ'],['样品','yàngpǐn','hàng mẫu'],['表面处理','biǎomiàn chǔlǐ','xử lý bề mặt']]},
+{id:'biz7',topic:'biz',lv:'7-9',type:'answer',title:'“Khách hàng luôn đúng” – đúng không?',zh:'有人说“客户永远是对的”。作为业务人员，你怎么看待这句话？',hint:'Phân biệt “thái độ” và “nguyên tắc” → ví dụ yêu cầu vô lý → đề xuất cách nói chính xác hơn → biết nói “không” có lý do.',model:'我认为“客户永远是对的”这句话更像是一种服务态度，而不能当作处理问题的原则。从态度上来说，业务人员确实应该尊重客户、耐心倾听，因为客户提出的意见往往能帮助我们发现自身的不足。但是，如果把这句话理解为无条件满足客户的一切要求，就可能出问题。比如客户既要求大幅降价，又要求缩短交期、提高质量标准，如果业务员一口答应，最终可能导致公司亏损，或者交不出货，反而失去客户的信任。所以我觉得，更准确的说法是“客户的需求永远值得重视”。业务人员要做的，是在理解客户真实需求的基础上，找到双方都能接受的方案，必要的时候也要敢于说“不”，并且说明理由。长期来看，专业、坦诚的合作关系比一味迁就更稳固。',vocab:[['无条件','wú tiáojiàn','vô điều kiện'],['一口答应','yìkǒu dāying','nhận lời ngay'],['亏损','kuīsǔn','thua lỗ'],['坦诚','tǎnchéng','thẳng thắn'],['迁就','qiānjiù','chiều theo'],['稳固','wěngù','bền vững']]},
+{id:'biz8',topic:'biz',lv:'6',type:'read',title:'Nghề theo dõi đơn hàng',zh:'跟单是业务工作中最繁琐、也最重要的环节之一。从客户下单开始，跟单员就要把订单信息准确地传达给生产部门，并随时掌握生产进度。一旦发现可能延误，要第一时间通知客户，并提出补救方案。货物出厂前，跟单员还要确认数量、包装和单据是否符合客户要求。可以说，一个优秀的跟单员，就是客户放在工厂里的“眼睛”。',hint:'Câu cuối là câu chốt, đọc chậm, nhấn “眼睛”.',vocab:[['繁琐','fánsuǒ','rườm rà'],['跟单员','gēndānyuán','nhân viên theo dõi đơn'],['进度','jìndù','tiến độ'],['补救','bǔjiù','khắc phục'],['出厂','chūchǎng','xuất xưởng']]},
+{id:'biz9',topic:'biz',lv:'6',type:'answer',title:'Khách cũ đòi giảm giá 15%',zh:'老客户突然要求降价百分之十五，否则就把订单转给别的工厂。你作为业务员会怎么应对？',hint:'Không đồng ý ngay, không từ chối ngay → tìm nguyên nhân → so điều kiện của đối thủ → báo cáo, tính dư địa giá → giảm giá có điều kiện → giữ khách bằng giá trị.',model:'遇到这种情况，我首先不会马上答应，也不会直接拒绝，而是先弄清楚客户要求降价的真正原因。是别的工厂报了更低的价格，还是客户自己的市场压力变大了？如果是竞争对手报价低，我会请客户提供对方的报价条件，比较一下质量标准、交期和付款方式是否一样，很多时候低价背后是降低了标准。然后，我会把情况向经理汇报，和财务一起算一下我们的成本还有多少空间。如果确实可以让一部分，我会提出有条件的降价，比如增加订单数量、签订长期合同或者缩短付款周期。如果实在做不到，我会诚恳地向客户说明我们的质量优势和售后服务，争取把客户留下来。',vocab:[['应对','yìngduì','ứng phó'],['竞争对手','jìngzhēng duìshǒu','đối thủ cạnh tranh'],['汇报','huìbào','báo cáo'],['空间','kōngjiān','dư địa'],['售后服务','shòuhòu fúwù','dịch vụ sau bán hàng']]},
+{id:'car5',topic:'career',lv:'6',type:'answer',title:'Ưu điểm và nhược điểm của bạn',zh:'面试官问：“请谈谈你最大的优点和缺点。”请结合应聘采购或业务岗位来回答。',hint:'Ưu điểm kèm số liệu thật → liên hệ vị trí mới → nhược điểm thật nhưng không chí mạng → bạn đang khắc phục thế nào.',model:'我最大的优点是细心和执行力强。在人事岗位上，我每个月要处理一百多名员工的考勤和工资，三年来没有出现过一次重大差错；领导交代的事情，我一般当天就会给出反馈。这一点对采购和业务岗位很重要，因为合同、订单里的每一个数字都不能出错。我的缺点是有时候过于追求完美，做事情会花比较多时间反复检查，在节奏快的时候会显得慢一些。为了改进，我现在会先区分事情的轻重缓急，重要的文件仔细核对，一般性的事情先完成再优化。另外，我的谈判经验还不够丰富，所以我在有意识地学习商务谈判的技巧，也会多向有经验的同事请教。',vocab:[['执行力','zhíxínglì','năng lực thực thi'],['交代','jiāodài','giao việc'],['反馈','fǎnkuì','phản hồi'],['轻重缓急','qīngzhòng huǎnjí','việc nặng nhẹ, gấp hoãn'],['请教','qǐngjiào','xin chỉ giáo']]},
+{id:'car6',topic:'career',lv:'6',type:'role',title:'Trả lời câu hỏi mức lương mong muốn',zh:'面试快结束时，面试官问你对薪资的期望。你目前的工资不高，但想争取一个合理的待遇。请你回答。',hint:'Nói mức hiện tại → điều bạn coi trọng → lợi thế để đòi mức cao hơn → đưa khoảng lương → linh hoạt thời gian thử việc → hỏi lại cơ cấu lương. Các con số trong bài mẫu chỉ là ví dụ.',model:'谢谢您问到这个问题。我目前的月薪是一千二百万越南盾左右。这次应聘采购岗位，对我来说是一个职业方向的转变，我更看重的是学习和发展的机会。不过考虑到我可以用中文直接和中方沟通，也熟悉越南的合同、发票和海关单据，我希望月薪能在一千五百万到一千七百万之间。当然，我也理解转岗初期需要一个适应过程，如果公司有试用期的安排，我可以接受试用期薪资稍低一些，转正后再根据我的表现调整。请问贵公司这个岗位的薪资结构是怎样的？除了底薪，有没有绩效奖金或者其他补贴？',vocab:[['期望','qīwàng','kỳ vọng'],['待遇','dàiyù','đãi ngộ'],['转变','zhuǎnbiàn','chuyển đổi'],['底薪','dǐxīn','lương cơ bản'],['补贴','bǔtiē','phụ cấp']]},
+{id:'car7',topic:'career',lv:'7-9',type:'answer',title:'Kế hoạch nghề nghiệp 5 năm',zh:'面试官问：“你未来五年的职业规划是什么？”请回答。',hint:'Chia 3 giai đoạn có mục tiêu rõ (打基础 → 能独立 → 能带人) → nói kế hoạch có thể điều chỉnh → điều không đổi.',model:'我把未来五年分成三个阶段。第一阶段是第一年，目标是“打基础”。我会从采购助理做起，熟悉公司所有物料的规格、主要供应商和采购流程，同时考取一个供应链管理方面的证书。第二阶段是第二到第三年，目标是“能独立”。我希望能够独立负责一类物料的采购，从询价、谈判到合同管理全部做好，并且通过数据分析帮公司降低采购成本。第三阶段是第四到第五年，目标是“能带人”。如果有机会，我希望成为采购主管，带领一个小团队，参与供应商开发和供应链规划。当然，规划不是一成不变的，我会根据公司的发展需要随时调整。但有一点不会变，就是希望在一个领域里做深做透，成为真正的专业人士。',vocab:[['职业规划','zhíyè guīhuà','kế hoạch nghề nghiệp'],['阶段','jiēduàn','giai đoạn'],['打基础','dǎ jīchǔ','xây nền tảng'],['考取','kǎoqǔ','thi đỗ'],['一成不变','yì chéng bú biàn','bất biến'],['做深做透','zuò shēn zuò tòu','làm sâu làm kỹ']]},
+{id:'car8',topic:'career',lv:'6',type:'read',title:'Kỹ năng chuyển đổi được',zh:'很多人担心转行意味着一切从零开始，其实不然。在原来岗位上积累的能力，很多都可以“迁移”到新的岗位。比如人事工作中培养的沟通能力、组织协调能力和数据处理能力，在采购和业务工作中同样不可或缺。转行的关键，是找到新旧岗位之间的交集，并在简历和面试中把这些能力清楚地表达出来。与此同时，主动补充专业知识，才能让自己在新岗位上更快站稳脚跟。',hint:'“其实不然” đọc ngắn, dứt khoát. Nhấn “迁移” và “交集”.',vocab:[['转行','zhuǎnháng','đổi ngành'],['迁移','qiānyí','chuyển dịch'],['不可或缺','bùkě huòquē','không thể thiếu'],['交集','jiāojí','điểm giao nhau'],['简历','jiǎnlì','CV']]},
+{id:'car9',topic:'career',lv:'5',type:'answer',title:'Vì sao bạn học tiếng Trung?',zh:'你为什么学习中文？中文对你的工作有什么帮助？',hint:'Lý do bắt đầu → quá trình kiên trì → 3 lợi ích trong công việc → mục tiêu tiếp theo. Thay bằng câu chuyện thật của bạn.',model:'我开始学中文，是因为大学毕业后进了一家中资企业，发现不会中文，很多事情都要依靠翻译，效率很低，也容易产生误会。后来我利用下班时间坚持学习，现在已经能直接和中方领导、同事沟通了。中文对我的工作帮助很大。第一，我可以直接看懂中文的合同、邮件和通知，不用等别人翻译。第二，和中方同事沟通更顺畅，大家对我的信任也增加了。第三，会中文让我有机会接触采购、业务这些需要和中国供应商、客户打交道的工作，为我的职业发展打开了更多的门。所以接下来，我还想继续提高，争取考过HSK六级和HSKK高级。',vocab:[['依靠','yīkào','dựa vào'],['坚持','jiānchí','kiên trì'],['顺畅','shùnchàng','suôn sẻ'],['打交道','dǎ jiāodao','làm việc với'],['职业发展','zhíyè fāzhǎn','phát triển nghề nghiệp']]},
+{id:'prod1',topic:'prod',lv:'5',type:'retell',title:'An toàn khi làm việc với bột kim loại',zh:'安全提醒：金属粉末属于易燃易爆物品，在装粉、清粉的时候，必须穿好防静电工作服，戴好口罩和手套。车间内严禁吸烟和使用明火。打印机运行期间，不要随意打开舱门。如果发现设备报警或者有异常气味，请立即停止操作，并通知设备工程师。每天下班前，请把散落的粉末清理干净。',hint:'Bột dễ cháy nổ → đồ bảo hộ → cấm hút thuốc, lửa → không mở cửa buồng máy khi chạy → báo động thì dừng, báo kỹ sư → dọn bột cuối ngày.',vocab:[['易燃易爆','yìrán yìbào','dễ cháy nổ'],['防静电','fáng jìngdiàn','chống tĩnh điện'],['严禁','yánjìn','nghiêm cấm'],['明火','mínghuǒ','lửa trần'],['舱门','cāngmén','cửa buồng máy'],['报警','bàojǐng','báo động']]},
+{id:'prod2',topic:'prod',lv:'6',type:'role',title:'Báo cáo sự cố chất lượng',zh:'质检员发现今天一批产品的尺寸有偏差，不良率比平时高很多。你作为质检负责人，请向生产经理汇报情况。',hint:'Nêu sự việc kèm số liệu → so với bình thường → nhận định ban đầu → đã khoanh vùng hàng → đề xuất bước tiếp → xin ý kiến.',model:'刘经理，打扰一下，我要向您汇报一个质量问题。今天上午我们抽检三号打印机出的那批铁杆头，发现有一部分产品的厚度超出了公差范围，大概偏厚零点一五毫米。目前一共检查了两百件，不合格的有二十六件，不良率百分之十三，平时一般在百分之二以下。我们初步判断可能和这台设备的参数或者热处理有关，但还需要工程师确认。目前我已经让仓库把这批产品单独隔离，贴上了待处理标签，暂时不放行。我的建议是，先暂停这台设备的生产，请工程师检查；同时把已经加工的产品全部检验一遍。您看这样安排可以吗？',vocab:[['抽检','chōujiǎn','kiểm tra xác suất'],['公差','gōngchā','dung sai'],['不良率','bùliánglǜ','tỉ lệ lỗi'],['隔离','gélí','cách ly'],['放行','fàngxíng','cho qua'],['参数','cānshù','thông số']]},
+{id:'prod3',topic:'prod',lv:'6',type:'answer',title:'5S có tác dụng gì với nhà máy?',zh:'很多工厂都在推行5S管理，你认为5S对一个工厂有什么作用？推行时会遇到什么困难？',hint:'Giải thích 5S → 3 tác dụng → khó khăn lớn nhất → cách duy trì (thi đua, khen thưởng).',model:'5S指的是整理、整顿、清扫、清洁和素养，我认为它对工厂至少有三个作用。第一是提高效率，工具和物料放在固定的位置，员工不用花时间到处找。第二是保证安全和质量，比如车间里的粉末及时清理，可以减少火灾隐患，也能避免产品被污染。第三是提升公司形象，客户来验厂的时候，一个干净整齐的车间本身就是最好的宣传。不过推行5S也有困难。最大的困难是员工觉得这是额外的工作，一开始做得很好，过一段时间就松懈了。所以我认为，推行5S不能只靠检查和罚款，更要让员工看到好处，比如定期评比、表扬做得好的小组，让它慢慢变成大家的习惯。',vocab:[['整顿','zhěngdùn','sắp xếp ngăn nắp'],['隐患','yǐnhuàn','mối nguy tiềm ẩn'],['验厂','yànchǎng','đánh giá nhà máy'],['松懈','sōngxiè','lơi lỏng'],['评比','píngbǐ','thi đua xếp hạng']]},
+{id:'prod4',topic:'prod',lv:'7-9',type:'read',title:'In 3D kim loại là gì?',zh:'金属3D打印，又称增材制造，是通过激光将金属粉末逐层熔化、堆积成型的一种先进工艺。与传统的铸造和锻造相比，它无需开模，能够快速制造出结构复杂的零件，特别适合小批量、个性化的生产需求。然而，这项技术也存在成本较高、表面粗糙度较大等局限，打印完成后通常还需要经过热处理、切割和表面加工等工序。正因如此，如何在保证质量的前提下提高效率、降低成本，成为企业竞争的关键所在。',hint:'Thuật ngữ kỹ thuật đọc rõ từng chữ: 增材制造, 逐层熔化, 粗糙度. Ngắt sau “然而”.',vocab:[['增材制造','zēngcái zhìzào','sản xuất bồi đắp'],['逐层','zhúcéng','từng lớp'],['熔化','rónghuà','nóng chảy'],['开模','kāimú','làm khuôn'],['粗糙度','cūcāodù','độ nhám'],['工序','gōngxù','công đoạn']]},
+{id:'prod5',topic:'prod',lv:'7-9',type:'answer',title:'Đuổi sản lượng hay giữ chất lượng?',zh:'当生产任务很紧的时候，常常会出现“赶产量”和“保质量”之间的矛盾。你认为应该如何处理？',hint:'Chất lượng là giới hạn cuối → mấu chốt là phòng ngừa từ trước → 3 biện pháp → nếu vẫn không kịp thì trao đổi thật với khách.',model:'我认为在任何情况下，质量都应该是不能突破的底线，但这并不意味着可以不顾产量。处理这个矛盾，关键在于“事前预防”而不是“事后取舍”。首先，计划要留有余地。业务部门接单时就要考虑设备产能和良品率，而不是按照理论上的最大产能来承诺交期。其次，赶产量的时候更要加强过程控制，比如增加首件检验和巡检的频率，一旦发现问题马上停机调整，避免一错到底，造成整批报废。再次，要让员工明白，返工和报废其实是最大的浪费，一件不良品不仅浪费材料和工时，流到客户手里还会损害公司信誉。如果确实出现交期和质量无法兼顾的情况，我认为应该如实和客户沟通，申请部分延期，而不是把有风险的产品发出去。',vocab:[['突破','tūpò','vượt qua'],['余地','yúdì','dư địa'],['产能','chǎnnéng','công suất'],['首件检验','shǒujiàn jiǎnyàn','kiểm tra sản phẩm đầu'],['巡检','xúnjiǎn','kiểm tra tuần tra'],['返工','fǎngōng','làm lại']]},
+{id:'prod6',topic:'prod',lv:'6',type:'retell',title:'Thống kê nhập kho mỗi ngày',zh:'从这个月起，质检部每天下班前要填写产品入库数量统计表，内容包括客户、产品型号、合格数量和不良数量。不良品单独存放，不计入库存。统计表填好后，请拍照发到质量群里。每周一，业务部会根据统计数据和出货计划核对库存，如果发现数量对不上，要在当天查明原因。',hint:'Ai điền, khi nào, những cột gì → hàng lỗi tách riêng, không tính tồn → chụp gửi nhóm → thứ Hai đối chiếu, lệch thì tìm nguyên nhân trong ngày.',vocab:[['入库','rùkù','nhập kho'],['型号','xínghào','mã sản phẩm'],['合格','hégé','đạt'],['不良品','bùliángpǐn','hàng lỗi'],['对不上','duì bu shàng','không khớp'],['查明','chámíng','làm rõ']]},
+{id:'trade1',topic:'trade',lv:'6',type:'retell',title:'Thủ tục nhập máy tạo nitơ',zh:'关于从中国进口的那台制氮机，物流公司刚刚通知，货物已经到达胡志明市港口。报关需要准备的资料有：商业发票、装箱单、提单、原产地证明以及设备的说明书。由于这台设备属于机器设备，海关可能会要求查验。预计清关需要三到五个工作日，清关完成后，物流公司会安排卡车直接送到工厂。',hint:'Hàng đã về cảng → 5 loại hồ sơ → có thể bị kiểm hoá → 3–5 ngày làm việc → xe tải chở thẳng về nhà máy.',vocab:[['制氮机','zhìdànjī','máy tạo nitơ'],['港口','gǎngkǒu','cảng'],['提单','tídān','vận đơn'],['原产地证明','yuánchǎndì zhèngmíng','C/O'],['查验','cháyàn','kiểm hoá'],['卡车','kǎchē','xe tải']]},
+{id:'trade2',topic:'trade',lv:'6',type:'role',title:'Hải quan thắc mắc mã HS',zh:'海关对你们申报的一批货物的商品编码提出疑问，要求你们解释。请你打电话给报关代理，说明情况并商量处理办法。',hint:'Hỏi rõ hải quan vướng ở đâu → căn cứ chọn mã → hồ sơ có thể cung cấp → nếu phải đổi mã thì thuế suất thay đổi ra sao → xin đẩy nhanh.',model:'张经理，您好，我是华越公司的小林。刚刚收到您的通知，说海关对我们这票货的商品编码有疑问。我想先了解一下，海关具体是对哪一项有意见？是认为应该归到别的编码，还是需要我们补充资料？我们申报的编码是根据产品的材质和用途确定的，之前同样的货物也是按这个编码清关的，我这边可以提供之前的报关单、产品说明书和图片作为参考。如果海关坚持要改编码，麻烦您帮我们算一下税率会有什么变化，我好向领导汇报。另外，这批货客户等着要，能不能请您尽快和海关沟通，争取这周内放行？需要我们配合的地方随时告诉我。',vocab:[['商品编码','shāngpǐn biānmǎ','mã HS'],['报关代理','bàoguān dàilǐ','đại lý hải quan'],['申报','shēnbào','khai báo'],['材质','cáizhì','chất liệu'],['税率','shuìlǜ','thuế suất'],['放行','fàngxíng','thông quan']]},
+{id:'trade3',topic:'trade',lv:'6',type:'answer',title:'Lỗi hay gặp trong chứng từ XNK',zh:'在准备进出口单据的时候，最容易出现哪些错误？你会怎样避免？',hint:'3 loại lỗi có ví dụ → 3 cách phòng tránh (mẫu cố định, lấy hợp đồng làm gốc, người thứ hai soát) → câu chốt.',model:'根据我的经验，进出口单据最容易出现三类错误。第一类是信息不一致，比如合同、发票和装箱单上的品名、数量或者金额对不上，这是海关最常查的问题。第二类是公司名称、地址、税号写错，特别是越南语的地址比较长，复制的时候很容易漏字。第三类是单位和小数点的问题，比如“件”和“千克”混用，或者单价多保留了一位小数，导致总金额有差异。为了避免这些错误，我一般会做三件事：一是用固定的模板，减少手工输入；二是所有单据做完以后，拿合同做“母本”逐项核对；三是重要的单据请同事再检查一遍。多花十分钟核对，能省去后面很多麻烦。',vocab:[['不一致','bù yízhì','không thống nhất'],['漏字','lòuzì','sót chữ'],['小数点','xiǎoshùdiǎn','dấu thập phân'],['混用','hùnyòng','dùng lẫn'],['逐项','zhúxiàng','từng mục'],['母本','mǔběn','bản gốc đối chiếu']]},
+{id:'trade4',topic:'trade',lv:'7-9',type:'read',title:'Điều kiện FOB và CIF',zh:'国际贸易术语是买卖双方划分费用和风险的重要依据。以常见的离岸价和到岸价为例：采用离岸价时，卖方只需负责把货物在装运港装上船，此后的运费、保险费以及运输途中的风险均由买方承担；而采用到岸价时，卖方还需支付运费和保险费，但货物在装运港装上船之后，风险依然转移给买方。可见，选择哪种贸易术语，不仅关系到报价的高低，还直接影响到双方在出现货损时的责任归属。',hint:'Hai vế “采用离岸价时……；而采用到岸价时……” đọc song song. Nhấn “风险依然转移给买方”.',vocab:[['贸易术语','màoyì shùyǔ','điều kiện thương mại'],['离岸价','lí’ànjià','giá FOB'],['到岸价','dào’ànjià','giá CIF'],['装运港','zhuāngyùngǎng','cảng bốc hàng'],['货损','huòsǔn','tổn thất hàng hoá'],['归属','guīshǔ','thuộc về']]},
+{id:'trade5',topic:'trade',lv:'7-9',type:'answer',title:'Doanh nghiệp Trung Quốc sang Việt Nam: cơ hội và thách thức',zh:'近年来，越来越多的中国企业到越南投资建厂。你认为这对越南员工来说意味着什么机遇和挑战？',hint:'Cơ hội: việc làm, công nghệ mới, nhân lực biết tiếng Trung được săn đón → Thách thức: nhịp độ cao, nguy cơ bị thay thế → lời khuyên.',model:'在我看来，中国企业到越南投资建厂，对越南员工来说既是机遇，也是挑战。从机遇来看，首先是就业机会增加了，特别是在工业园区附近，很多人不用离开家乡就能找到稳定的工作。其次，中资企业带来了新的技术和管理方法，比如金属3D打印，在越南还比较少见，员工有机会学到前沿的技术。再次，会中文的人才变得非常抢手，懂语言又懂业务的员工，发展空间和收入都明显提高。但挑战同样存在。一方面，中资企业的工作节奏快、要求高，有些员工一时难以适应；另一方面，如果只做简单的重复劳动，不主动学习，随着自动化程度提高，很容易被替代。所以我认为，越南员工应该抓住这个机会，多学语言、多学技术，把自己变成企业离不开的人。',vocab:[['机遇','jīyù','cơ hội'],['前沿','qiányán','tiên tiến'],['抢手','qiǎngshǒu','được săn đón'],['节奏','jiézòu','nhịp độ'],['自动化','zìdònghuà','tự động hoá'],['替代','tìdài','thay thế']]},
+{id:'trade6',topic:'trade',lv:'7-9',type:'role',title:'Báo khách lô hàng giao trễ vì kiểm hoá',zh:'由于海关查验，一批交给客户的货物要比原计划晚三天才能交付。请你给客户打电话说明情况，并尽量减少对方的损失。',hint:'Thông báo sớm, nói rõ nguyên nhân và ngày mới → xin lỗi → 2 phương án giảm thiệt hại → cam kết cập nhật hằng ngày → hỏi ý khách.',model:'刘总，您好！很抱歉打扰您，我需要向您通报一个情况。原定明天交付给贵公司的那批货，在办理就地出口手续时被海关抽中查验，所以交货时间预计要推迟三天，也就是下周一。这个情况我们事先没能预料到，给您带来不便，非常抱歉。我们了解到贵公司这批货是要赶下周的生产，所以想跟您商量几个办法：第一，我们仓库还有一部分已经检验合格、但还没报关的货，大约两千件，如果您急用，我们可以优先安排这部分先走手续；第二，查验一结束，我们会安排专车当天送货，不再等拼车。另外，我们每天都会把海关的进度同步给您。您看这样安排是否能减少对贵公司生产的影响？',vocab:[['通报','tōngbào','thông báo'],['原定','yuándìng','dự kiến ban đầu'],['抽中','chōuzhòng','bị chọn trúng'],['推迟','tuīchí','lùi lại'],['专车','zhuānchē','xe riêng'],['同步','tóngbù','cập nhật song song']]},
+{id:'adm1',topic:'admin',lv:'5',type:'retell',title:'Thông báo diễn tập PCCC',zh:'为了提高员工的消防安全意识，公司将于本周五下午三点进行消防演习。听到警报声后，请大家按照疏散路线，迅速、有序地撤离到工厂大门外的空地集合。撤离时不要乘坐电梯，不要返回拿个人物品。各部门负责人要在集合后清点人数，并向行政部报告。演习结束后，消防队员会教大家如何使用灭火器。',hint:'Thời gian → nghe chuông thì đi theo lối thoát, tập trung ngoài cổng → 2 điều cấm → điểm danh báo hành chính → học dùng bình chữa cháy.',vocab:[['消防演习','xiāofáng yǎnxí','diễn tập PCCC'],['疏散','shūsàn','sơ tán'],['撤离','chèlí','rút khỏi'],['集合','jíhé','tập trung'],['清点人数','qīngdiǎn rénshù','điểm danh'],['灭火器','mièhuǒqì','bình chữa cháy']]},
+{id:'adm2',topic:'admin',lv:'6',type:'role',title:'Phân công chuẩn bị đoàn kiểm tra môi trường',zh:'下周环保部门要来工厂检查，领导让你负责接待和准备工作。请你在部门会议上安排相关工作。',hint:'Thông tin đoàn → phân việc 3 mảng: hồ sơ, hiện trường, tiếp đón (ai làm, hạn nào) → dặn dò hôm kiểm tra → hỏi lại mọi người.',model:'各位，下周三上午九点，工业园区管理委员会的环保检查组要来我们工厂检查，领导安排由我负责协调。我把需要准备的工作分一下。第一，资料方面，我会整理好环境登记的确认文件、危险废物的收集合同和转移记录，请生产部把这几个月废油、废粉末的台账在周一下班前交给我。第二，现场方面，请生产部周二做一次彻底的清扫，危险废物要放在指定的存放区，贴好标签，容器不能有泄漏。第三，接待方面，行政部准备好会议室、饮用水和来访登记。检查当天，请各部门负责人留在岗位上，检查组提问的时候，回答要实事求是，不清楚的不要乱说，可以让我来对接。大家有问题吗？',vocab:[['环保','huánbǎo','bảo vệ môi trường'],['协调','xiétiáo','điều phối'],['危险废物','wēixiǎn fèiwù','chất thải nguy hại'],['台账','táizhàng','sổ theo dõi'],['泄漏','xièlòu','rò rỉ'],['实事求是','shíshì qiúshì','trung thực, đúng sự thật']]},
+{id:'adm3',topic:'admin',lv:'6',type:'answer',title:'Lên kế hoạch tiệc tất niên tiết kiệm',zh:'公司想组织一次年终聚餐，但预算有限，领导让你负责策划。请你谈谈你的方案。',hint:'Nêu nguyên tắc → thời gian, địa điểm → nội dung chương trình → để nhân viên cùng tham gia → kiểm soát ngân sách.',model:'如果让我负责策划年终聚餐，我会遵循“花钱少、参与多、气氛好”的原则。首先是时间和地点。我建议放在最后一个星期六的晚上，这样不影响生产。地点可以选在工业园区附近的一家餐厅，交通方便，还可以争取团体优惠。其次是内容。除了吃饭，我会安排几个简单的环节，比如由总经理做年终总结，表彰几名优秀员工，再加上抽奖和小游戏。奖品不一定贵，实用就行，比如电饭锅、超市购物卡。再次是让员工参与进来，可以请各部门准备一个小节目，大家一起准备的过程本身就能增进感情。最后，我会提前做好预算表，严格控制费用，聚餐结束后把实际支出报给领导和财务。',vocab:[['聚餐','jùcān','liên hoan'],['策划','cèhuà','lên kế hoạch'],['遵循','zūnxún','tuân theo'],['团体优惠','tuántǐ yōuhuì','ưu đãi theo đoàn'],['表彰','biǎozhāng','tuyên dương'],['抽奖','chōujiǎng','bốc thăm trúng thưởng']]},
+{id:'adm4',topic:'admin',lv:'6',type:'read',title:'Quản lý tài sản cố định',zh:'固定资产管理是行政工作的一项基础任务。公司购买的电脑、打印机、空调等设备，都应当登记编号，贴上资产标签，并明确使用人和保管部门。员工离职或者调岗时，要办理资产交接手续。行政部每年至少盘点一次，核对账面和实物是否一致。对于已经损坏、无法维修的资产，应按规定办理报废，不能随意丢弃。',hint:'Câu đều, giọng thông báo. Ngắt rõ ở “登记编号，贴上资产标签，并明确……”.',vocab:[['固定资产','gùdìng zīchǎn','tài sản cố định'],['编号','biānhào','đánh số'],['保管','bǎoguǎn','bảo quản'],['盘点','pándiǎn','kiểm kê'],['账面','zhàngmiàn','sổ sách'],['丢弃','diūqì','vứt bỏ']]},
+{id:'adm5',topic:'admin',lv:'7-9',type:'answer',title:'Bảng tính trực tuyến thay Excel: lợi và hại',zh:'越来越多的企业用在线表格、协作软件代替纸质文件和传统的Excel管理。你认为这种变化有哪些利弊？',hint:'Kết luận trước (lợi nhiều hơn hại) → 3 lợi → 3 hại (phân quyền, đào tạo, phụ thuộc mạng) → cách triển khai: thí điểm, phân quyền, sao lưu.',model:'我认为这种变化总体上利大于弊，但需要注意方法。从好处来看，第一，信息更新及时。以前一个数据要层层上报，现在员工在手机上一填，相关的人马上就能看到。第二，协作效率高，多个人可以同时编辑一份文件，不用再来回发邮件、合并版本。第三，数据更容易统计和追溯，谁在什么时候改了什么，系统都有记录。不过，弊端也不容忽视。一是权限管理，比如工资、客户名称这类敏感信息，如果权限设置不当，很容易泄露。二是对员工的要求提高了，年纪大一些的员工可能不习惯，需要培训。三是过度依赖网络和平台，一旦系统出问题，工作就会受影响。所以在推行时，我建议先从一两个简单的表格开始试点，设置好权限，做好备份，等大家适应以后再逐步推广。',vocab:[['协作软件','xiézuò ruǎnjiàn','phần mềm cộng tác'],['利弊','lìbì','lợi và hại'],['追溯','zhuīsù','truy vết'],['权限','quánxiàn','quyền truy cập'],['泄露','xièlòu','rò rỉ (thông tin)'],['试点','shìdiǎn','thí điểm']]},
+{id:'adm6',topic:'admin',lv:'6',type:'retell',title:'Quy định xin nghỉ phép',zh:'行政部提醒：员工请假需要提前在系统里提交申请。请假三天以内的，由部门经理审批；超过三天的，还需要总经理审批。病假需要提供医院的证明。年假原则上在当年使用，没有休完的年假，按照公司规定处理。如遇突发情况来不及提前申请，请先打电话通知经理，事后两天内补办手续。',hint:'Nộp trên hệ thống → ai duyệt theo số ngày → nghỉ ốm cần giấy viện → phép năm dùng trong năm → việc đột xuất gọi trước, bổ sung trong 2 ngày.',vocab:[['请假','qǐngjià','xin nghỉ'],['审批','shěnpī','phê duyệt'],['病假','bìngjià','nghỉ ốm'],['年假','niánjià','phép năm'],['补办','bǔbàn','làm bổ sung']]},
+{id:'meet1',topic:'meet',lv:'6',type:'role',title:'Báo cáo tuần trong cuộc họp giao ban',zh:'在每周一的部门例会上，请你用两分钟汇报上周的工作完成情况和本周计划。',hint:'Mở đầu → việc tuần trước theo mảng, có số liệu → kế hoạch tuần này → việc cần phối hợp → kết thúc gọn.',model:'各位领导、同事，我简单汇报一下人事部上周的工作。第一，招聘方面，上周一共面试了十二人，录用了五名生产工人和一名质检员，他们已经在本周一入职并完成了培训。第二，工资方面，十月份的工资和社保已经全部核算完毕，并在上周五按时发放。第三，环保报告的资料已经收集了八成，还差危险废物转移的记录，正在跟回收公司沟通。本周的计划主要有三项：一是完成环保报告并提交给园区管委会；二是安排新员工的转正评估；三是更新员工花名册。需要协调的事情是，生产部的加班单请在每周一前交给我，以免影响工资核算。我的汇报完了，谢谢。',vocab:[['例会','lìhuì','họp định kỳ'],['录用','lùyòng','tuyển dụng'],['核算','hésuàn','tính toán, hạch toán'],['八成','bāchéng','80%'],['转正评估','zhuǎnzhèng pínggū','đánh giá lên chính thức'],['花名册','huāmíngcè','danh sách nhân viên']]},
+{id:'meet2',topic:'meet',lv:'6',type:'answer',title:'Làm sao để họp hiệu quả?',zh:'很多人觉得公司的会议太多、效率太低。你认为怎样才能开好一个会？',hint:'Chia 3 khâu: trước – trong – sau cuộc họp, mỗi khâu 1–2 việc cụ thể → kết luận.',model:'我认为开好一个会，关键在于“会前、会中、会后”三个环节。会前要明确目的，能用一条消息解决的问题就不要开会；确定要开的会，要提前把议题和资料发给参会人员，让大家带着想法来。会中要控制时间和节奏，主持人要防止讨论跑题，每个议题都要有结论，比如由谁负责、什么时候完成。会后要及时发会议纪要，把决定的事项和负责人写清楚，下一次开会先检查上次的事项有没有落实。如果每次会议都能做到这三点，我相信会议的次数会减少，效率也会大大提高。',vocab:[['议题','yìtí','nội dung họp'],['参会','cānhuì','dự họp'],['主持人','zhǔchírén','người chủ trì'],['跑题','pǎotí','lạc đề'],['会议纪要','huìyì jìyào','biên bản họp'],['落实','luòshí','thực hiện đến nơi']]},
+{id:'meet3',topic:'meet',lv:'6',type:'retell',title:'Kết luận cuộc họp sản xuất',zh:'今天的生产会议主要确定了三件事。第一，下个月的产量目标是每天三千件，比本月提高百分之二十。第二，为了达到这个目标，设备部要在本周内完成两台打印机的保养，并制定备件清单。第三，质检部要把不良率控制在百分之三以内，每天下班前在群里公布当天的数据。下次会议定在下周三下午两点，届时各部门汇报进展。',hint:'3 quyết định: mục tiêu 3.000 cái/ngày (+20%) → bảo dưỡng 2 máy, lập danh mục phụ tùng → lỗi dưới 3%, báo số mỗi ngày → lịch họp tiếp.',vocab:[['产量目标','chǎnliàng mùbiāo','mục tiêu sản lượng'],['保养','bǎoyǎng','bảo dưỡng'],['备件清单','bèijiàn qīngdān','danh mục phụ tùng'],['以内','yǐnèi','trong phạm vi'],['届时','jièshí','đến lúc đó']]},
+{id:'meet4',topic:'meet',lv:'7-9',type:'role',title:'Góp ý khác lãnh đạo một cách khéo léo',zh:'在会议上，领导提出要把所有供应商的付款期从三十天延长到九十天。你认为这样做风险很大，请你委婉地提出不同意见。',hint:'Ủng hộ mục tiêu của lãnh đạo → nêu lo ngại cụ thể (nhà cung cấp nhỏ, vật tư then chốt) → đề xuất phân loại → nhận làm báo cáo đánh giá.',model:'王总，我非常理解延长账期对改善公司现金流的意义，这个方向我是支持的。不过，在具体执行上，我有一点担心，想跟您汇报一下。我们目前的供应商里，有几家是小规模的本地企业，像包装箱、手套这类供应商，他们的资金周转比较紧张，如果账期一下子从三十天变成九十天，有可能会提高报价，甚至不愿意再给我们供货。另外，像金属粉末这样的关键材料，供应商本来就不多，如果因为账期问题影响到供货，对生产的冲击会比较大。所以我想建议，能不能分类处理：对规模大、合作稳定的供应商，我们去谈延长到六十天或者九十天；对小供应商和关键材料，暂时保持现状，或者逐步调整。我可以在下周之前做一个供应商分类和影响评估，供您参考。',vocab:[['现金流','xiànjīnliú','dòng tiền'],['资金周转','zījīn zhōuzhuǎn','quay vòng vốn'],['供货','gōnghuò','cung ứng hàng'],['冲击','chōngjī','tác động mạnh'],['分类处理','fēnlèi chǔlǐ','xử lý theo nhóm'],['评估','pínggū','đánh giá']]},
+{id:'meet5',topic:'meet',lv:'7-9',type:'answer',title:'“Dùng số liệu để nói”',zh:'有人说“用数据说话”是职场汇报中最有说服力的方式。你同意吗？在实际工作中，数据汇报有哪些需要注意的地方？',hint:'Đồng ý cơ bản + ví dụ so sánh hai cách nói → 3 lưu ý: chính xác, có so sánh, kết luận là trọng tâm → câu chốt.',model:'我基本同意这个观点。和“我觉得”“大概”这类主观表达相比，数据更客观、更具体，也更容易让领导快速做出判断。比如汇报员工流失问题时，说“最近走的人很多”，远不如说“上个月离职十二人，流失率百分之八，比上季度高出三个百分点”有说服力。但是，用数据说话也有几个需要注意的地方。第一，数据要准确，来源要清楚，一个错误的数字会让整个汇报失去可信度。第二，数据要有对比，单独一个数字往往说明不了问题，要和目标、和上个月、和同行比较。第三，数据只是工具，结论和建议才是重点。汇报时应该先说结论，再用数据支撑，最后提出解决办法，而不是把一堆表格直接丢给领导。归根结底，数据要服务于决策，而不是为了显得专业。',vocab:[['说服力','shuōfúlì','sức thuyết phục'],['主观','zhǔguān','chủ quan'],['可信度','kěxìndù','độ tin cậy'],['支撑','zhīchēng','làm chỗ dựa'],['同行','tóngháng','cùng ngành'],['服务于','fúwù yú','phục vụ cho']]},
+{id:'meet6',topic:'meet',lv:'6',type:'read',title:'Báo cáo với lãnh đạo: kết luận trước',zh:'向领导汇报工作，最忌讳的是长篇大论、抓不住重点。比较好的方法是“结论先行”：先用一句话说清楚结果，再简单说明原因和过程，最后提出需要领导决定或支持的事项。如果事情比较复杂，可以提前准备书面材料，方便领导随时查阅。此外，汇报不仅仅是在事情做完以后，在遇到困难的时候及时请示，同样能体现一个人的责任心。',hint:'Dừng sau dấu hai chấm “结论先行：”, đọc ba bước “先……再……最后……” rõ nhịp.',vocab:[['忌讳','jìhuì','kiêng kỵ'],['长篇大论','chángpiān dàlùn','dài dòng'],['结论先行','jiélùn xiānxíng','nói kết luận trước'],['查阅','cháyuè','tra cứu'],['请示','qǐngshì','xin chỉ thị']]},
+{id:'rd1',topic:'life',lv:'6',type:'long',title:'Làm việc từ xa: tốt hay không?',zh:'请概括文章对远程办公的主要观点，并结合你所在的企业谈谈：你的岗位适合远程办公吗？为什么？',
+model:'疫情过后，远程办公从一种“应急手段”逐渐变成了许多企业的常规选择。支持者认为，员工不必每天花一两个小时通勤，可以把节省下来的时间用于工作和休息；企业也能减少办公室租金等固定开支。然而，远程办公并非适合所有岗位，更不是解决效率问题的“万能钥匙”。\n首先，对于需要现场操作的岗位而言，远程办公根本无从谈起。工厂里的设备调试、质量检验、仓库收发货，都离不开人在现场。其次，即使是办公室岗位，长期远程也会带来沟通成本上升的问题。面对面交流时，一个眼神、一句随口的提醒就能解决的事情，在线上往往需要反复发消息、开视频会议，信息还容易被误解。再次，新员工缺少耳濡目染的学习环境，很难通过观察老员工的做法快速成长。\n当然，这并不意味着远程办公应该被全盘否定。对于独立性强、成果容易衡量的工作，比如翻译、设计、数据分析，适度远程反而能提高员工的专注度和满意度。关键在于，企业要根据岗位特点区别对待，并建立以结果为导向的考核方式，而不是简单地用“在不在线”来判断员工是否认真工作。\n由此可见，远程办公本身无所谓好坏，真正决定其效果的，是管理方式能否随之调整。',
+hint:'Dạng “nêu vấn đề → phân tích mặt hạn chế → nhượng bộ → kết luận”. Luận điểm nằm ở câu cuối. Học các cụm: 首先/其次/再次, 当然，这并不意味着……, 由此可见.',
+method:'举例论证 · 让步论证 · 正反对比',
+arg:[['引出话题 · Mở vấn đề','Nêu lý do của phe ủng hộ (tiết kiệm thời gian, chi phí), rồi chuyển ý bằng “然而”: làm việc từ xa không phải “chìa khoá vạn năng”.'],['分论点 · Các luận cứ','Ba lý do xếp theo 首先 / 其次 / 再次: vị trí cần có mặt tại chỗ; chi phí giao tiếp tăng; nhân viên mới khó học hỏi.'],['让步 · Nhượng bộ','“当然，这并不意味着……全盘否定”: thừa nhận làm từ xa hợp với công việc độc lập, dễ đo kết quả.'],['中心论点 · Luận điểm chính','“远程办公本身无所谓好坏，真正决定其效果的，是管理方式能否随之调整” — đặt ở cuối bài, kiểu quy nạp.']],
+quiz:[{q:'根据第一段，远程办公对企业的好处是什么？',o:['提高员工工资','减少固定开支','增加客户数量','缩短生产周期'],a:1,why:'Câu “企业也能减少办公室租金等固定开支”.'},{q:'作者为什么认为新员工不适合长期远程？',o:['新员工不会使用软件','新员工工资低','缺少观察和学习老员工的环境','新员工不愿意通勤'],a:2,why:'Đoạn 2: “新员工缺少耳濡目染的学习环境”.'},{q:'“耳濡目染”在文中最可能的意思是：',o:['听得多看得多，自然受到影响','耳朵和眼睛都不舒服','喜欢听别人说话','学习速度非常快'],a:0,why:'Thành ngữ: nghe nhiều thấy nhiều nên tự nhiên thấm.'},{q:'作者对远程办公的态度是：',o:['完全支持','完全反对','认为应根据岗位区别对待','认为只适合工厂'],a:2,why:'“企业要根据岗位特点区别对待”.'}],
+vocab:[['应急','yìngjí','ứng phó khẩn cấp'],['常规','chángguī','thông thường'],['万能钥匙','wànnéng yàoshi','chìa khoá vạn năng'],['无从谈起','wúcóng tánqǐ','không thể bàn tới'],['耳濡目染','ěr rú mù rǎn','mưa dầm thấm lâu'],['全盘否定','quánpán fǒudìng','phủ nhận hoàn toàn'],['以结果为导向','yǐ jiéguǒ wéi dǎoxiàng','lấy kết quả làm định hướng']]},
+{id:'rd2',topic:'acc',lv:'7-9',type:'long',title:'AI có thay thế kế toán không?',zh:'请概括作者对“人工智能会不会取代会计”这一问题的看法，并说说你认为财务人员应该如何应对。',
+model:'近年来，随着人工智能和财务软件的普及，“会计会不会被机器取代”成为不少财务从业者关心的话题。有人悲观地认为，记账、对账、开票这些重复性工作，机器几秒钟就能完成，会计岗位迟早会消失。这种担忧并非空穴来风，但若因此断言财务人员将被淘汰，未免有些以偏概全。\n不可否认，技术的确正在改变财务工作的面貌。以发票处理为例，过去一名会计每天要手工录入几十张发票，如今系统可以自动识别、自动核对，效率提高了数倍。从这个意义上说，单纯从事基础核算的岗位确实会越来越少。\n然而，财务工作的价值从来不止于“算对账”。一方面，数据本身不会说话，需要有人结合企业的经营情况去解读：成本为什么上升？哪条产品线在亏钱？现金流能否支撑扩产？这些问题的答案，离不开对业务的深入理解。另一方面，财务还承担着风险控制和合规的职责，面对复杂多变的税收政策和突发情况，机器只能按规则运行，却难以作出权衡与判断。\n由此看来，人工智能淘汰的不是财务人员，而是不愿意改变的财务人员。与其担心被取代，不如主动拥抱技术，把精力从重复劳动中解放出来，向懂业务、会分析的“管理型财务”转型。正如一句老话所说：“工欲善其事，必先利其器。”善用工具的人，永远比工具本身更有价值。',
+hint:'Bài bác luận (驳论): nêu quan điểm bi quan → thừa nhận một phần → phản bác bằng hai luận cứ → đưa ra luận điểm của mình → trích câu cổ để kết.',
+method:'驳论 · 让步论证 · 举例论证 · 对比论证 · 引用论证',
+arg:[['驳论对象 · Quan điểm bị phản bác','“会计岗位迟早会消失” — tác giả nhận xét: 并非空穴来风，但……未免以偏概全.'],['让步 + 举例 · Nhượng bộ, ví dụ','“不可否认……以发票处理为例”: công nghệ thật sự làm giảm việc hạch toán cơ bản.'],['反驳论据 · Luận cứ phản bác','“然而” + “一方面……另一方面……”: số liệu cần người hiểu nghiệp vụ để diễn giải; kiểm soát rủi ro, tuân thủ cần phán đoán — so sánh người và máy.'],['中心论点 · Luận điểm chính','“人工智能淘汰的不是财务人员，而是不愿意改变的财务人员” — mẫu câu 不是A，而是B rất hay dùng để chốt.'],['结论 · Kết','“与其……不如……” + trích dẫn “工欲善其事，必先利其器”.']],
+quiz:[{q:'作者如何评价“会计岗位迟早会消失”的观点？',o:['完全正确','有一定道理但过于片面','毫无根据','只适用于大企业'],a:1,why:'“并非空穴来风，但……未免有些以偏概全”.'},{q:'文中举发票处理的例子是为了说明：',o:['会计工作量很大','技术提高了基础工作的效率','发票经常出错','企业应减少发票'],a:1,why:'Ví dụ cho thấy hệ thống tự nhận diện, tự đối chiếu, hiệu suất tăng nhiều lần.'},{q:'下列哪项不属于作者认为机器难以替代的工作？',o:['解读成本上升的原因','判断现金流能否支撑扩产','自动识别和核对发票','应对复杂的税收政策'],a:2,why:'Tự động nhận diện, đối chiếu hoá đơn chính là việc máy làm được.'},{q:'“工欲善其事，必先利其器”在文中强调：',o:['要先买最好的软件','善于利用工具才能做好工作','工具比人更重要','会计应该学习修理机器'],a:1,why:'Câu sau giải thích: 善用工具的人，永远比工具本身更有价值.'}],
+vocab:[['空穴来风','kōngxué láifēng','(并非~) không phải vô căn cứ'],['以偏概全','yǐ piān gài quán','vơ đũa cả nắm'],['断言','duànyán','khẳng định chắc chắn'],['面貌','miànmào','diện mạo'],['合规','héguī','tuân thủ'],['权衡','quánhéng','cân nhắc'],['拥抱','yōngbào','đón nhận'],['工欲善其事，必先利其器','gōng yù shàn qí shì, bì xiān lì qí qì','muốn làm tốt việc, trước hết phải có công cụ tốt']]},
+{id:'rd3',topic:'buy',lv:'6',type:'long',title:'Rẻ chưa chắc đã lợi',zh:'请概括文章的主要观点，并举一个你工作中遇到的例子，说明“便宜”和“划算”的区别。',
+model:'在采购工作中，“谁的价格低就选谁”似乎是最简单、最省事的做法，也最容易向领导交代。然而，经验丰富的采购人员都明白，报价最低的供应商，往往不是总成本最低的那一家。\n所谓总成本，不仅包括采购单价，还包括运输费用、质量损失、交货延误带来的停产损失，以及后期的售后服务成本。举个例子，某工厂为了节省百分之五的材料费，换了一家报价更低的粉末供应商。没想到，新粉末的批次稳定性较差，打印出来的零件不良率从百分之二上升到了百分之八。算下来，因返工和报废多花的钱，是省下来的材料费的好几倍，更不用说因交货延期而失去客户信任的隐性损失了。\n那么，是不是价格越高越可靠呢？也不尽然。高价并不等于高质量，有些供应商只是品牌溢价较高，产品本身未必更好。因此，科学的做法是建立综合评价体系，把质量、交期、服务和价格按照一定比例打分，再结合物料的重要程度作出选择。对于关键物料，质量和稳定性应占更大权重；对于通用物料，价格则可以作为主要考量。\n总之，采购的目标不是“买得便宜”，而是“买得划算”。只有跳出单纯比价的思维，从全局和长远的角度看问题，才能真正为企业降本增效。',
+hint:'Luận điểm nêu ngay đầu bài (演绎: từ luận điểm xuống luận cứ). Chú ý câu hỏi tu từ “那么，是不是……呢？也不尽然” giúp lập luận không cực đoan.',
+method:'举例论证 · 因果论证 · 设问 · 下定义',
+arg:[['中心论点 · Luận điểm chính','Ngay đoạn 1: “报价最低的供应商，往往不是总成本最低的那一家”.'],['下定义 · Giải thích khái niệm','“所谓总成本，不仅包括……还包括……” — định nghĩa để làm rõ luận điểm.'],['举例论证 · Ví dụ','Nhà máy đổi bột giá rẻ → tỉ lệ lỗi từ 2% lên 8% → chi phí làm lại gấp nhiều lần phần tiết kiệm.'],['设问 + 驳论 · Tự hỏi, phản bác cực đoan','“是不是价格越高越可靠呢？也不尽然” — giá cao không đồng nghĩa chất lượng cao.'],['对策 + 结论 · Giải pháp, kết luận','Hệ thống đánh giá tổng hợp, phân loại vật tư → “不是买得便宜，而是买得划算”.']],
+quiz:[{q:'根据文章，“总成本”不包括下列哪一项？',o:['运输费用','质量损失','员工的生日福利','停产损失'],a:2,why:'Đoạn 2 liệt kê: đơn giá, vận chuyển, tổn thất chất lượng, ngừng sản xuất, hậu mãi.'},{q:'换了低价粉末供应商后，工厂的情况是：',o:['不良率下降了','总成本反而增加了','客户更满意了','交期缩短了'],a:1,why:'Tiền làm lại và phế phẩm gấp mấy lần phần tiết kiệm.'},{q:'作者对高价供应商的看法是：',o:['一定更可靠','高价不等于高质量','应该优先选择','只适合通用物料'],a:1,why:'“高价并不等于高质量”.'},{q:'最适合做本文标题的是：',o:['采购员如何向领导汇报','便宜不等于划算','金属粉末的生产工艺','如何提高售后服务'],a:1,why:'Câu chốt: 不是“买得便宜”，而是“买得划算”.'}],
+vocab:[['交代','jiāodài','giải trình'],['隐性','yǐnxìng','ẩn, ngầm'],['不尽然','bú jìnrán','không hẳn như vậy'],['溢价','yìjià','phần giá cao hơn (premium)'],['权重','quánzhòng','trọng số'],['划算','huásuàn','đáng đồng tiền'],['降本增效','jiàng běn zēng xiào','giảm chi phí, tăng hiệu quả']]},
+{id:'rd4',topic:'trade',lv:'7-9',type:'long',title:'Sản xuất ở Việt Nam: lợi thế và nỗi lo',zh:'请概括越南制造业的优势和隐忧，并谈谈你作为个人可以怎样抓住这一轮产业升级的机会。',
+model:'过去十年，越南逐渐成为全球制造业转移的重要目的地。从电子产品到纺织服装，从家具到精密零部件，越来越多的跨国企业在越南设厂。究其原因，既有劳动力成本相对较低、人口结构年轻等先天优势，也离不开越南积极签署自由贸易协定、持续改善营商环境的努力。\n然而，在一片看好的声音中，我们也应当看到其背后的隐忧。其一，配套产业链尚不完善。许多工厂所需的原材料和关键零部件仍需从国外进口，一旦国际物流受阻，生产便会陷入被动。其二，技术工人和中层管理人才相对短缺。企业可以在短时间内招到大量普工，却很难找到既懂技术又能带团队的骨干。其三，随着工资水平逐年上涨，单纯依靠低成本的竞争优势正在逐步减弱。\n如果说过去吸引外资靠的是“成本红利”，那么未来要留住外资，靠的则是“人才红利”和“产业链红利”。这就要求政府、企业和个人共同发力：政府需加大对职业教育和本地配套企业的扶持力度；外资企业应当注重本地员工的培养，而不是仅仅把越南当作“加工车间”；对于个人而言，掌握外语、专业技能和管理能力的复合型人才，必将在这一轮产业升级中脱颖而出。\n总而言之，越南制造业正站在由“量”向“质”转变的十字路口，能否抓住机遇，取决于各方能否未雨绸缪、提前布局。',
+hint:'Bài phân tích xã hội – kinh tế: hiện tượng → nguyên nhân → nỗi lo (其一/其二/其三) → so sánh quá khứ/tương lai → giải pháp theo 3 tầng → kết luận bằng hình ảnh.',
+method:'因果论证 · 对比论证 · 比喻论证 · 分层论述',
+arg:[['现象 + 原因 · Hiện tượng, nguyên nhân','“究其原因，既有……也离不开……” — lợi thế sẵn có + nỗ lực chính sách.'],['分论点 · Nỗi lo','“然而……隐忧” rồi 其一 / 其二 / 其三: chuỗi phụ trợ chưa hoàn thiện; thiếu thợ kỹ thuật và quản lý cấp trung; lợi thế chi phí thấp giảm dần.'],['对比论证 · So sánh','“如果说过去……靠的是‘成本红利’，那么未来……靠的则是‘人才红利’” — mẫu câu 如果说A，那么B rất đắt giá.'],['对策 · Giải pháp','Ba chủ thể: chính phủ / doanh nghiệp FDI / cá nhân.'],['结论 · Kết luận','Hình ảnh “站在由‘量’向‘质’转变的十字路口” + thành ngữ 未雨绸缪.']],
+quiz:[{q:'越南吸引外资的原因不包括：',o:['劳动力成本较低','人口结构年轻','配套产业链非常完善','积极签署自由贸易协定'],a:2,why:'Chuỗi phụ trợ chưa hoàn thiện lại là “nỗi lo” thứ nhất.'},{q:'文中提到的“隐忧”是指：',o:['已经发生的危机','表面看不出来的潜在问题','外国投资者的抱怨','政府的政策错误'],a:1,why:'隐 = ẩn; 忧 = lo.'},{q:'作者认为未来留住外资主要靠：',o:['继续降低工资','人才和产业链','增加工厂数量','减少进口'],a:1,why:'“人才红利”和“产业链红利”.'},{q:'“未雨绸缪”的意思最接近：',o:['事先做好准备','天气预报很准确','遇到困难就放弃','等问题出现再解决'],a:0,why:'Chưa mưa đã lo sửa mái nhà — lo xa.'}],
+vocab:[['究其原因','jiū qí yuányīn','xét nguyên nhân'],['营商环境','yíngshāng huánjìng','môi trường kinh doanh'],['隐忧','yǐnyōu','nỗi lo tiềm ẩn'],['配套','pèitào','phụ trợ, đồng bộ'],['红利','hónglì','lợi tức, lợi thế'],['扶持','fúchí','hỗ trợ'],['脱颖而出','tuō yǐng ér chū','nổi bật lên'],['未雨绸缪','wèi yǔ chóu móu','lo xa, chuẩn bị trước']]},
+{id:'rd5',topic:'hr',lv:'6',type:'long',title:'Người trẻ hay nhảy việc',zh:'请概括作者对年轻人频繁跳槽的分析，并从人事工作的角度谈谈企业应该如何留住员工。',
+model:'“干不满一年就走”，这是不少人事经理对年轻员工的印象。有人把频繁跳槽归结为年轻人“吃不了苦”“没有定性”，但如果仔细分析，就会发现问题并没有这么简单。\n从员工的角度看，跳槽往往是一种理性选择。一方面，在许多行业，跳槽带来的加薪幅度远高于在原公司按部就班的调薪；另一方面，年轻人更看重成长空间和工作意义，当他们发现自己每天只是在重复简单的劳动，看不到学习和晋升的机会时，离开就成了顺理成章的事。\n从企业的角度看，员工频繁离职，也是一面反映管理问题的镜子。招聘时把岗位描述得过于美好，入职后却发现落差很大；新人进门没人带，遇到困难只能自己摸索；表现好与表现差的员工待遇差别不大……这些都在悄悄地把员工“推”向门外。\n当然，频繁跳槽对个人也并非全是好事。每份工作都浅尝辄止，很难积累真正的专业深度，简历上密密麻麻的工作经历，反而会让下一家用人单位心存疑虑。\n因此，减少人才流失，需要企业和员工“双向奔赴”：企业要提供清晰的成长路径和公平的激励机制，员工也要沉下心来，在一个领域里深耕，用能力换取更好的发展。',
+hint:'Phân tích đa góc độ: bác bỏ cách nhìn đơn giản → góc nhân viên → góc doanh nghiệp → nhượng bộ (mặt trái của nhảy việc) → kết luận hai chiều.',
+method:'多角度分析 · 因果论证 · 比喻论证 · 让步论证',
+arg:[['驳论 · Bác bỏ cách nhìn đơn giản','“有人把……归结为……但……问题并没有这么简单”.'],['角度一 · Góc nhân viên','“从员工的角度看” + 一方面/另一方面: mức tăng lương, cơ hội phát triển.'],['角度二 · Góc doanh nghiệp','Ẩn dụ “一面反映管理问题的镜子” + ba ví dụ liệt kê.'],['让步 · Nhượng bộ','“当然……并非全是好事”: nhảy việc cũng hại cá nhân.'],['结论 · Kết luận','“双向奔赴”: doanh nghiệp và nhân viên cùng thay đổi.']],
+quiz:[{q:'作者认为把频繁跳槽归结为“吃不了苦”：',o:['完全正确','过于简单','是企业的看法','是年轻人的看法'],a:1,why:'“问题并没有这么简单”.'},{q:'从员工角度看，跳槽的原因之一是：',o:['公司离家太远','跳槽加薪幅度更大','不喜欢同事','想休息一段时间'],a:1,why:'“跳槽带来的加薪幅度远高于……按部就班的调薪”.'},{q:'文中“一面反映管理问题的镜子”是说：',o:['员工离职能暴露企业管理中的问题','企业应该多装镜子','员工很在意外表','管理者需要注意外貌'],a:0,why:'Ẩn dụ: nghỉ việc phản chiếu vấn đề quản lý.'},{q:'“浅尝辄止”的意思是：',o:['做事深入','稍微尝试就停止，不深入','喜欢尝试美食','经常更换工作地点'],a:1,why:'Nếm qua rồi dừng — làm không đến nơi.'}],
+vocab:[['定性','dìngxìng','tính ổn định (tâm tính)'],['归结','guījié','quy về'],['按部就班','àn bù jiù bān','theo trình tự từng bước'],['顺理成章','shùn lǐ chéng zhāng','hợp lẽ tự nhiên'],['落差','luòchā','khoảng chênh'],['摸索','mōsuǒ','mò mẫm'],['浅尝辄止','qiǎn cháng zhé zhǐ','làm qua loa không đến nơi'],['深耕','shēngēng','đào sâu (một lĩnh vực)']]},
+{id:'rd6',topic:'hr',lv:'7-9',type:'long',title:'KPI là “gậy chỉ huy”',zh:'请概括文章的核心观点和作者提出的三个原则，并结合实际谈谈你会怎样设计生产工人的考核方案。',
+model:'在企业管理中，绩效考核常被称为“指挥棒”：考核什么，员工就重视什么；怎么考核，员工就怎么做。正因为如此，考核指标一旦设计不当，就可能把员工引向与企业目标背道而驰的方向。\n某制造企业曾经只按产量给生产工人发放奖金。短期来看，产量确实上去了，但很快，问题接踵而至：为了多出件，有的工人省略了自检环节，有的随意调快设备速度，不良品大量流入下一道工序，最终导致整批产品返工。表面上的“高产”，换来的却是实实在在的损失。这个例子说明，片面的考核不仅无法激励员工，反而会扭曲他们的行为。\n那么，怎样的考核才算合理？笔者认为至少应把握三个原则。第一，指标要平衡。产量、质量、安全、成本等关键维度应当兼顾，避免“一俊遮百丑”。第二，指标要可衡量、可控制。如果员工无论怎么努力都无法影响考核结果，考核就失去了意义。第三，过程要透明。考核标准应在事前公开，结果应及时反馈，让员工知道自己“差在哪里、怎么改进”。\n归根结底，绩效考核的目的不是“管住人”，而是“引导人”。只有当个人目标与企业目标同向而行时，考核这根指挥棒才能真正奏出和谐的乐章。',
+hint:'Mở và kết bằng cùng một ẩn dụ “指挥棒” (首尾呼应). Thân bài: ví dụ phản diện → câu hỏi → ba nguyên tắc.',
+method:'比喻论证 · 举例论证 · 因果论证 · 首尾呼应',
+arg:[['比喻引入 · Ẩn dụ mở bài','“绩效考核常被称为‘指挥棒’”: đánh giá gì, nhân viên coi trọng cái đó.'],['论点 · Luận điểm','Chỉ tiêu thiết kế sai sẽ dẫn nhân viên “背道而驰” với mục tiêu công ty.'],['举例论证 · Ví dụ phản diện','Chỉ thưởng theo sản lượng → bỏ tự kiểm → cả lô phải làm lại. Câu chốt ví dụ: “这个例子说明……不仅……反而……”.'],['对策 · Ba nguyên tắc','第一 cân bằng; 第二 đo được, kiểm soát được; 第三 minh bạch.'],['结论 · Kết','“不是‘管住人’，而是‘引导人’” và quay lại ẩn dụ “奏出和谐的乐章”.']],
+quiz:[{q:'文中把绩效考核比作“指挥棒”，是因为：',o:['考核决定员工的行为方向','管理者喜欢音乐','考核很难设计','员工不重视考核'],a:0,why:'“考核什么，员工就重视什么；怎么考核，员工就怎么做”.'},{q:'只按产量发奖金的结果是：',o:['质量和产量同时提高','产量上升但质量问题增多','员工离职率下降','设备速度变慢'],a:1,why:'Bỏ tự kiểm, hàng lỗi chảy xuống công đoạn sau, phải làm lại cả lô.'},{q:'“一俊遮百丑”在文中指的是：',o:['只看一个指标好，就忽视其他问题','员工外表很重要','产品外观最重要','每个人都有缺点'],a:0,why:'Một điểm đẹp che trăm điểm xấu.'},{q:'作者认为考核的根本目的是：',o:['惩罚表现差的员工','降低工资成本','引导个人目标与企业目标一致','减少管理人员'],a:2,why:'“目的不是‘管住人’，而是‘引导人’”.'}],
+vocab:[['指挥棒','zhǐhuībàng','gậy chỉ huy'],['背道而驰','bèi dào ér chí','đi ngược hướng'],['接踵而至','jiē zhǒng ér zhì','nối nhau kéo đến'],['扭曲','niǔqū','bóp méo'],['维度','wéidù','khía cạnh'],['一俊遮百丑','yí jùn zhē bǎi chǒu','một cái tốt che trăm cái xấu'],['同向而行','tóng xiàng ér xíng','đi cùng hướng']]},
+{id:'rd7',topic:'biz',lv:'6',type:'long',title:'Chữ tín trong kinh doanh',zh:'请概括作者的主要观点和论据，并结合业务工作谈谈你遇到过的“诚信”或“不诚信”的例子。',
+model:'在商业世界里，有人认为“精明”比“诚实”更重要：报价时多留一点余地，出了问题先把责任推给对方，似乎这样才能不吃亏。可是，从长远来看，真正让企业走得远的，恰恰是看似“吃亏”的诚信。\n诚信首先体现在承诺上。答应客户的交期，就要想方设法按时完成；万一确实做不到，也应当第一时间说明情况，而不是等到最后一刻才找借口。很多客户并不害怕问题，害怕的是被蒙在鼓里。其次，诚信体现在对待错误的态度上。产品出了质量问题，主动承认并承担责任，虽然短期内会有损失，却能赢得客户的尊重。相反，隐瞒和推诿或许能侥幸躲过一次，但一旦被发现，失去的将是长期合作的基础。\n有人会说，市场竞争这么激烈，讲诚信的企业难道不会被淘汰吗？事实恰恰相反。在信息越来越透明的今天，企业的口碑传播得比以往任何时候都快。一家不守信用的供应商，可能在很短的时间内就被整个行业拉进“黑名单”；而一家口碑良好的企业，即使价格稍高，客户也愿意长期合作，因为与之合作的风险更低。\n古人云：“人无信不立，业无信不兴。”对于业务人员来说，个人的信誉就是最宝贵的名片；对于企业而言，诚信则是穿越经济周期最可靠的护城河。',
+hint:'Bài lập luận phản bác: nêu quan điểm “khôn hơn thật thà” → bác bỏ → hai luận cứ (首先/其次) → tự đặt câu phản biện rồi trả lời → trích dẫn cổ và ẩn dụ để kết.',
+method:'驳论 · 对比论证 · 设问 · 引用论证 · 比喻论证',
+arg:[['驳论 · Phản bác','Quan điểm “精明比诚实更重要” → “可是……恰恰是看似‘吃亏’的诚信”.'],['分论点一 · Luận cứ 1','Chữ tín thể hiện ở lời hứa: đúng hạn, có vấn đề thì báo sớm. Câu đắt: “很多客户并不害怕问题，害怕的是被蒙在鼓里”.'],['分论点二 · Luận cứ 2','Chữ tín thể hiện ở thái độ với sai sót — so sánh 承担 với 隐瞒和推诿 (相反……).'],['设问反驳 · Tự phản biện','“讲诚信的企业难道不会被淘汰吗？事实恰恰相反” — dùng lý do: thông tin minh bạch, tiếng tăm lan nhanh.'],['结论 · Kết','Trích “人无信不立，业无信不兴” + hai ẩn dụ: 名片, 护城河.']],
+quiz:[{q:'作者认为客户最害怕的是：',o:['产品价格上涨','被蒙在鼓里，不知道真实情况','交货期太长','业务员换人'],a:1,why:'“很多客户并不害怕问题，害怕的是被蒙在鼓里”.'},{q:'关于隐瞒质量问题，作者的看法是：',o:['可以减少损失','是聪明的做法','一旦被发现会失去合作基础','在竞争激烈时可以接受'],a:2,why:'“一旦被发现，失去的将是长期合作的基础”.'},{q:'为什么作者说讲诚信的企业不会被淘汰？',o:['因为政府会保护它们','因为信息透明，口碑传播快','因为它们价格最低','因为客户不了解市场'],a:1,why:'Đoạn 3: thông tin minh bạch, tiếng tăm lan nhanh.'},{q:'“护城河”在文中比喻：',o:['企业的厂房','保护企业长期发展的优势','企业的财务制度','物流运输路线'],a:1,why:'Hào bảo vệ thành → lợi thế bảo vệ doanh nghiệp lâu dài.'}],
+vocab:[['精明','jīngmíng','khôn khéo, tính toán'],['想方设法','xiǎng fāng shè fǎ','tìm mọi cách'],['蒙在鼓里','méng zài gǔ lǐ','bị giấu, không biết gì'],['推诿','tuīwěi','đùn đẩy'],['侥幸','jiǎoxìng','may mắn thoát được'],['口碑','kǒubēi','tiếng tăm, truyền miệng'],['护城河','hùchénghé','hào bảo vệ (lợi thế cạnh tranh)']]},
+{id:'rd8',topic:'prod',lv:'6',type:'long',title:'Chi tiết quyết định thành bại',zh:'请概括作者如何论证“细节决定成败”，并以你熟悉的一项工作（如做单据、算工资）为例，谈谈哪些细节最关键。',
+model:'“细节决定成败”这句话，在制造业中体现得尤为明显。一颗没拧紧的螺丝、一次被省略的点检、一张填错的标签，看起来都是微不足道的小事，却可能引发整批产品报废，甚至造成安全事故。\n以金属3D打印为例，从粉末筛分到最终检验，一个零件要经过十几道工序。如果粉末受潮没有及时发现，打印出来的零件内部就可能出现气孔；如果热处理的温度记录不准确，零件的硬度就难以保证；如果包装时批次标签贴错，客户收到货后就无法追溯问题来源。每一个环节都像链条上的一环，任何一环松动，整条链子都会断裂。\n那么，如何才能把细节做好？靠员工自觉固然重要，但更可靠的是靠制度和习惯。一方面，企业要把关键细节写进作业标准，明确“做什么、怎么做、做到什么程度”，并通过检查表等工具防止遗漏；另一方面，要培养员工“多看一眼、多问一句”的习惯，让认真成为一种自然而然的工作方式，而不是被逼出来的应付。\n当然，强调细节并不是要求事事追求完美，而是要分清主次，把有限的精力集中在影响质量和安全的关键点上。抓住了关键细节，也就抓住了产品质量的命脉。',
+hint:'Mở bằng câu tục ngữ làm luận điểm → ví dụ ngành in 3D với ba câu giả định “如果……就……” → ẩn dụ mắt xích → giải pháp → giới hạn lại luận điểm cho chặt.',
+method:'举例论证 · 假设论证 · 比喻论证',
+arg:[['引用提出论点 · Luận điểm','Câu quen thuộc “细节决定成败”, khẳng định “在制造业中体现得尤为明显”.'],['举例 + 假设 · Ví dụ, giả định','“以金属3D打印为例” + ba câu 如果……就…… liên tiếp (bài thi rất hay dùng).'],['比喻论证 · Ẩn dụ','“每一个环节都像链条上的一环，任何一环松动，整条链子都会断裂”.'],['对策 · Giải pháp','“固然……但更……”: dựa vào quy chế (tiêu chuẩn, checklist) và thói quen.'],['限定论点 · Giới hạn luận điểm','“强调细节并不是要求事事追求完美，而是……” — tránh hiểu sai, làm lập luận chặt chẽ.']],
+quiz:[{q:'文章第二段主要用了什么方法来说明观点？',o:['引用名人名言','列举3D打印各环节的例子','对比两家工厂','引用统计数据'],a:1,why:'“以金属3D打印为例” và ba ví dụ giả định.'},{q:'根据文章，如果批次标签贴错，会导致：',o:['零件出现气孔','零件硬度不够','无法追溯问题来源','粉末受潮'],a:2,why:'“客户收到货后就无法追溯问题来源”.'},{q:'作者认为把细节做好，更可靠的方法是：',o:['依靠员工自觉','依靠制度和习惯','增加罚款','购买新设备'],a:1,why:'“靠员工自觉固然重要，但更可靠的是靠制度和习惯”.'},{q:'最后一段的作用是：',o:['否定前面的观点','补充说明，避免把重视细节理解为事事求完美','提出新的话题','总结3D打印的工艺'],a:1,why:'Câu “并不是……而是……” giới hạn lại luận điểm.'}],
+vocab:[['尤为','yóuwéi','đặc biệt'],['微不足道','wēi bù zú dào','nhỏ nhặt'],['追溯','zhuīsù','truy xuất'],['固然','gùrán','tất nhiên, tuy là'],['遗漏','yílòu','bỏ sót'],['应付','yìngfu','đối phó qua loa'],['命脉','mìngmài','mạch sống']]},
+{id:'rd9',topic:'career',lv:'7-9',type:'long',title:'Học suốt đời và chuyển hướng nghề nghiệp',zh:'请概括作者对职业转型的看法，并结合自己的经历，说说你计划怎样“由近及远”地完成转型。',
+model:'在很多人的观念里，职业道路应该是一条直线：大学学什么专业，毕业后就做什么工作，一干就是几十年。然而，在产业结构快速调整的今天，这种“一条道走到黑”的职业模式正受到越来越大的挑战，跨岗位、跨行业的职业转型正变得越来越普遍。\n转型之所以变得必要，原因是多方面的。从外部环境看，自动化和数字化正在重塑大量岗位，一些传统工作逐渐萎缩，新的岗位则不断涌现；从个人发展看，人们对工作的期待也从“养家糊口”扩展到“实现价值”，当原有岗位无法满足成长需求时，转型便成为一种主动的选择。\n但转型绝非简单地换一份工作。成功的转型往往遵循“由近及远”的规律：先在原有岗位上寻找与目标岗位的交集，比如人事专员可以从协助采购合同、参与供应商对接做起，在实践中积累经验；再通过系统学习补足专业短板；最后在合适的时机完成岗位的转换。与之相反，那些毫无准备、仅凭一时冲动的“裸辞”转行，失败的风险往往要高得多。\n由此可见，终身学习不再是一句口号，而是职场人应对不确定性的必备能力。与其被动地等待变化，不如主动地为变化做好准备。正所谓“机会只留给有准备的人”，今天在学习上投入的每一分时间，都可能成为明天转型路上的垫脚石。',
+hint:'So sánh mô hình nghề “đường thẳng” với xu hướng chuyển đổi → nguyên nhân hai phía → cách chuyển đổi ba bước kèm ví dụ nhân sự → so sánh với “nghỉ ngang” → kết bằng câu nói quen thuộc.',
+method:'对比论证 · 因果论证 · 举例论证 · 引用论证 · 比喻论证',
+arg:[['对比引入 · So sánh mở bài','Quan niệm “一条直线” ↔ “转型越来越普遍”, nối bằng “然而”.'],['因果论证 · Nguyên nhân','“之所以……原因是多方面的” + 从外部环境看 / 从个人发展看.'],['深化论点 · Đào sâu','“转型绝非简单地换一份工作” → quy luật 由近及远 ba bước (先……再……最后……), có ví dụ nhân viên nhân sự.'],['对比论证 · Đối chiếu','“与之相反……裸辞转行” — rủi ro cao hơn.'],['结论 · Kết','“不再是……而是……” + “与其……不如……” + trích “机会只留给有准备的人” + ẩn dụ 垫脚石.']],
+quiz:[{q:'“一条道走到黑”在文中指：',o:['晚上走路很危险','一直坚持同一种职业道路不改变','工作非常辛苦','喜欢冒险'],a:1,why:'Đi một con đường đến cùng, không đổi hướng.'},{q:'转型变得必要的外部原因是：',o:['人们想多休息','自动化和数字化重塑岗位','大学专业太少','工资越来越低'],a:1,why:'“从外部环境看，自动化和数字化正在重塑大量岗位”.'},{q:'文中人事专员的例子是为了说明：',o:['人事工作很轻松','转型可以从原岗位与目标岗位的交集做起','人事专员应该马上辞职','采购工作不需要经验'],a:1,why:'Ví dụ minh hoạ bước đầu tiên của 由近及远.'},{q:'作者对“裸辞”转行的态度是：',o:['鼓励','认为风险更高','认为是唯一的方法','没有表态'],a:1,why:'“失败的风险往往要高得多”.'}],
+vocab:[['重塑','chóngsù','định hình lại'],['萎缩','wěisuō','thu hẹp'],['涌现','yǒngxiàn','xuất hiện ồ ạt'],['养家糊口','yǎng jiā hú kǒu','kiếm sống nuôi gia đình'],['由近及远','yóu jìn jí yuǎn','từ gần đến xa'],['短板','duǎnbǎn','điểm yếu'],['裸辞','luǒcí','nghỉ việc khi chưa có việc mới'],['垫脚石','diànjiǎoshí','bàn đạp']]},
+{id:'rd10',topic:'admin',lv:'7-9',type:'long',title:'Số hoá không phải là mua phần mềm',zh:'请概括作者对企业数字化的主要观点，并结合你在工作中推行在线表格或协作平台的经历，谈谈遇到的困难和解决办法。',
+model:'提到企业数字化，很多管理者的第一反应是“买一套系统”。于是，各种管理软件被引进来，员工被要求在新平台上填报数据。可几个月后却发现，系统里的数据残缺不全，大家私下里依然用纸质表格和聊天记录沟通，昂贵的软件沦为摆设。问题究竟出在哪里？\n症结在于，数字化的本质不是“工具升级”，而是“流程再造”。如果原有的业务流程本身就混乱、重复，那么把它原封不动地搬到线上，只会让混乱变得更加高效。正确的顺序应当是：先梳理流程，明确每个环节由谁负责、需要哪些数据、数据流向哪里；再根据流程选择合适的工具；最后才是推广使用。\n此外，数字化还是一场“人”的变革。一线员工往往对新系统心存抵触，原因并不复杂：多填一张表意味着多一份工作，却看不到对自己有什么好处。因此，在设计系统时，应尽量做到“少输入、多复用”，让员工录入一次的数据能够自动生成报表、库存和工资，真正减轻他们的负担。同时，管理层也要以身作则，用系统里的数据开会、做决策，而不是一边要求员工录入，一边自己仍然靠“拍脑袋”。\n总而言之，数字化不是一蹴而就的工程，而是一个“小步快跑、持续迭代”的过程。从一张表、一个流程做起，看到成效后再逐步推广，远比一次性上马大系统更为稳妥。',
+hint:'Mở bằng hiện tượng thất bại + câu hỏi “问题究竟出在哪里？” → trả lời bằng luận điểm 不是……而是…… → luận cứ về quy trình và về con người → kết luận phương pháp.',
+method:'设问 · 对比论证 · 因果论证 · 假设论证',
+arg:[['现象 + 设问 · Hiện tượng, câu hỏi','Mua hệ thống nhưng “沦为摆设” → “问题究竟出在哪里？”.'],['中心论点 · Luận điểm chính','“症结在于，数字化的本质不是‘工具升级’，而是‘流程再造’”.'],['假设论证 · Giả định','“如果……那么……只会让混乱变得更加高效” — câu châm biếm đắt giá; rồi nêu thứ tự đúng 先……再……最后…….'],['分论点二 · Luận cứ về con người','“此外，数字化还是一场‘人’的变革”: nguyên nhân phản đối + giải pháp “少输入、多复用” + lãnh đạo làm gương.'],['结论 · Kết','“不是一蹴而就……而是……小步快跑、持续迭代”.']],
+quiz:[{q:'第一段中“沦为摆设”的意思是：',o:['软件被放在显眼的位置','软件买了却没有真正发挥作用','软件价格太贵','软件被员工损坏'],a:1,why:'摆设 = đồ trang trí, không dùng thật.'},{q:'作者认为数字化的本质是：',o:['购买先进的软件','流程再造','增加员工数量','取消纸质文件'],a:1,why:'“本质不是‘工具升级’，而是‘流程再造’”.'},{q:'一线员工抵触新系统的主要原因是：',o:['不会用手机','多填表却看不到好处','系统太便宜','领导不使用系统'],a:1,why:'“多填一张表意味着多一份工作，却看不到对自己有什么好处”.'},{q:'作者建议推行数字化的方式是：',o:['一次性上马大系统','从小处做起，逐步推广','完全依靠外部顾问','只培训管理层'],a:1,why:'“从一张表、一个流程做起，看到成效后再逐步推广”.'}],
+vocab:[['残缺不全','cánquē bù quán','thiếu sót, không đầy đủ'],['沦为摆设','lúnwéi bǎishè','thành đồ trang trí'],['症结','zhēngjié','mấu chốt vấn đề'],['原封不动','yuán fēng bú dòng','giữ nguyên xi'],['梳理','shūlǐ','rà soát, sắp xếp'],['抵触','dǐchù','phản đối, kháng cự'],['以身作则','yǐ shēn zuò zé','làm gương'],['一蹴而就','yí cù ér jiù','một bước là xong']]},
+{id:'rd11',topic:'meet',lv:'6',type:'long',title:'Biết lắng nghe',zh:'请概括作者提出的“倾听的三个层次”，并举例说明你在工作中是怎样通过倾听解决问题的。',
+model:'说起沟通能力，人们首先想到的往往是“能说会道”：表达清楚、反应敏捷、善于说服别人。然而，在实际工作中，比会说更难、也更重要的，是会听。\n很多沟通中的矛盾，并不是因为双方观点真的相差很远，而是因为谁都没有认真听对方在说什么。开会时，有人还没等别人说完就急着反驳；和客户通话时，有人只顾介绍自己的产品，却忽略了客户真正关心的问题。结果，说了很多，问题却一个也没解决。\n真正的倾听，至少包含三个层次。第一层是听清内容，不打断、不走神，必要时做好记录。第二层是听懂意图，弄明白对方“为什么这么说”。比如员工抱怨“加班太多”，背后可能是对加班费计算方式的不满，也可能是家庭照顾上的困难。第三层是给予回应，用“您的意思是……对吗？”这样的方式确认理解是否准确，让对方感受到被尊重。\n对于人事、采购、业务这些需要和不同对象打交道的岗位来说，倾听更是一项基本功。听懂了员工的需求，才能制定出让人信服的制度；听懂了供应商的难处，才能谈出双赢的价格；听懂了客户的潜在需求，才能抓住新的订单。可以说，会听的人，往往也是最会说的人。',
+hint:'Đối lập “biết nói” và “biết nghe” → nguyên nhân mâu thuẫn → ba tầng lắng nghe → câu song hành (排比) ứng dụng vào ba vị trí → kết quay về mở bài.',
+method:'对比论证 · 举例论证 · 排比 · 首尾呼应',
+arg:[['对比提出论点 · Luận điểm','“能说会道” ↔ “会听”: “比会说更难、也更重要的，是会听”.'],['因果 + 举例 · Nguyên nhân','“并不是因为……而是因为……” + ví dụ họp, gọi điện cho khách.'],['分论点 · Ba tầng','第一层 nghe rõ nội dung → 第二层 hiểu ý đồ (ví dụ than phiền tăng ca) → 第三层 phản hồi xác nhận.'],['排比 · Câu song hành','Ba vế “听懂了……才能……” cho nhân sự, thu mua, nghiệp vụ — làm bài nói có nhịp và sức nặng.'],['首尾呼应 · Kết vòng','“会听的人，往往也是最会说的人” trả lời lại câu mở bài.']],
+quiz:[{q:'作者认为沟通中比“会说”更重要的是：',o:['说话速度快','会听','懂外语','会写报告'],a:1,why:'Câu cuối đoạn 1.'},{q:'员工抱怨“加班太多”的例子是为了说明哪一层倾听？',o:['听清内容','听懂意图','给予回应','做好记录'],a:1,why:'Ví dụ nằm ngay sau “第二层是听懂意图”.'},{q:'“您的意思是……对吗？”这种说法的作用是：',o:['反驳对方','确认理解是否准确','结束谈话','表示不满'],a:1,why:'“确认理解是否准确，让对方感受到被尊重”.'},{q:'文章最后一句与开头的关系是：',o:['互相矛盾','首尾呼应','提出新问题','举出新例子'],a:1,why:'Mở bài nói về “会说”, kết bài nối “会听” với “会说”.'}],
+vocab:[['能说会道','néng shuō huì dào','ăn nói giỏi'],['敏捷','mǐnjié','nhanh nhạy'],['反驳','fǎnbó','phản bác'],['意图','yìtú','ý đồ, ý muốn'],['基本功','jīběngōng','kỹ năng nền tảng'],['信服','xìnfú','tin phục'],['双赢','shuāngyíng','đôi bên cùng có lợi'],['潜在','qiánzài','tiềm ẩn']]},
+{id:'rd12',topic:'buy',lv:'7-9',type:'long',title:'Chuỗi cung ứng: từ “hiệu quả” sang “an toàn”',zh:'请概括供应链管理理念发生了怎样的变化，以及作者认为应如何平衡效率与安全。如果你是采购员，你会对哪些物料采取“多源采购”？为什么？',
+model:'过去几十年，全球供应链管理奉行的核心理念是“效率至上”：库存越低越好，供应商越集中越好，哪里成本最低就在哪里采购。这种模式在风平浪静的年代确实大幅降低了企业成本，但近年来接连发生的疫情、地缘冲突和极端天气，却让它的脆弱性暴露无遗。\n一个港口停运，可能导致大量工厂停工待料；一种关键原材料断供，可能让整个行业陷入被动。痛定思痛，越来越多的企业开始重新审视供应链战略，从单纯追求效率转向兼顾安全与韧性。具体做法包括：对关键物料实行“多源采购”，避免对单一供应商过度依赖；适当提高安全库存，以“冗余”换取“确定性”；以及推动供应链本地化或区域化，缩短运输距离和响应时间。\n不过，安全并非没有代价。多源采购意味着管理成本上升和议价能力下降，高库存则会占用大量资金。如果矫枉过正，企业可能在“安全”的名义下背上沉重的成本包袱，反而削弱竞争力。因此，关键在于找到效率与安全之间的平衡点：根据物料的重要程度和供应风险进行分级管理，对高风险、高影响的物料多一些保障，对低风险的通用物料则继续追求效率。\n可以预见，未来的供应链竞争，不再是比谁“更便宜”，而是比谁“更稳”。对采购人员而言，这既意味着更大的责任，也意味着更广阔的施展空间。',
+hint:'Lập luận biện chứng (辩证): cái cũ có ích → bộc lộ điểm yếu → xu hướng mới và cách làm → cái mới cũng có giá phải trả → tìm điểm cân bằng → dự báo.',
+method:'因果论证 · 举例论证 · 辩证分析 · 对比论证',
+arg:[['背景 · Bối cảnh','Lý niệm “效率至上” và lợi ích của nó → “但……脆弱性暴露无遗”.'],['举例 + 论点 · Ví dụ, luận điểm','Cảng ngừng, nguyên liệu đứt → doanh nghiệp chuyển “从单纯追求效率转向兼顾安全与韧性”; ba cách làm.'],['辩证分析 · Nhìn hai mặt','“不过，安全并非没有代价” + giả định “如果矫枉过正……反而……”.'],['解决 · Giải pháp','“关键在于……” phân cấp vật tư theo mức quan trọng và rủi ro.'],['结论 · Kết','“不再是比谁‘更便宜’，而是比谁‘更稳’” + “既……也……” cho nhân viên thu mua.']],
+quiz:[{q:'“效率至上”的供应链模式的问题是：',o:['成本太高','遇到突发事件时很脆弱','库存太多','供应商太分散'],a:1,why:'“却让它的脆弱性暴露无遗”.'},{q:'下列哪项不是文中提到的提高供应链安全的做法？',o:['多源采购','提高安全库存','推动本地化','只选择价格最低的供应商'],a:3,why:'Chọn giá thấp nhất là tư duy “hiệu quả” cũ.'},{q:'“矫枉过正”在文中指：',o:['纠正错误时做得过了头','及时改正错误','对供应商要求严格','保持原来的做法'],a:0,why:'Uốn cong cho thẳng nhưng uốn quá tay.'},{q:'作者认为平衡效率与安全的关键是：',o:['所有物料都提高库存','根据物料重要程度和风险分级管理','只从本地采购','取消安全库存'],a:1,why:'“根据物料的重要程度和供应风险进行分级管理”.'}],
+vocab:[['奉行','fèngxíng','theo đuổi (nguyên tắc)'],['风平浪静','fēng píng làng jìng','sóng yên gió lặng'],['暴露无遗','bàolù wú yí','lộ ra hoàn toàn'],['痛定思痛','tòng dìng sī tòng','rút kinh nghiệm sau đau thương'],['韧性','rènxìng','sức chống chịu'],['冗余','rǒngyú','dư thừa dự phòng'],['矫枉过正','jiǎo wǎng guò zhèng','sửa sai quá đà'],['施展','shīzhǎn','phát huy']]}
+];
+const PH=[
+ ['Mở đầu 开头',[['对于这个问题，我的看法是……','Về vấn đề này, quan điểm của tôi là…'],['就我个人而言……','Riêng với bản thân tôi…'],['这个问题可以从两个方面来看。','Vấn đề này có thể nhìn từ hai phía.']]],
+ ['Lập luận 论证',[['一方面……另一方面……','Một mặt… mặt khác…'],['之所以……是因为……','Sở dĩ… là vì…'],['不可否认……，但是……','Không thể phủ nhận…, nhưng…'],['与其……不如……','Thà… còn hơn…']]],
+ ['Ví dụ 举例',[['以我自己为例……','Lấy chính tôi làm ví dụ…'],['举个例子来说……','Lấy một ví dụ…'],['拿我们公司来说……','Lấy công ty chúng tôi mà nói…']]],
+ ['Chuyển ý 递进转折',[['不仅如此……','Không chỉ vậy…'],['更重要的是……','Quan trọng hơn là…'],['反过来说……','Nói ngược lại…']]],
+ ['Kết luận 总结',[['总而言之……','Tóm lại…'],['归根结底……','Suy cho cùng…'],['综上所述……','Tổng hợp những điều trên…']]],
+ ['Thu mua & nghiệp vụ 采购业务',[['询价、比价、压价','hỏi giá, so giá, ép giá'],['交期、账期、付款条件','thời hạn giao, kỳ hạn thanh toán, điều kiện thanh toán'],['下单、跟单、催货','đặt hàng, theo đơn, giục hàng'],['对账、开票、索赔','đối chiếu, xuất hoá đơn, đòi bồi thường']]]
+];
+
+const METHODS=[
+ ['举例论证','jǔlì lùnzhèng','Dùng ví dụ cụ thể (người, việc, số liệu) để chứng minh luận điểm. Ví dụ phải tiêu biểu và có câu chốt nối về luận điểm.','以……为例 · 比如 · 就拿……来说 · 这个例子说明','以发票处理为例，过去需要手工录入，如今系统可以自动核对，这说明技术正在改变财务工作。'],
+ ['对比论证','duìbǐ lùnzhèng','Đặt hai sự vật, hai thời kỳ hoặc hai cách làm cạnh nhau để làm nổi bật luận điểm.','与……相比 · 相反 · 如果说……那么…… · 不是……而是……','如果说过去吸引外资靠的是成本红利，那么未来靠的则是人才红利。'],
+ ['因果论证','yīnguǒ lùnzhèng','Phân tích nguyên nhân dẫn đến kết quả, hoặc từ nguyên nhân suy ra hệ quả.','之所以……是因为…… · 由于……因此…… · 导致 · 究其原因','之所以员工频繁离职，是因为他们看不到成长的空间。'],
+ ['引用论证','yǐnyòng lùnzhèng','Trích câu nói, thành ngữ, tục ngữ, số liệu hoặc ý kiến chuyên gia để tăng sức thuyết phục.','正如……所说 · 俗话说 · 古人云 · 据……统计','古人云：“人无信不立，业无信不兴。”诚信是企业长远发展的基础。'],
+ ['比喻论证','bǐyù lùnzhèng','Dùng hình ảnh quen thuộc để giải thích một đạo lý trừu tượng.','好比 · 就像 · 犹如 · 是……的……','每一个环节都像链条上的一环，任何一环松动，整条链子都会断裂。'],
+ ['让步论证','ràngbù lùnzhèng','Thừa nhận một phần ý kiến bên kia trước rồi mới phản bác. Bài nói trở nên khách quan, chặt chẽ.','诚然……但是 · 固然……然而 · 不可否认……但 · 当然，这并不意味着……','不可否认，技术的确提高了效率，但财务工作的价值从来不止于算对账。'],
+ ['假设论证','jiǎshè lùnzhèng','Giả định một tình huống (thường là ngược lại) để chỉ ra hậu quả, từ đó khẳng định luận điểm.','如果……就…… · 倘若…… · 试想…… · 一旦……便……','如果把混乱的流程原封不动地搬到线上，只会让混乱变得更加高效。'],
+ ['驳论','bólùn','Nêu một quan điểm sai rồi bác bỏ, sau đó đưa ra quan điểm đúng của mình.','有人认为……其实不然 · ……未免以偏概全 · 事实恰恰相反','有人认为讲诚信的企业会被淘汰，事实恰恰相反，口碑才是最可靠的竞争力。']
+];
+const FRAMES=[
+ ['总—分—总','Nêu luận điểm → 2–3 luận cứ (首先/其次/再次) → tổng kết. Dễ dùng nhất cho phần trả lời câu hỏi HSKK.','我认为……。首先，……；其次，……；再次，……。总而言之，……'],
+ ['提出问题—分析问题—解决问题','Nêu hiện tượng hoặc câu hỏi → phân tích nguyên nhân → đưa giải pháp. Hợp với đề về quản lý, xã hội.','……这一现象值得关注。究其原因，……。因此，……应当……'],
+ ['驳论式','Nêu quan điểm sai → nhượng bộ một phần → phản bác bằng luận cứ → đưa ra quan điểm đúng.','有人认为……。诚然，……，但是……。由此可见，……'],
+ ['辩证式','Nhìn hai mặt: lợi → hại (hoặc ngược lại) → điều kiện, giới hạn → kết luận cân bằng.','一方面，……；另一方面，……。关键在于……。只有……才能……']
+];
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const el=(t,c,txt)=>{const e=document.createElement(t);if(c)e.className=c;if(txt!=null)e.textContent=txt;return e};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),3200)};
+const LS='hskk-speak-v1';
+let store={done:{},custom:[],drafts:{}};
+try{const s=JSON.parse(localStorage.getItem(LS)||'{}');store=Object.assign(store,s)}catch(e){}
+const save=()=>{try{localStorage.setItem(LS,JSON.stringify(store))}catch(e){}};
+const all=()=>ITEMS.concat(store.custom||[]);
+let cur=null,revealed=false,rate=1,tts=null,dict=null,sample=null,listening=false;
+
+$('#fTopic').innerHTML=Object.entries(TOPICS).map(([k,v])=>`<option value="${k}">${esc(v)}</option>`).join('');
+$('#fType').innerHTML='<option value="all">Mọi dạng bài</option>'+Object.entries(TYPES).map(([k,v])=>`<option value="${k}">${esc(v.zh+' · '+v.n)}</option>`).join('');
+$('#methods').innerHTML=METHODS.map(([z,p,v,sig,ex])=>`<div class="mcard"><h3>${esc(z)}</h3><div class="py">${esc(p)}</div><p>${esc(v)}</p><p class="sig">${esc(sig)}</p><button class="ph" data-say="${esc(ex)}"><b class="ex">${esc(ex)}</b></button></div>`).join('');
+$('#frames').innerHTML=FRAMES.map(([t,v,ex])=>`<div class="mcard"><h3>${esc(t)}</h3><p>${esc(v)}</p><p class="sig">${esc(ex)}</p></div>`).join('');
+$('#groups').innerHTML=PH.map(([g,arr])=>`<div class="group"><h3>${esc(g)}</h3>${arr.map(([z,v])=>`<button class="ph" data-say="${esc(z)}"><b>${esc(z)}</b><span>${esc(v)}</span></button>`).join('')}</div>`).join('');
+
+const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/đ/g,'d');
+function filtered(){const t=$('#fTopic').value,l=$('#fLv').value,y=$('#fType').value,q=norm($('#fQ').value.trim());
+  return all().filter(i=>(t==='all'||i.topic===t)&&(l==='all'||i.lv===l)&&(y==='all'||i.type===y)&&(!q||norm(i.title+' '+i.zh+' '+(i.model||'')+' '+(i.vocab||[]).flat().join(' ')).includes(q)))}
+function renderList(){
+  const arr=filtered();
+  $('#list').innerHTML=arr.length?arr.map(i=>{const d=store.done[i.id];return `<li><button data-id="${esc(i.id)}" aria-current="${cur&&cur.id===i.id}"><span class="t">${esc(i.title)}</span><span class="s">${esc(TYPES[i.type]?.zh||'')} · ${esc(LV[i.lv]||i.lv)} · ${esc(TOPICS[i.topic]||'')}${i.ai?' · Claude ra đề':''}</span><span class="sc">${(store.mem||{})[i.id]?'Đã thuộc ':''}${d?esc(d.best!=null?d.best:'✓'):''}</span></button></li>`}).join(''):'<li style="padding:14px;color:var(--mute)">Chưa có bài khớp bộ lọc. Đổi bộ lọc hoặc nhờ Claude ra đề mới.</li>';
+  $('#count').textContent=arr.length+' bài';
+  const n=Object.keys(store.done).length;$('#statN').textContent=n;$('#statT').textContent='/ '+all().length+' bài đã luyện · '+Object.keys(store.mem||{}).length+' bài đã thuộc';
+}
+function select(id){
+  if(cur)store.drafts[cur.id]=$('#ans').value;
+  cur=all().find(i=>i.id===id)||ITEMS[0];revealed=false;stopTimer();resetTimer();
+  const T=TYPES[cur.type];
+  $('#meta').innerHTML=`<span class="k">${esc(T.zh)}</span><span>${esc(T.n)}</span><span>${esc(LV[cur.lv]||cur.lv)}</span><span>${esc(TOPICS[cur.topic]||'')}</span>`;
+  $('#ttl').textContent=cur.title;$('#task').textContent=T.task;
+  renderPrompt();
+  $('#bReveal').hidden=cur.type!=='retell';
+  $('#bPrep').disabled=!T.prep;
+  $('#bMatch').hidden=!(cur.type==='retell'||cur.type==='read');
+  $('#ans').value=store.drafts[cur.id]||'';$('#partial').textContent='';$('#result').textContent='';
+  const m=cur.model||cur.zh;$('#model').textContent=m;$('#mdl').open=false;
+  $('#mdl summary').textContent=cur.type==='long'?'Bài đọc 原文':(cur.type==='retell'||cur.type==='read')?'Văn bản gốc 原文':'Bài mẫu 范文';
+  $('#voc').innerHTML=(cur.vocab||[]).map(v=>`<tr><td class="h">${esc(v[0])}</td><td class="p">${esc(v[1])}</td><td>${esc(v[2])}</td></tr>`).join('');
+  $('#hint').textContent=cur.hint||'';
+  try{if(location.hash.slice(1)!==cur.id)history.replaceState(null,'','#'+cur.id)}catch(e){}
+  showVi=false;if(cur.type==='long'&&view!=='study')setView('study');else if(view==='study')renderStudy();
+  renderList();
+}
+function renderPrompt(marks){
+  const p=$('#prompt');const hide=cur.type==='retell'&&!revealed;
+  p.classList.toggle('hid',hide);
+  if(hide){p.textContent='Văn bản đang ẩn. Bấm “Nghe đề”, nghe một lần, rồi thuật lại.';$('#bReveal').textContent='Hiện văn bản';return}
+  $('#bReveal').textContent='Ẩn văn bản';
+  if(!marks){p.textContent=cur.zh;return}
+  p.innerHTML=marks.map(([c,ok])=>ok?esc(c):`<span class="miss">${esc(c)}</span>`).join('');
+}
+
+/* study view: model text sentence by sentence */
+let view='practice',py=false,cloze=0,showVi=false,curS=[];
+const PP=()=>window.pinyinPro&&typeof window.pinyinPro.html==='function'?window.pinyinPro:null;
+const isZh=c=>/[㐀-鿿]/.test(c);
+const sentences=t=>(String(t).match(/[^。！？；]+[。！？；]*[”」]?/g)||[String(t)]).map(s=>s.trim()).filter(Boolean);
+function markVocab(h){
+  const ws=[...new Set((cur.vocab||[]).flatMap(v=>String(v[0]).split('…')).filter(w=>w.length>=2))].sort((a,b)=>b.length-a.length);
+  const used=[];
+  for(const w of ws){if(used.some(u=>u.includes(w)))continue;const e=esc(w);if(h.includes(e)){used.push(w);h=h.split(e).join('\u0001'+e+'\u0002')}}
+  return h.replace(/\u0001/g,'<mark class="v">').replace(/\u0002/g,'</mark>');
+}
+function renderStudy(){
+  const isLong=cur.type==='long',isText=isLong||cur.type==='retell'||cur.type==='read';
+  $('#sHint').textContent=isLong?'Bài đọc dài kiểu HSK. Đọc một lượt để nắm ý, xem phân tích lập luận, làm câu hỏi đọc hiểu, rồi sang tab “Luyện nói” để tóm tắt và nêu quan điểm.':isText?'Văn bản gốc của bài. Dùng để luyện đọc hiểu (阅读), đọc theo, rồi học thuộc.':'Bài mẫu trả lời cho câu hỏi dưới đây. Học thuộc khung và các câu hay, rồi thay bằng ví dụ của bạn.';
+  $('#sQ').hidden=isText;$('#sQ').textContent=isText?'':cur.zh;
+  renderArg();
+  curS=sentences(cur.model||cur.zh);
+  const tr=(store.tr||{})[cur.id];const pp=py&&cloze===0?PP():null;
+  $('#sTip').textContent=['Chữ màu hổ phách là từ vựng trọng tâm. Chạm “Nghe” để nghe từng câu.','Chữ bị che: tự nhớ rồi chạm vào câu để xem lại.','Chỉ còn hai chữ đầu mỗi câu: nói tiếp cả câu, chạm để kiểm tra.','Nói lại cả bài theo thứ tự câu, chạm từng câu để kiểm tra.'][cloze];
+  $('#sents').innerHTML=curS.map((s,i)=>{
+    let body;
+    if(cloze===3)body=`<span class="hold">Câu ${i+1} — chạm để xem</span><span class="full">${esc(s)}</span>`;
+    else if(cloze===0)body=pp?pp.html(esc(s)):markVocab(esc(s));
+    else{let k=0;body=[...s].map(c=>{if(!isZh(c))return esc(c);const j=k++;const hide=cloze===1?j%2===1:j>=2;return hide?`<span class="gap">${esc(c)}</span>`:esc(c)}).join('')}
+    const vi=showVi&&tr&&tr[i]?`<div class="vi">${esc(tr[i])}</div>`:'';
+    return `<li><span class="n">${i+1}</span><div><div class="z${pp?' py':''}${cloze===3?' all':''}" data-i="${i}" tabindex="0" role="button" aria-label="Câu ${i+1}">${body}</div>${vi}</div><button class="mini" data-s="${i}">Nghe</button></li>`}).join('');
+  $('#sMem').checked=!!(store.mem||{})[cur.id];
+  $('#sVi').textContent=showVi?'Ẩn nghĩa tiếng Việt':'Xem nghĩa tiếng Việt';
+}
+function renderArg(){
+  const A=$('#sArg'),Q=$('#sQuiz');A.textContent='';Q.textContent='';
+  if(Array.isArray(cur.arg)&&cur.arg.length){
+    const b=el('div','argb');b.append(el('h3','','Phân tích lập luận'));if(cur.method)b.append(el('p','mt','论证方法：'+cur.method));
+    const dl=el('dl');cur.arg.forEach(r=>{dl.append(el('dt','',String(r[0]||'')),el('dd','',String(r[1]||'')))});b.append(dl);
+    if(cur.hint)b.append(el('p','why','Tóm tắt cấu trúc: '+cur.hint));A.append(b);
+  }
+  if(Array.isArray(cur.quiz)&&cur.quiz.length){
+    const b=el('div','argb');b.append(el('h3','','Câu hỏi đọc hiểu'));
+    cur.quiz.forEach((q,qi)=>{const w=el('div','qz');w.append(el('p','',(qi+1)+'. '+String(q.q||'')));
+      (q.o||[]).forEach((o,oi)=>{const btn=el('button','opt','ABCD'[oi]+'. '+String(o));btn.dataset.q=qi;btn.dataset.o=oi;w.append(btn)});
+      const why=el('p','why');why.hidden=true;why.dataset.w=qi;w.append(why);b.append(w)});
+    Q.append(b);
+  }
+}
+$('#sQuiz').addEventListener('click',e=>{
+  const b=e.target.closest('.opt');if(!b)return;const qi=Number(b.dataset.q),oi=Number(b.dataset.o),q=cur.quiz[qi];
+  const box=b.parentElement;box.querySelectorAll('.opt').forEach(x=>{x.classList.remove('ok','no');if(Number(x.dataset.o)===q.a)x.classList.add('ok')});
+  if(oi!==q.a)b.classList.add('no');
+  const w=box.querySelector('.why');w.hidden=false;w.textContent=(oi===q.a?'Đúng. ':'Chưa đúng — đáp án '+'ABCD'[q.a]+'. ')+String(q.why||'');
+});
+function setView(v){
+  view=v;$('#vPrac').hidden=v!=='practice';$('#vStudy').hidden=v!=='study';
+  $('#tPrac').classList.toggle('on',v==='practice');$('#tStudy').classList.toggle('on',v==='study');
+  $('#tPrac').setAttribute('aria-selected',v==='practice');$('#tStudy').setAttribute('aria-selected',v==='study');
+  if(v==='study')renderStudy();
+}
+async function translate(){
+  const tr=(store.tr||{})[cur.id];
+  if(tr&&tr.length===curS.length){showVi=!showVi;renderStudy();return}
+  if(!sample)return;const b=$('#sVi');b.disabled=true;b.textContent='Claude đang dịch…';
+  try{let r=await sample.json('Dịch từng câu tiếng Trung sau sang tiếng Việt tự nhiên, sát nghĩa, văn phong công sở. Chỉ trả về JSON là một mảng chuỗi, đúng '+curS.length+' phần tử, theo đúng thứ tự:\n'+JSON.stringify(curS),{modelTier:'quick'});
+    if(typeof r==='string')r=JSON.parse(r);if(!Array.isArray(r))throw{};
+    store.tr=store.tr||{};store.tr[cur.id]=r.map(x=>String(x));save();showVi=true;
+  }catch(e){toast(e&&e.code==='rate_limited'?'Đang bị giới hạn lượt, chờ một lát.':'Chưa dịch được, thử lại sau.')}
+  b.disabled=false;renderStudy();
+}
+
+/* speech out */
+let speakBtn=null;
+function setSpeak(btn,on){if(!btn)return;if(on){btn.dataset.l=btn.dataset.l||btn.textContent;if(!btn.classList.contains('ph'))btn.textContent='Dừng đọc'}else if(btn.dataset.l&&!btn.classList.contains('ph')){btn.textContent=btn.dataset.l}}
+function wsSay(text){return new Promise((res,rej)=>{if(!('speechSynthesis' in window))return rej({code:'none'});speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='zh-CN';u.rate=rate;const v=speechSynthesis.getVoices().find(v=>/^zh/i.test(v.lang));if(v)u.voice=v;u.onend=res;u.onerror=res;speechSynthesis.speak(u)})}
+function stopSay(){try{tts&&tts.stop()}catch(e){}try{speechSynthesis.cancel()}catch(e){}}
+async function say(text,btn){
+  if(speakBtn){const same=speakBtn===btn;stopSay();setSpeak(speakBtn,false);speakBtn=null;if(same)return}
+  speakBtn=btn;setSpeak(btn,true);
+  try{
+    if(tts){try{await tts.speak(text,{language:'zh-CN',rate})}catch(e){if(e&&e.code==='not_granted'){tts=null;await wsSay(text)}else if(e&&e.code==='rate_limited'){toast('Đọc quá nhiều, chờ một lát rồi thử lại.')}else if(e&&e.code==='busy'){toast('Đang nhận giọng nói, dừng nói trước rồi nghe.')}}}
+    else await wsSay(text);
+  }catch(e){toast('Trình duyệt này không đọc được tiếng Trung.')}
+  if(speakBtn===btn){setSpeak(btn,false);speakBtn=null}
+}
+
+/* timer */
+let tm={ph:'idle',left:0,total:0,id:null};
+const fmt=s=>Math.floor(s/60)+':'+String(s%60).padStart(2,'0');
+function paint(){const t=$('#timer');t.classList.toggle('prep',tm.ph==='prep');t.classList.toggle('speak',tm.ph==='speak');
+  $('#phase').textContent={idle:'Sẵn sàng',prep:'Đang chuẩn bị',speak:'Đang nói',done:'Hết giờ'}[tm.ph];
+  $('#clock').textContent=fmt(Math.max(tm.left,0));$('#barI').style.width=(tm.total?(100*(tm.total-tm.left)/tm.total):0)+'%'}
+function resetTimer(){tm={ph:'idle',left:TYPES[cur.type].prep||TYPES[cur.type].speak,total:0,id:null};paint()}
+function stopTimer(){clearInterval(tm.id);tm.id=null}
+function startPhase(ph){stopTimer();const T=TYPES[cur.type];tm.ph=ph;tm.total=ph==='prep'?T.prep:T.speak;tm.left=tm.total;paint();
+  tm.id=setInterval(()=>{tm.left--;if(tm.left<=0){stopTimer();if(tm.ph==='prep'){startPhase('speak');toast('Hết giờ chuẩn bị — bắt đầu nói!');return}tm.ph='done';tm.left=0;if(listening&&dict)dict.stop().catch(()=>{});toast('Hết giờ nói.')}paint()},1000)}
+
+/* local match */
+const keep=c=>/[\u3400-\u9fff0-9A-Za-z]/.test(c);
+function match(){
+  const src=[...cur.zh],a=src.filter(keep),b=[...$('#ans').value].filter(keep);
+  if(b.length<5){toast('Hãy nói hoặc gõ bài của bạn trước.');return}
+  const n=a.length,m=b.length,dp=[];for(let i=0;i<=n;i++)dp.push(new Uint16Array(m+1));
+  for(let i=n-1;i>=0;i--)for(let j=m-1;j>=0;j--)dp[i][j]=a[i]===b[j]?dp[i+1][j+1]+1:Math.max(dp[i+1][j],dp[i][j+1]);
+  const hit=new Array(n).fill(false);let i=0,j=0;while(i<n&&j<m){if(a[i]===b[j]){hit[i]=true;i++;j++}else if(dp[i+1][j]>=dp[i][j+1])i++;else j++}
+  let k=0;const marks=src.map(c=>keep(c)?[c,hit[k++]]:[c,true]);
+  revealed=true;renderPrompt(marks);
+  const pct=Math.round(100*dp[0][0]/n);
+  const R=$('#result');R.textContent='';const c=el('div','card');
+  const s=el('div','score');s.append(el('b','',pct+'%'),el('span','',cur.type==='read'?'chữ trong bài gốc khớp với lời bạn đọc':'chữ của bài gốc xuất hiện lại trong lời bạn'));
+  c.append(s,el('p','note',cur.type==='read'?'Chữ gạch đỏ là chỗ máy không nghe thấy hoặc bạn đọc sót, sai. Đọc lại riêng các cụm đó.':'Thuật lại không cần đúng từng chữ; phần gạch đỏ là ý hoặc từ bạn có thể đã bỏ sót. Nhờ Claude chấm để biết bạn đủ ý chưa.'));
+  R.append(c);store.done[cur.id]=store.done[cur.id]||{best:null};save();renderList();
+}
+
+/* Claude grading */
+async function grade(){
+  if(!sample)return;const ans=$('#ans').value.trim();
+  if(ans.length<15){toast('Bài nói còn quá ngắn để chấm.');return}
+  const T=TYPES[cur.type],btn=$('#bGrade');btn.disabled=true;btn.textContent='Claude đang chấm…';
+  const R=$('#result');R.textContent='';R.append(el('p','note','Claude đang đọc bài của bạn…'));
+  const prompt=`Bạn là giám khảo HSKK cao cấp và phần nói HSK 3.0 (cấp 5 đến 7–9), đồng thời là người hướng dẫn tiếng Trung thương mại cho người Việt làm nhân sự muốn chuyển sang thu mua / nghiệp vụ.
+Dạng bài: ${T.zh} (${T.n}). Trình độ mục tiêu: ${LV[cur.lv]||cur.lv}. Chủ đề: ${TOPICS[cur.topic]}.
+${cur.type==='long'?'Bài đọc thí sinh đã đọc:\n'+cur.model+'\nYêu cầu nói (đọc rồi nói: tóm tắt luận điểm và nêu quan điểm, có lập luận):\n'+cur.zh:cur.type==='retell'||cur.type==='read'?'Văn bản gốc:\n'+cur.zh:'Đề bài:\n'+cur.zh}
+Bài nói của thí sinh (chuyển thành chữ bằng nhận dạng giọng nói hoặc tự gõ; lỗi đồng âm rõ ràng do máy thì đừng trừ điểm):
+"""${ans}"""
+Chấm 4 tiêu chí, mỗi tiêu chí 0–25: Nội dung & đúng yêu cầu (với nghe-thuật lại: đủ ý chính; với đọc: độ khớp văn bản), Từ vựng (phong phú, đúng cấp), Ngữ pháp & câu phức, Mạch lạc & liên kết. Không chấm phát âm.
+Chỉ trả về JSON đúng dạng:
+{"total":số 0-100,"level":"ước lượng trình độ, ví dụ HSK 6","dims":[{"name":"Nội dung","score":0-25,"comment":"tiếng Việt, 1 câu"},{"name":"Từ vựng",...},{"name":"Ngữ pháp",...},{"name":"Mạch lạc",...}],"strengths":["tiếng Việt, tối đa 3"],"fixes":[{"orig":"câu/cụm gốc của thí sinh","better":"bản sửa tiếng Trung","why":"giải thích ngắn tiếng Việt"}],"upgrade":[{"basic":"từ thí sinh dùng","advanced":"từ nâng cấp","pinyin":"pinyin","vi":"nghĩa"}],"rewrite":"bài nói nâng cấp bằng tiếng Trung, giữ ý của thí sinh, độ dài phù hợp thời gian nói, đúng trình độ mục tiêu","next":"một gợi ý luyện tiếp bằng tiếng Việt"}
+fixes tối đa 5, upgrade 3–6.`;
+  try{
+    let r=await sample.json(prompt,{modelTier:'default'});
+    if(typeof r==='string')r=JSON.parse(r);
+    showGrade(r);
+    const sc=Math.round(Number(r.total)||0);const d=store.done[cur.id]||{best:null};d.best=Math.max(d.best||0,sc);store.done[cur.id]=d;save();renderList();
+  }catch(e){R.textContent='';if(e&&e.code==='not_granted'){$('#bGrade').hidden=true;R.append(el('p','note','Bạn đã tắt quyền chấm bằng Claude.'))}else R.append(el('p','note',e&&e.code==='rate_limited'?'Đang bị giới hạn lượt, chờ một lát rồi thử lại.':'Chưa chấm được, thử lại sau.'))}
+  btn.disabled=false;btn.textContent='Claude chấm điểm';
+}
+function showGrade(r){
+  const R=$('#result');R.textContent='';
+  const c=el('div','card');const s=el('div','score');s.append(el('b','',String(Math.round(Number(r.total)||0))),el('span','','/100'+(r.level?' · ước lượng '+r.level:'')));c.append(s);
+  (r.dims||[]).forEach(d=>{const row=el('div','dim');const sc=Math.max(0,Math.min(25,Number(d.score)||0));const m=el('div','m'),i=el('i');i.style.width=(sc*4)+'%';m.append(i);row.append(el('span','',d.name||''),m,el('span','v',sc+'/25'),el('span','c',d.comment||''));c.append(row)});
+  R.append(c);
+  if((r.strengths||[]).length){const k=el('div','card');k.append(el('h3','','Điểm tốt'));const ul=el('ul');r.strengths.forEach(x=>ul.append(el('li','',x)));k.append(ul);R.append(k)}
+  if((r.fixes||[]).length){const k=el('div','card');k.append(el('h3','','Sửa câu'));r.fixes.forEach(f=>{const d=el('div','fix');d.append(el('div','o cn',f.orig||''),el('div','b cn',f.better||''),el('div','w',f.why||''));k.append(d)});R.append(k)}
+  if((r.upgrade||[]).length){const k=el('div','card');k.append(el('h3','','Nâng cấp từ vựng'));const tb=el('table');r.upgrade.forEach(u=>{const tr=el('tr');tr.append(el('td','cn',u.basic||''),el('td','h',u.advanced||''),el('td','p',u.pinyin||''),el('td','',u.vi||''));tb.append(tr)});k.append(tb);R.append(k)}
+  if(r.rewrite){const k=el('div','card');k.append(el('h3','','Bản nói nâng cấp — đọc theo rồi nói lại'));k.append(el('p','rw zh',r.rewrite));const b=el('button','btn','Nghe bản nâng cấp');b.onclick=()=>say(r.rewrite,b);k.append(b);R.append(k)}
+  if(r.next){const k=el('p','hint','Luyện tiếp: '+r.next);R.append(k)}
+}
+
+/* Claude generates a new task */
+async function gen(){
+  if(!sample)return;const b=$('#bGen');
+  const pick=(v,keys)=>v!=='all'?v:keys[Math.floor(Math.random()*keys.length)];
+  const topic=pick($('#fTopic').value,Object.keys(TOPICS).filter(k=>k!=='all')),lv=pick($('#fLv').value,Object.keys(LV)),type=pick($('#fType').value,Object.keys(TYPES).filter(k=>k!=='long'));
+  b.disabled=true;b.textContent='Claude đang ra đề…';
+  const prompt=`Ra một đề luyện nói tiếng Trung mới, dạng ${TYPES[type].zh} (${TYPES[type].n}), trình độ ${LV[lv]}, chủ đề ${TOPICS[topic]}, bối cảnh nhà máy/công ty FDI Trung Quốc ở Việt Nam. Người học là người Việt làm nhân sự, muốn chuyển sang thu mua hoặc nghiệp vụ, ôn HSKK cao cấp và HSK 3.0.
+Yêu cầu: ${type==='long'?'"model" là bài nghị luận 500–650 chữ kiểu bài đọc HSK, có luận điểm rõ và ít nhất 2 phương pháp lập luận; "zh" là yêu cầu nói sau khi đọc (tóm tắt + nêu quan điểm). Thêm "method" (tên các 论证方法, cách nhau bởi ·), "arg" là mảng 4–5 cặp ["nhãn tiếng Trung · tiếng Việt","giải thích tiếng Việt, có trích cụm tiếng Trung"], "quiz" là mảng 4 câu {"q":"câu hỏi tiếng Trung","o":[4 lựa chọn tiếng Trung],"a":chỉ số đáp án 0-3,"why":"giải thích tiếng Việt"}.':type==='retell'?'"zh" là đoạn thông báo/hội thoại 120–170 chữ để nghe rồi thuật lại; "model" để trống.':type==='read'?'"zh" là đoạn văn 160–220 chữ để đọc thành tiếng; "model" để trống.':'"zh" là câu hỏi/tình huống; "model" là bài nói mẫu 220–300 chữ đúng trình độ.'} Không lặp các đề quen thuộc về: tăng ca, đi trễ, hoàn ứng, nhà cung cấp tăng giá, khách khiếu nại xước.
+Chỉ trả về JSON: {"title":"tiêu đề ngắn tiếng Việt","zh":"...","model":"...","hint":"dàn ý gợi ý tiếng Việt, 1–2 câu","vocab":[["汉字","pinyin có dấu","nghĩa tiếng Việt"]]} với 6 từ vựng.`;
+  try{let r=await sample.json(prompt,{modelTier:'default'});if(typeof r==='string')r=JSON.parse(r);
+    if(!r||!r.zh)throw{};
+    const it={id:'ai'+Date.now(),ai:true,topic,lv,type,title:String(r.title||'Đề mới'),zh:String(r.zh),model:r.model?String(r.model):'',hint:String(r.hint||''),vocab:Array.isArray(r.vocab)?r.vocab.slice(0,8).map(v=>[String(v[0]||''),String(v[1]||''),String(v[2]||'')]):[]};
+    if(!it.model)delete it.model;
+    if(type==='long'){it.method=String(r.method||'');it.arg=Array.isArray(r.arg)?r.arg.slice(0,6).map(x=>[String(x[0]||''),String(x[1]||'')]):[];it.quiz=Array.isArray(r.quiz)?r.quiz.slice(0,6).map(q=>({q:String(q.q||''),o:(q.o||[]).slice(0,4).map(String),a:Number(q.a)||0,why:String(q.why||'')})):[]}
+    store.custom=(store.custom||[]).concat(it).slice(-40);save();select(it.id);toast('Đã thêm đề mới vào danh sách.');
+  }catch(e){toast(e&&e.code==='rate_limited'?'Đang bị giới hạn lượt, chờ một lát.':'Chưa ra đề được, thử lại sau.')}
+  b.disabled=false;b.textContent='Claude ra đề mới theo bộ lọc';
+}
+
+/* events */
+['#fTopic','#fLv','#fType'].forEach(s=>$(s).addEventListener('change',renderList));
+$('#fQ').addEventListener('input',renderList);
+$('#tPrac').onclick=()=>setView('practice');
+$('#tStudy').onclick=()=>setView('study');
+$('#sGo').onclick=()=>{setView('practice');$('#panel').scrollIntoView()};
+$('#sAll').onclick=()=>say(cur.model||cur.zh,$('#sAll'));
+$('#sPy').onclick=()=>{if(!PP()){toast('Chưa tải được pinyin (cần kết nối mạng).');return}py=!py;$('#sPy').setAttribute('aria-pressed',py);$('#sPy').textContent=py?'Ẩn pinyin':'Hiện pinyin';if(py&&cloze){cloze=0;$('#cloze').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.c==='0'))}renderStudy()};
+$('#sVi').onclick=translate;
+$('#cloze').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;cloze=Number(b.dataset.c);$('#cloze').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));renderStudy()});
+$('#sents').addEventListener('click',e=>{const s=e.target.closest('[data-s]');if(s){say(curS[Number(s.dataset.s)],s);return}const z=e.target.closest('.z');if(z)z.classList.toggle('rev')});
+$('#sents').addEventListener('keydown',e=>{const z=e.target.closest('.z');if(z&&(e.key==='Enter'||e.key===' ')){e.preventDefault();z.classList.toggle('rev')}});
+$('#sMem').onchange=()=>{store.mem=store.mem||{};if($('#sMem').checked)store.mem[cur.id]=1;else delete store.mem[cur.id];save();renderList()};
+const goPanel=()=>{if(window.innerWidth<900)$('#panel').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'})};
+$('#bRand').onclick=()=>{const a=filtered().filter(i=>!cur||i.id!==cur.id);if(!a.length)return;select(a[Math.floor(Math.random()*a.length)].id);goPanel()};
+$('#bNext').onclick=()=>{const a=filtered();if(!a.length)return;const k=a.findIndex(i=>cur&&i.id===cur.id);select(a[(k+1)%a.length].id);goPanel()};
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(h&&(!cur||h!==cur.id)&&all().some(i=>i.id===h))select(h)});
+$('#list').addEventListener('click',e=>{const b=e.target.closest('button[data-id]');if(b)select(b.dataset.id)});
+$('#bListen').onclick=()=>say(cur.zh,$('#bListen'));
+$('#bModel').onclick=()=>say(cur.model||cur.zh,$('#bModel'));
+$('#groups').addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)say(b.dataset.say.replace(/……/g,'，'),b)});
+$('#methods').addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)say(b.dataset.say,b)});
+$('#rate').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;rate=Number(b.dataset.r);$('#rate').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));try{tts&&tts.setRate&&tts.setRate(rate)}catch(err){}});
+$('#bReveal').onclick=()=>{revealed=!revealed;renderPrompt()};
+$('#bPrep').onclick=()=>startPhase('prep');
+$('#bSpeak').onclick=()=>startPhase('speak');
+$('#bStop').onclick=()=>{stopTimer();resetTimer()};
+$('#bClear').onclick=()=>{$('#ans').value='';$('#partial').textContent='';$('#result').textContent='';store.drafts[cur.id]='';save();if(cur.type!=='retell'||revealed)renderPrompt()};
+$('#ans').addEventListener('input',()=>{store.drafts[cur.id]=$('#ans').value;save()});
+$('#bMatch').onclick=match;
+$('#bGrade').onclick=grade;
+$('#bGen').onclick=gen;
+$('#bMic').onclick=()=>{
+  if(!dict)return;
+  if(listening){dict.stop().catch(()=>{});return}
+  if(speakBtn){stopSay();setSpeak(speakBtn,false);speakBtn=null}
+  dict.start().catch(e=>{if(e&&e.code==='not_granted'){$('#bMic').hidden=true;toast('Bạn chưa cho phép dùng micro. Hãy gõ hoặc dán bài.')}else toast('Chưa bật được micro, thử lại.')});
+  if(tm.ph!=='speak')startPhase('speak');
+};
+
+{const h=location.hash.slice(1);select(all().some(i=>i.id===h)?h:ITEMS[0].id)}
+
+/* browser speech recognition, used when the page runs outside Claude (e.g. saved file opened in Chrome/Edge) */
+function webRec(){
+  const R=window.SpeechRecognition||window.webkitSpeechRecognition;if(!R)return null;
+  let r=null;const cb={};
+  return {
+    start(){return new Promise((res,rej)=>{
+      r=new R();r.lang='zh-CN';r.continuous=true;r.interimResults=true;
+      r.onstart=()=>{cb.s&&cb.s({state:'listening'});res()};
+      r.onresult=e=>{let p='';for(let i=e.resultIndex;i<e.results.length;i++){const t=e.results[i][0].transcript;if(e.results[i].isFinal)cb.f&&cb.f({text:t});else p+=t}cb.p&&cb.p({text:p})};
+      r.onerror=e=>{if(e.error==='not-allowed'||e.error==='service-not-allowed')rej({code:'not_granted'})};
+      r.onend=()=>{cb.s&&cb.s({state:'idle'})};
+      try{r.start()}catch(err){rej(err)}
+    })},
+    stop(){try{r&&r.stop()}catch(e){}return Promise.resolve()},
+    onPartial(f){cb.p=f},onFinal(f){cb.f=f},onState(f){cb.s=f}
+  };
+}
+
+/* capabilities */
+(async()=>{
+  const use=n=>window.claude&&window.claude.use?window.claude.use(n).catch(()=>null):Promise.resolve(null);
+  const [a,b,c]=await Promise.all([use('tts'),use('dictation'),use('sample')]);
+  tts=a;dict=b||webRec();sample=c;
+  const notes=[];
+  if(dict){$('#bMic').hidden=false;
+    dict.onPartial(({text})=>{$('#partial').textContent=text||''});
+    dict.onFinal(({text})=>{if(!text)return;const t=$('#ans');t.value+=(t.value&&!/[。，！？\s]$/.test(t.value)?'，':'')+text;$('#partial').textContent='';store.drafts[cur.id]=t.value;save()});
+    dict.onState(({state})=>{listening=state==='listening';const m=$('#bMic');m.textContent=listening?'Dừng nói':'Nói';m.classList.toggle('primary',listening);m.classList.toggle('red',!listening)});
+  }else notes.push('Nhận giọng nói không có ở trình duyệt này: hãy gõ, hoặc dùng bàn phím giọng nói tiếng Trung trên điện thoại rồi dán vào.');
+  if(sample){$('#bGrade').hidden=false;$('#bGen').hidden=false;$('#sVi').hidden=false}else notes.push('Chấm điểm bằng Claude chỉ có khi mở trang trong Claude.');
+  notes.push('Nếu nhận giọng nói ra sai ngôn ngữ, hãy sửa trực tiếp trong ô.');
+  $('#capNote').textContent=notes.join(' ');
+})();
+}
+</script>
+</body>
+</html>
